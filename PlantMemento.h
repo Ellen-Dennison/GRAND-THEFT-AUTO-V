@@ -23,7 +23,7 @@ private:
 
     std::string stateName;
     int age;
-    int health;
+    int healthLevel;
 
 public:
     /**
