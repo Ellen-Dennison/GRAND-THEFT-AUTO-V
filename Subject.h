@@ -16,7 +16,7 @@ protected:
 
 public:
     virtual ~Subject() {}
-    void attach(Observer* bserver);
+    void attach(Observer* observer);
     void detach(Observer* observer);
     void notify(const std::string& message);
 
