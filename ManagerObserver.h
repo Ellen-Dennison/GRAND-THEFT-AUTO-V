@@ -19,6 +19,8 @@ private:
     int successfulRevivals;
     int plantDeaths;
     bool active;
+    std::string extractPlantType(const std::string& message) const ;
+    double extractPrice(const std::string& message) const;
 
 public:
 
@@ -40,7 +42,7 @@ public:
 
     std::string getBestSellingPart() const;
 
-    int getsuccessfulRevivals const;
+    int getSuccessfulRevivals() const;
 
     int getPlantDeaths() const;
 
