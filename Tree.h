@@ -6,9 +6,11 @@
 class Tree:public Plant
 {
     public:
-    Tree(std::string name, std::string type, double price,std::string plant):Plant(name,type,price,plant)
+    Tree(std::string name, std::string type, double price):Plant(name,type,price)
     {};//!CHANGES
-    //void setPlant(std::string plant);
+    virtual ~Tree();//!CHANGES
+    Plant* clone() const;
+
 };
 
 #endif

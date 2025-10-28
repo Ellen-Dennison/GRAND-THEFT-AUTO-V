@@ -3,35 +3,30 @@
 
 #include <iostream>
 #include <string>
-/* 
-#include "Enums.h"
+/* #include "Enums.h"
 #include "WateringStrategy.h"
 #include "PlantState.h"
 #include "PlantMemento.h"
  */
-class Plant
-{
-
+class Plant{
 protected:
     std::string name;
     std::string type;
-    std::string plant;//!CHANGES
     double price;
     int age;
-    int healthLevel;
+    /*int healthLevel;
     int neglectCounter;
-    /*PlantState* currState;
+    PlantState* currState;
     WateringStrategy* wateringStrategy;
     SunlightRequirement sunlightNeeds;
     FertilizerFrequency fertilizerNeeds;
     GrowthSeason optimalSeason; */
 
 public:
-    Plant(std::string name, std::string type, double price, std::string plant);
+    Plant(std::string n, std::string t, double p);
     virtual ~Plant();
-    //virtual Plant* clone() const = 0;
-   /*
-    void setState(PlantState* state);
+    virtual Plant* clone() const = 0;
+    /*void setState(PlantState* state);
     void setWateringStrategy(WateringStrategy* strategy);
     void grow();
     void water();
@@ -42,13 +37,13 @@ public:
     void resetNeglect();
     PlantMemento* createMemento() const;
     void restoreFromMemento(PlantMemento* memento);
-    void revivePlant(PlantMemento* memento);
+    void revivePlant(PlantMemento* memento); */
     std::string getName()const;
     std::string getType() const;
     double getPrice() const;
     virtual void setPrice(double p);
     int getAge() const;
-    int getHealth() const;
+ /*    int getHealth() const;
     int getNeglectCounter() const;
     std::string getState() const;
     bool isReadyForSale() const;

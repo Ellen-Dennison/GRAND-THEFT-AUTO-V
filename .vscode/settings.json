@@ -10,7 +10,8 @@
         "Succulent.h": true,
         "FACTORY/FlowerFactory.h": true,
         "FACTORY/HerbFactory.h": true,
-        "FACTORY/SucculentFactory.h": true
+        "FACTORY/SucculentFactory.h": true,
+        "FACTORY": true
     },
     "hide-files.files": [
         "Flower.h",
@@ -18,7 +19,8 @@
         "Succulent.h",
         "FACTORY/FlowerFactory.h",
         "FACTORY/HerbFactory.h",
-        "FACTORY/SucculentFactory.h"
+        "FACTORY/SucculentFactory.h",
+        "FACTORY"
     ],
     "files.associations": {
         "array": "cpp",
@@ -72,6 +74,7 @@
         "streambuf": "cpp",
         "text_encoding": "cpp",
         "typeinfo": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "sstream": "cpp"
     }
 }
