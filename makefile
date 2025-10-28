@@ -1,8 +1,8 @@
 main: *.o
-	g++ -std=c++98 -o main *.o
+	g++ -std=c++11 -o main *.o
 
-*.o: *.cpp FACTORY/*.cpp DECORATOR/*.cpp
-	g++ -c *.cpp FACTORY/*.cpp DECORATOR/*.cpp
+*.o: *.cpp FACTORY/*.cpp DECORATOR/*.cpp COMPOSITE/*.cpp
+	g++ -c *.cpp FACTORY/*.cpp DECORATOR/*.cpp COMPOSITE/*.cpp
 
 run: main
 	./main

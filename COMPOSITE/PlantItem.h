@@ -10,9 +10,9 @@ class PlantItem:public PlantComponent
   public:
       PlantItem(Plant* p);
       ~PlantItem();
-      void display();
-      double getTotalValue();
-      int getCount();  
+      virtual void display();
+      virtual double getTotalValue();
+      virtual int getCount();  
 
 
 };

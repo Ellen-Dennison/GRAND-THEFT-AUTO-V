@@ -5,10 +5,9 @@
 class PlantComponent
 {
     public:
-        ~PlantComponent();
-        void display();
-        double getTotalValue();
-        int getCount();
+        virtual void display() = 0;
+        virtual double getTotalValue() = 0;
+        virtual int getCount() = 0;
 
 };
 

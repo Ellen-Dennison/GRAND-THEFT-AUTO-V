@@ -11,7 +11,8 @@
         "FACTORY/FlowerFactory.h": true,
         "FACTORY/HerbFactory.h": true,
         "FACTORY/SucculentFactory.h": true,
-        "FACTORY": true
+        "FACTORY": true,
+        "DECORATOR": true
     },
     "hide-files.files": [
         "Flower.h",
@@ -20,7 +21,8 @@
         "FACTORY/FlowerFactory.h",
         "FACTORY/HerbFactory.h",
         "FACTORY/SucculentFactory.h",
-        "FACTORY"
+        "FACTORY",
+        "DECORATOR"
     ],
     "files.associations": {
         "array": "cpp",
