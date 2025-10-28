@@ -31,4 +31,4 @@ public:
 };
 
 
-#endif //GADVANCETIMECOMMAND_H
+#endif //ADVANCETIMECOMMAND_H
