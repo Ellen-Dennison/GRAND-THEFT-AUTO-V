@@ -13,7 +13,10 @@ private:
 
     bool active;
 
-public:
+    std::string extractPlantType(const std::string& message) const ;
+
+
+        public:
     StaffObserver(const std::string& staffName, const std::string& staffRole);
     ~StaffObserver();
 
@@ -28,7 +31,7 @@ public:
 
      void display() const;
 
-     void handleEvent(const std::string& details);
+     void handleEvent(const std::string& eventType, const std::string& details);
 
 };
 
