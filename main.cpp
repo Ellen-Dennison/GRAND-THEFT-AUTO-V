@@ -24,10 +24,12 @@ int main()
   //TREE FACTORY
   TreeFactory* t1 = new TreeFactory;
   Plant* tree1 = t1->createPlant(name,type,price);
+  std::cout << "\n******************************************\n";
 
   //FLOWER FACTORY
   FlowerFactory* f1 = new FlowerFactory;
   Plant* flower1 = f1->createPlant("Sunflower","Flower", 67.00);
+  std::cout << "\n******************************************\n";
 
   //HERB FACTORY
   HerbFactory* h1 = new HerbFactory;
@@ -42,7 +44,7 @@ int main()
 
  
 
-  std::cout << "-----------------------------------------------\n";
+  std::cout << "\n******************************************\n";
   std::cout << "DECORATORS\n";
 
   //GIFT DECORATOR
@@ -58,7 +60,7 @@ int main()
   finalPlant2->display();
   std::cout << "Here is your final price " << finalPlant2->getPrice() << std::endl;
   
-  std::cout << "-----------------------------------------------\n";
+  std::cout << "\n******************************************\n";
   std::cout << "COMPOSITES\n";
   PlantComponent* item1 = new PlantItem(tree1);
   PlantComponent* item2 = new PlantItem(tree2);
