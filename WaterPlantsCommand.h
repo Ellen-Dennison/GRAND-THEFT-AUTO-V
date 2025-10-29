@@ -4,6 +4,8 @@
 #include "Command.h"
 #include "Plant.h"
 #include <vector>
+#include <string>
+
 
 
 class WaterPlantsCommand : public Command{

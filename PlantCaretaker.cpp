@@ -56,7 +56,7 @@ PlantMemento* PlantCaretaker::getMemento(const std::string &plantId) const {
         }
         return mementos.find(plantId) != mementos.end();
     }
-}
+
 
 
 bool PlantCaretaker::deleteMemento(const std::string &plantId) {
