@@ -1,6 +1,6 @@
 
 
-#include "PlantCareTaker.h"
+#include "PlantCaretaker.h"
 #include <iostream>
 
 PlantCaretaker::PlantCaretaker() {
@@ -28,16 +28,18 @@ void PlantCaretaker::saveMemento(const std::string &plantId, PlantMemento *memen
     auto it = mementos.find(plantId);
     if(it != mementos.end()){
         delete it->second;
-        std::cout << "Updated existing memento for plant: "  plantId << std::endl;
+        std::cout << "Updated existing memento for plant: "<<  plantId << std::endl;
+    } else{
+        std::cout << "Saved new memento for plant:" << plantId << std::endl;
     }
     mementos[plantId] = memento;
 }
 
 PlantMemento* PlantCaretaker::getMemento(const std::string &plantId) const {
     if(plantId.empty()) {
-        std::cerr << "Error: Cannot retrieve memento with empty plant ID"  << std::endl;
+        std::cerr << "Error: Cannot retrieve memento with empty plant ID" << std::endl;
         return nullptr;
-
+    }
         auto it =  mementos.find(plantId);
         if(it != mementos.end()){
             return  it->second;
@@ -46,6 +48,7 @@ PlantMemento* PlantCaretaker::getMemento(const std::string &plantId) const {
             return nullptr;
         }
     }
+
 
     bool PlantCaretaker::hasMemento(const std::string &plantId) const {
         if(plantId.empty()){
@@ -62,7 +65,7 @@ bool PlantCaretaker::deleteMemento(const std::string &plantId) {
         return false;
     }
 
-    auto it =mementos.find(plantId);
+    auto it = mementos.find(plantId);
 
     if(it != mementos.end()){
         delete it->second;
@@ -102,11 +105,9 @@ void PlantCaretaker::displayAllMementos() const {
         for (const auto &pair: mementos) {
 
             std::cout << "Plant ID: " << pair.first << std::endl;
-            std::cout << "State: " << pair.second->getState() << std::endl;
-            std::cout << "Age: " << pair.second->getAge() << " weeks"
-            std::endl;
-            std::cout << "Health: " << pair.second->getHealthLevel() << "%"
-            std::endl;
+            std::cout << "State: " << pair.second->getStateName() << std::endl;
+            std::cout << "Age: " << pair.second->getAge() << " weeks" << std::endl;
+            std::cout << "Health: " << pair.second->getHealthLevel() << "%"<< std::endl;
             std::cout << "--------------------------" << std::endl;
         }
     }
