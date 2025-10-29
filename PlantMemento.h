@@ -34,7 +34,7 @@ public:
      * @param age The current age of the plant in weeks
      * @param health The current health level of the
      *
-     * @pre health should be bewtween 0 and 100
+     * @pre health should be between 0 and 100
      * @pre plantAge should be non-negative
      */
 

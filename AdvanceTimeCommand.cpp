@@ -2,7 +2,7 @@
 #include "AdvanceTimeCommand.h"
 #include <iostream>
 
-AdvanceTimeCommand::AdvanceTimeCommand(int &plantCollection, int numWeeks): plants(plantCollection), weeks(numWeeks ){
+AdvanceTimeCommand::AdvanceTimeCommand(std::vector<Plant*>& plantCollection, int numWeeks): plants(plantCollection), weeks(numWeeks){
     if(weeks < 0) {
         std::cerr << "Warning: Negative weeks not allowed. Setting to 0." << std::endl;
         weeks =0;
@@ -13,7 +13,7 @@ AdvanceTimeCommand::~AdvanceTimeCommand() {
 
 }
 
-void AdvancedTimeCommand::execute() {
+void AdvanceTimeCommand::execute() {
     if(plants.empty()) {
         std::cout << "No plants to age." << std::endl;
         return;
@@ -25,7 +25,7 @@ void AdvancedTimeCommand::execute() {
     }
 
     std::cout << "\n------ Advancing Time ------" << std::endl;
-    std::cout << "Advancing " << weeks << " week(s) for " << plants.size() << "plant (s)..." << std::endl;
+    std::cout << "Advancing " << weeks << " week(s) for " << plants.size() << " plant(s)..." << std::endl;
 
     for(int week = 1; week <= weeks; week++) {
         std::cout << "\n--- Week " << week << " ---" << std::endl;

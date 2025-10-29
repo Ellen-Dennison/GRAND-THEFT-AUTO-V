@@ -92,7 +92,7 @@ void StaffObserver::update (const std::string& message) {
 
             std::cout << " " << staffName <<"I'll create a beautiful arrangement!" << std::endl;
         } else if(lowerMessage.find("mature") != std::string::npos){
-            std::cout << " " << staffName << ": Perfect timing for landacaping projects!" << std::endl;
+            std::cout << " " << staffName << ": Perfect timing for landscaping projects!" << std::endl;
 
         }
     }
@@ -156,7 +156,7 @@ void StaffObserver::handleEvent(const std::string& eventType, const std::string&
 
 std::string StaffObserver::extractPlantType(const std::string& message) const {
     std::vector <std::string> plantTypes = {"Rose", "Succulent", "Lavender", "Baobab"};
-    for (const std::string &plantType: plantTypes) {
+    for (const std::string& plantType : plantTypes) {
         if (message.find(plantType) != std::string::npos) {
             return plantType;
         }

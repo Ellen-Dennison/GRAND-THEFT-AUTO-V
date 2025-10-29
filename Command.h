@@ -20,4 +20,4 @@ public:
 };
 
 
-#endif //GRAND_THEFT_AUTO_V_COMMAND_H
+#endif //COMMAND_H
