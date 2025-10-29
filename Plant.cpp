@@ -4,6 +4,10 @@
 #include "MatureState.h"
 #include "FloweringState.h"
 #include "WiltingState.h"
+#include "DeadState.h"
+#include "DailyWateringStrategy.h"
+#include "BiWeeklyWateringStrategy.h"
+#include "WeeklyWateringStrategy.h"
 
 #include <iostream>
 
@@ -48,7 +52,7 @@ Plant::Plant(const Plant& other)
     }
     currState->setPlant(this);
     
-    // Deep copy watering strategy to create new strategy object
+    // Deep copy watering strategy to create NEW strategy object
     if (other.wateringStrategy) {
         // Check which strategy it is and create a new one
         std::string schedule = other.wateringStrategy->getWateringSchedule();
@@ -86,6 +90,17 @@ void Plant::setWateringStrategy(WateringStrategy* strategy){
 
 void Plant::grow(){
     age++;
+    
+    incrementNeglect();//if plant isnt being cared for
+    
+    //If neglect low enoug to put plant in poor condition
+    if (neglectCounter >= 4 && currState->getStateName() != "Dead" && currState->getStateName() != "Wilting") {
+        std::cout << "WARNING: " << name << " neglected for " << neglectCounter << " weeks." << std::endl;
+        std::cout << name << " is now entering Wilting state" << std::endl;
+        setState(new WiltingState());
+    }
+    
+    //If condition too poor that it goes into wilting state
     if (currState->getStateName() != "Wilting" && currState->getStateName() != "Dead") {
         if (healthLevel < 30) {
             std::cout << "WARNING: " << name << " is wilting due to poor health." << std::endl;
@@ -133,10 +148,15 @@ void Plant::adjustHealth(int amount) {
 
 void Plant::incrementNeglect() {
     neglectCounter++;
+    
+    if (neglectCounter > 0) {
+        int healthLoss = neglectCounter *5;  //More neglect = more health loss
+        adjustHealth(-healthLoss);
+        std::cout << name << " neglected (Week " << neglectCounter<< ") - Health -" << healthLoss << std::endl;
+    }
+    
     if (neglectCounter >= 4 && currState->getStateName() != "Dead") {
-        std::cout << "WARNING: " << name << " neglected for " << neglectCounter << " weeks.\n"
-        <<name<<" is now entering Wilting state" << std::endl;
-        setState(new WiltingState());
+        //This will be handled in grow() to avoid duplicate messages
     }
 }
 
@@ -144,7 +164,7 @@ void Plant::resetNeglect() {
     neglectCounter = 0;
 }
 
-PlantMemento* Plant::createMemento() const {
+/*PlantMemento* Plant::createMemento() const {
     return new PlantMemento(currState->getStateName(), age, healthLevel);
 }
 
@@ -178,7 +198,7 @@ void Plant::revivePlant(PlantMemento* memento) {
     } else {
         std::cout << name << " doesn't need revival - Plant is healthy" << std::endl;
     }
-}
+}*/
 
 std::string Plant::getName() const{ 
     return name; 
