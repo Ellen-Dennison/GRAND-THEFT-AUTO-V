@@ -6,7 +6,7 @@ class PlantFactory
 {
 
    public:
-   virtual Plant* createPlant(std::string name, std::string type, double price) = 0;//!CHANGES
+   virtual Plant* createPlant(std::string name, double price) = 0;//!CHANGES
    virtual std::string getFactoryType() = 0;
 
 };

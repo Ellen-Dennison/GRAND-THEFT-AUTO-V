@@ -1,7 +1,7 @@
 #include "FlowerFactory.h"
 #include <fstream>
 
-Plant* FlowerFactory::createPlant(std::string name, std::string type, double price)
+Plant* FlowerFactory::createPlant(std::string name, double price)
 {  
   std::ifstream myfile ("FACTORY/Flower.txt");
   std::cout <<  "\nYou have created your " << name << " Flower\n";
@@ -10,7 +10,7 @@ Plant* FlowerFactory::createPlant(std::string name, std::string type, double pri
     std::cout << this->plant << '\n'; 
   }
   myfile.close();
-  return new Flower(name,type,price);   
+  return new Flower(name,price);   
 
 }
 

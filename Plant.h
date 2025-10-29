@@ -3,16 +3,18 @@
 
 #include <iostream>
 #include <string>
-#include "Enums.h"
+/* #include "Enums.h"
 #include "WateringStrategy.h"
 #include "PlantState.h"
-#include "PlantMemento.h"
+#include "PlantMemento.h" */
 
 class Plant{
 protected:
     std::string name;
     std::string type;
     double price;
+    
+    /*
     int age;
     int healthLevel;
     int neglectCounter;
@@ -20,13 +22,18 @@ protected:
     WateringStrategy* wateringStrategy;
     SunlightRequirement sunlightNeeds;
     FertilizerFrequency fertilizerNeeds;
-    GrowthSeason optimalSeason;
+    GrowthSeason optimalSeason; */
 
 public:
     Plant(std::string n, std::string t, double p);
-    virtual ~Plant();
+    //Plant(const Plant& other);  // Copy constructor
+    virtual ~Plant() {};
     virtual Plant* clone() const = 0;
-    void setState(PlantState* state);
+    std::string getName()const;
+    std::string getType() const;
+    double getPrice() const;
+    virtual void setPrice(double p);
+    /* void setState(PlantState* state);
     void setWateringStrategy(WateringStrategy* strategy);
     void grow();
     void water();
@@ -38,10 +45,6 @@ public:
     PlantMemento* createMemento() const;
     void restoreFromMemento(PlantMemento* memento);
     void revivePlant(PlantMemento* memento);
-    std::string getName()const;
-    std::string getType() const;
-    double getPrice() const;
-    virtual void setPrice(double p);
     int getAge() const;
     int getHealth() const;
     int getNeglectCounter() const;
@@ -53,7 +56,7 @@ public:
     std::string getFertilizerDescription() const;
     std::string getSeasonDescription() const;
     virtual void display() const;
-
+ */
 };
 
 #endif
