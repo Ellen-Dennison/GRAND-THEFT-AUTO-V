@@ -1,31 +1,29 @@
 #include "Plant.h"
-/* #include "SeedlingState.h"
+#include "SeedlingState.h"
 #include "GrowingState.h"
 #include "MatureState.h"
 #include "FloweringState.h"
-#include "WiltingState.h" */
+#include "WiltingState.h"
 
 #include <iostream>
 
 Plant::Plant(std::string n, std::string t, double p):
-    name(n), type(t), price(p), age(0) /* healthLevel(100), neglectCounter(0) */
-    {
+    name(n), type(t), price(p), age(0), healthLevel(100), neglectCounter(0){
 
-        /* currState = new SeedlingState();
+        currState = new SeedlingState();
         currState->setPlant(this);
         wateringStrategy = NULL;
         sunlightNeeds = PARTIAL_SHADE;
         fertilizerNeeds = MONTHLY_FERTILIZER;
-        optimalSeason = SPRING; */
+        optimalSeason = SPRING;
     }
 
-Plant::~Plant()
-{
-    //delete currState;
-    //delete wateringStrategy;
+Plant::~Plant(){
+    delete currState;
+    delete wateringStrategy;
 }
 
-/*void Plant::setState(PlantState* state){
+void Plant::setState(PlantState* state){
     delete currState;
     currState = state;
     currState->setPlant(this);
@@ -132,7 +130,7 @@ void Plant::revivePlant(PlantMemento* memento) {
     } else {
         std::cout << name << " doesn't need revival - Plant is healthy" << std::endl;
     }
-} */
+}
 
 std::string Plant::getName() const{ 
     return name; 
@@ -154,7 +152,7 @@ int Plant::getAge() const{
     return age; 
 }
 
-/* int Plant::getHealth() const{ 
+int Plant::getHealth() const{ 
     return healthLevel; 
 }
 
@@ -217,4 +215,4 @@ void Plant::display() const {
     std::cout << "Fertilizer: " << getFertilizerDescription() << std::endl;
     std::cout << "Optimal Season: " << getSeasonDescription() << std::endl;
     std::cout << "Ready for Sale: " << (isReadyForSale() ? "Yes" : "No") << std::endl;
-} */
+}
