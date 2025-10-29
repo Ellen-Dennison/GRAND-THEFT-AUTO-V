@@ -4,26 +4,9 @@
         "**/.svn": true,
         "**/.hg": true,
         "**/.DS_Store": true,
-        "**/Thumbs.db": true,
-        "Flower.h": true,
-        "Herb.h": true,
-        "Succulent.h": true,
-        "FACTORY/FlowerFactory.h": true,
-        "FACTORY/HerbFactory.h": true,
-        "FACTORY/SucculentFactory.h": true,
-        "FACTORY": true,
-        "DECORATOR": true
+        "**/Thumbs.db": true
     },
-    "hide-files.files": [
-        "Flower.h",
-        "Herb.h",
-        "Succulent.h",
-        "FACTORY/FlowerFactory.h",
-        "FACTORY/HerbFactory.h",
-        "FACTORY/SucculentFactory.h",
-        "FACTORY",
-        "DECORATOR"
-    ],
+    "hide-files.files": [],
     "files.associations": {
         "array": "cpp",
         "atomic": "cpp",

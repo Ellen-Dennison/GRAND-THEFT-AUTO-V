@@ -4,6 +4,11 @@
 
 
 class Herb:public Plant
-{};
+{
+    public:
+        Herb(std::string name, std::string type, double price):Plant(name,type,price) {};
+        virtual ~Herb();
+        Plant* clone() const;
+};
 
 #endif

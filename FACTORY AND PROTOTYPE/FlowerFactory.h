@@ -5,7 +5,10 @@
 class FlowerFactory: public PlantFactory
 {
    private:
-   Plant* plant;//!CHANGES
+   std::string name;//!CHANGES
+   std::string type;//!CHANGES
+   std::string plant;//!CHANGES
+   double price;//!CHANGES
    
    public:
    virtual Plant* createPlant();

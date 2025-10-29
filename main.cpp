@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "FACTORY/TreeFactory.h"
+#include "FACTORY AND PROTOTYPE/TreeFactory.h"
 #include "DECORATOR/GiftWrappingDecorator.h"
 #include "DECORATOR/DecorativePotDecorator.h"
 #include "COMPOSITE/PlantItem.h"
