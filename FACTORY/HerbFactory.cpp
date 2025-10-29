@@ -8,7 +8,7 @@ std::string HerbFactory::getFactoryType()
 Plant* HerbFactory::createPlant(std::string name, std::string type, double price)
 {  
   std::ifstream myfile ("FACTORY/Herb.txt");
-  std::cout <<  "You have created your " << name << " Herb\n";
+  std::cout <<  "\nYou have created your " << name << " Herb\n";
   while ( getline (myfile,this->plant) )
   { 
     std::cout << this->plant << '\n'; 

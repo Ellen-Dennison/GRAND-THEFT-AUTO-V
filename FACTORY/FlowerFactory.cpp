@@ -4,7 +4,7 @@
 Plant* FlowerFactory::createPlant(std::string name, std::string type, double price)
 {  
   std::ifstream myfile ("FACTORY/Flower.txt");
-  std::cout <<  "You have created your " << name << " Flower\n";
+  std::cout <<  "\nYou have created your " << name << " Flower\n";
   while ( getline (myfile,this->plant) )
   { 
     std::cout << this->plant << '\n'; 

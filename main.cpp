@@ -1,15 +1,17 @@
 #include <iostream>
 #include <string>
 
-#include "FACTORY AND PROTOTYPE/TreeFactory.h"
-#include "FACTORY AND PROTOTYPE/FlowerFactory.h"
-#include "FACTORY AND PROTOTYPE/HerbFactory.h"
+#include "FACTORY/TreeFactory.h"
+#include "FACTORY/FlowerFactory.h"
+#include "FACTORY/HerbFactory.h"
 #include "DECORATOR/GiftWrappingDecorator.h"
 #include "DECORATOR/DecorativePotDecorator.h"
 #include "COMPOSITE/PlantItem.h"
 #include "COMPOSITE/PlantComponent.h"
 #include "COMPOSITE/PlantBundle.h"
 #include "Tree.h"
+#include "Flower.h"
+#include "Herb.h"
 
 int main()
 {  
@@ -25,11 +27,19 @@ int main()
 
   //FLOWER FACTORY
   FlowerFactory* f1 = new FlowerFactory;
+  Plant* flower1 = f1->createPlant("Sunflower","Flower", 67.00);
+
   //HERB FACTORY
+  HerbFactory* h1 = new HerbFactory;
+  Plant* herb1 = h1->createPlant("Thyme","Herb", 20.00);
 
   //DELETE
   delete t1;
-  
+  delete f1;
+  delete h1;
+  delete flower1;
+  delete herb1;
+
  
 
   std::cout << "-----------------------------------------------\n";
