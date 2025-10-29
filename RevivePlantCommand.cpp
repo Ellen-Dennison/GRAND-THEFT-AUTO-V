@@ -22,7 +22,7 @@ RevivePlantCommand::~RevivePlantCommand(){
 void RevivePlantCommand::execute() {
 
     std::cout << "\n------ Plant Revival Operation ------" << std::endl;
-    std::cout << "Advancing " << weeks << " Attempting to revive plant: " << plantIdentifier<< std::endl;
+    std::cout <<" Attempting to revive plant: " << plantIdentifier<< std::endl;
 
     if (plant == nullptr) {
         std::cerr << "Error: Plant pointer is null. Cannot revive."  << std::endl;
@@ -36,7 +36,7 @@ void RevivePlantCommand::execute() {
         return;
     }
 
-    std::string currentState = plant->getState();
+    std::string currentState = plant->getStateName();
     std::cout << "Current plant state: " << currentState << std::endl;
 
     if (currentState == "Dead") {
@@ -64,7 +64,7 @@ void RevivePlantCommand::execute() {
     std::cout << "\nSaved state found:" << std::endl;
     std::cout << " Saved State: " << memento->getStateName() << std::endl;
     std::cout << " Saved Health: " << memento->getHealthLevel() << "%" std::endl;
-    std::cout << " Saved Age: " << memento->getAge() << "weeks" std::endl;
+    std::cout << " Saved Age: " << memento->getAge() << "weeks"<< std::endl;
 
 
     std::cout << "\nRestoring plant from saved state..." << std::endl;

@@ -1,6 +1,3 @@
-//
-// Created by user on 10/26/2025.
-//
 
 #ifndef SUBJECT_H
 #define SUBJECT_H
@@ -28,4 +25,4 @@ public:
 };
 
 
-#endif //GRAND_THEFT_AUTO_V_SUBJECT_H
+#endif //SUBJECT_H

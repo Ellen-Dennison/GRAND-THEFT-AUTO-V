@@ -14,7 +14,7 @@ void WaterPlantsCommand::execute() {
         return;
     }
     std::cout << "\n------ Watering Plants ------" << std::endl;
-    std::cout << "Watering " << plants.size() << " plant (s)..." << std::endl;
+    std::cout << "Watering " << plants.size() << " plant(s)..." << std::endl;
 
     int wateredCount = 0;
 

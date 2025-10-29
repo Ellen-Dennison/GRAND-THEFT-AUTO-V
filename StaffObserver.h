@@ -18,7 +18,7 @@ private:
 
         public:
     StaffObserver(const std::string& staffName, const std::string& staffRole);
-    ~StaffObserver();
+     ~StaffObserver();
 
     void update (const std::string& message) override;
      std::string getName() const override;

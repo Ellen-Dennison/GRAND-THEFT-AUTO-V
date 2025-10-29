@@ -21,7 +21,7 @@ public:
     RevivePlantCommand(Plant* targetPlant, PlantCaretaker* plantCaretaker, const std::string& id);
     ~RevivePlantCommand();
     void execute() override;
-    std::string getDescription() const override
+    std::string getDescription() const override;
 
     bool isUndoable() const override;
     std::string getPlant() const;

@@ -11,8 +11,11 @@ void Subject::attach(Observer* observer){
     }
     auto it = std::find(observers.begin(), observers.end(), observer);
     if (it != observers.end()){
-        std::cerr << "Observer " << observer->getName() << " (" << observer->getRole() << ") attached to subject" << std::endl;
+        std::cerr << "Warning: Observer " << observer->getName() << " is already attached" << std::endl;
+        return;
     }
+    observers.push_back(observer);
+    std::cout << "Observer " << observer->getName() << " (" << observer->getRole() << ") attached to subject" << std::endl;
 }
 
 
