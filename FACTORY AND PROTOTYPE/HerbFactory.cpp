@@ -1,4 +1,5 @@
 #include "HerbFactory.h"
+#include <fstream>
 
 std::string HerbFactory::getFactoryType()
 { return "This is the HerbFactory\n"; }
@@ -6,6 +7,13 @@ std::string HerbFactory::getFactoryType()
 
 Plant* HerbFactory::createPlant()
 {  
-    return nullptr; 
+  std::ifstream myfile ("FACTORY/Herb.txt");
+  std::cout <<  "You have created your " << name << " Herb\n";
+  while ( getline (myfile,this->plant) )
+  { 
+    std::cout << this->plant << '\n'; 
+  }
+  myfile.close();
+  return new Herb(name,type,price);   
 
 }

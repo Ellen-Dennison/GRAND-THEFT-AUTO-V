@@ -1,6 +1,7 @@
 #ifndef HERBFACTORY_H
 #define HERBFACTORY_H
 #include "PlantFactory.h"
+#include "../Herb.h"
 
 class HerbFactory: public PlantFactory
 {

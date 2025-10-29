@@ -1,9 +1,16 @@
 #include "FlowerFactory.h"
+#include <fstream>
 
 Plant* FlowerFactory::createPlant()
 {  
-    
-    return nullptr; 
+  std::ifstream myfile ("FACTORY/Flower.txt");
+  std::cout <<  "You have created your " << name << " Flower\n";
+  while ( getline (myfile,this->plant) )
+  { 
+    std::cout << this->plant << '\n'; 
+  }
+  myfile.close();
+  return new Flower(name,type,price);   
 
 }
 
