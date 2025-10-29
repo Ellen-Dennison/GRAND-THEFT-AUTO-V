@@ -18,6 +18,54 @@ Plant::Plant(std::string n, std::string t, double p):
         optimalSeason = SPRING;
     }
 
+Plant::Plant(const Plant& other) 
+    : name(other.name), 
+      type(other.type), 
+      price(other.price), 
+      age(other.age), 
+      healthLevel(other.healthLevel), 
+      neglectCounter(other.neglectCounter),
+      sunlightNeeds(other.sunlightNeeds),
+      fertilizerNeeds(other.fertilizerNeeds),
+      optimalSeason(other.optimalSeason) {
+    
+    // Deep copy state to create new state object
+    std::string stateName = other.currState->getStateName();
+    if (stateName == "Seedling") {
+        currState = new SeedlingState();
+    } else if (stateName == "Growing") {
+        currState = new GrowingState();
+    } else if (stateName == "Mature") {
+        currState = new MatureState();
+    } else if (stateName == "Flowering") {
+        currState = new FloweringState();
+    } else if (stateName == "Wilting") {
+        currState = new WiltingState();
+    } else if (stateName == "Dead") {
+        currState = new DeadState();
+    } else {
+        currState = new SeedlingState();  // default
+    }
+    currState->setPlant(this);
+    
+    // Deep copy watering strategy to create new strategy object
+    if (other.wateringStrategy) {
+        // Check which strategy it is and create a new one
+        std::string schedule = other.wateringStrategy->getWateringSchedule();
+        if (schedule.find("Daily") != std::string::npos) {
+            wateringStrategy = new DailyWateringStrategy();
+        } else if (schedule.find("Weekly") != std::string::npos && schedule.find("Bi") == std::string::npos) {
+            wateringStrategy = new WeeklyWateringStrategy();
+        } else if (schedule.find("Bi-weekly") != std::string::npos) {
+            wateringStrategy = new BiWeeklyWateringStrategy();
+        } else {
+            wateringStrategy = nullptr;
+        }
+    } else {
+        wateringStrategy = nullptr;
+    }
+}
+
 Plant::~Plant(){
     delete currState;
     delete wateringStrategy;
