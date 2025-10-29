@@ -1,7 +1,15 @@
 #include "Succulent.h"
+#include "WeeklyWateringStrategy.h"
+#include <iostream>
 
-Plant* Succulent::clone() const
-{ return new Succulent(*this); }
+Succulent::Succulent(std::string name, double price) 
+    : Plant(name, "Succulent", price) {
+    sunlightNeeds = FULL_SUN;
+    fertilizerNeeds = SEASONAL_FERTILIZER;
+    optimalSeason = SUMMER;
+    setWateringStrategy(new WeeklyWateringStrategy());
+}
 
-Succulent::~Succulent()
-{}
+Plant* Succulent::clone() const {
+    return new Succulent(*this);
+}
