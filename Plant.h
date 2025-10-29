@@ -24,6 +24,7 @@ protected:
 
 public:
     Plant(std::string n, std::string t, double p);
+    Plant(const Plant& other);  // Copy constructor
     virtual ~Plant();
     virtual Plant* clone() const = 0;
     void setState(PlantState* state);
