@@ -8,7 +8,7 @@
  * Design Pattern: Memento (Memento participant)
  */
 
-##ifndef PLANTMEMENTO_H
+#ifndef PLANTMEMENTO_H
 #define PLANTMEMENTO_H
 
 
@@ -52,7 +52,7 @@ public:
      *
      * @return The state name as a string
      */
-    std::string getState();
+    std::string getStateName();
 
     /**
      * @brief Gets the stored age

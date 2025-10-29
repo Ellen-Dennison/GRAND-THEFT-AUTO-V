@@ -6,7 +6,7 @@
 #include <sstream>
 #include <algorithm>
 
-ManagerObserver::ManagerObserver(const std::string &managerName) : name(managerName), totalRevenue(0.0), totalSales(0), successfulRevivals(0), plantDeaths(0), active(true){
+ManagerObserver::ManagerObserver(const std::string& managerName) : name(managerName), totalRevenue(0.0), totalSales(0), successfulRevivals(0), plantDeaths(0), active(true){
     std::cout << "Manager " << name << " has started overseeing nursery operations." << std::endl;
 }
 ManagerObserver::~ManagerObserver(){
@@ -43,7 +43,7 @@ void ManagerObserver::update(const std::string& message) {
             std::cout << " Total Sales: " << totalSales << std::endl;
 
             if(!plantType.empty()){
-                std::cout << " " << plantType << " sales: " <<< plantSalesCount[plantType];
+                std::cout << " " << plantType << " sales: " << plantSalesCount[plantType];
 
                 std::string bestSeller = getBestSellingPart();
                 if(plantType == bestSeller) {
@@ -76,7 +76,7 @@ void ManagerObserver::update(const std::string& message) {
         std::cout << "\n[Manager " << name << "] Low stock alert:" << std::endl;
         if (!plantType.empty()) {
             std::cout << " Plant: " << plantType << std::endl;
-            std::cout << " Action: Planning restocking for " << plantType << std::endl
+            std::cout << " Action: Planning restocking for " << plantType << std::endl;
         } else {
             std::cout << " Action: Planning general restocking" << std::endl;
         }
@@ -94,7 +94,7 @@ void ManagerObserver::update(const std::string& message) {
         std::cout << " Action: Reviewing pricing and promotional strategies" << std::endl;
     }
 
-    else if(lowerMessage.find("Wilting") != std::string::npos){
+    else if(lowerMessage.find("wilting") != std::string::npos){
         std::cout << "\n[Manager " << name << "] Plant health alert:" << std::endl;
         std::cout << " " << message << std::endl;
         std::cout << " Monitoring care quality and staff performance" << std::endl;
@@ -165,7 +165,7 @@ int ManagerObserver::getSuccessfulRevivals() const {
     return successfulRevivals;
 }
 
-int ManagerObserver11::getPlantDeaths() const{
+int ManagerObserver::getPlantDeaths() const{
     return plantDeaths;
 }
 
@@ -253,7 +253,8 @@ std::string ManagerObserver::extractPlantType(const std::string& message) const 
 double ManagerObserver::extractPrice(const std::string& message) const{
     size_t pos = message.find('R');
 
-    while(pos + 1 < message.length() && std::isdigit(message[pos+1])){
+    while(pos != std::string::npos){
+    if(pos + 1 < message.length() && std::isdigit(message[pos+1])){
         std::string numberStr;
         size_t i = pos +1;
 
@@ -272,5 +273,6 @@ double ManagerObserver::extractPrice(const std::string& message) const{
 
     pos = message.find('R', pos+1);
 }
+
 return 0.0;
 }

@@ -2,7 +2,7 @@
 #include "PlantMemento.h"
 #include <iostream>
 
-PlantMemento::PlantMemento(const std::string &state, int age, int health): stateName(state), age(PlantAge), healthLevel(health) {
+PlantMemento::PlantMemento(const std::string &state, int age, int health): stateName(state), age(age), healthLevel(health) {
     if (healthLevel < 0) {
         healthLevel =0;
     } else if (healthLevel > 100) {
@@ -34,6 +34,6 @@ void PlantMemento::display() const {
     std::cout << "------ Plant Memento ------" << std::endl;
     std::cout << "State: " << stateName << std::endl;
     std::cout << "Age: " << age << std::endl;
-    std::cout << "Health: " << healthLevel << "%" std::endl;
+    std::cout << "Health: " << healthLevel << "%" << std::endl;
     std::cout << "--------------------------" << std::endl;
 }
