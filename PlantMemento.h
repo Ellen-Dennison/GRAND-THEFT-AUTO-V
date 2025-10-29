@@ -52,7 +52,7 @@ public:
      *
      * @return The state name as a string
      */
-    std::string getStateName();
+    std::string getStateName() const;
 
     /**
      * @brief Gets the stored age
