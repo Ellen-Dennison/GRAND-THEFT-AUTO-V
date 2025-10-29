@@ -1,18 +1,14 @@
 <p align="center">
-  <img src="banner.png" alt="Gym-Manager Banner" width="300">
+  <img src="https://www.exitlag.com/blog/wp-content/uploads/2024/12/gta-v-16x9-1.jpg" alt="Grand-Theft-Auto-V" width="300">
 </p>
 
 <div align="center">
 
-# GTAV
+# GRAND THEFT AUTO V
 
-![Build](https://img.shields.io/github/actions/workflow/status/COS301-SE-2025/Gym-Manager/ci.yml?label=Build&logo=github)
-[![Coverage](https://codecov.io/gh/COS301-SE-2025/Gym-Manager/branch/main/graph/badge.svg)](https://codecov.io/gh/COS301-SE-2025/Gym-Manager)
-![Open Issues](https://img.shields.io/github/issues/COS301-SE-2025/Gym-Manager?logo=github)
-![Uptime](https://img.shields.io/uptimerobot/status/m801465365-843700d64b7c53d6c1e77361?label=status)
 
 >Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-<img src="jumping_jack.gif" alt="Animated GIF" width="200">
+<img src="https://media.tenor.com/htFVFkpa_SQAAAAM/gta-v-grand-theft-auto.gif.gif" alt="Animated GIF" width="200">
 
 ---
 
@@ -24,115 +20,32 @@
     <col>
   </colgroup>
 
-  <!-- Vansh -->
    <tr>
      <td style="vertical-align:top; padding:12px;">
        <div style="width:300px; height:300px; overflow:hidden; border-radius:50%; display:block;">
         <img
-          src="Vansh.jpeg"
-          alt="Vansh Sood"
+          src="https://i0.wp.com/web.phenixxgaming.com/wp-content/uploads/2021/05/content-23.jpg"
+          alt="Team member-"
           style="width:100%; height:100%; object-fit:cover; display:block;"
         />
       </div>
     </td>
     <td style="vertical-align:top; padding:12px;">
-      <strong>Name Name</strong><br/>
-     Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-      <p style="margin-top:8px;">
-        <a href="https://github.com/Vansh-Sood" target="_blank" rel="noopener noreferrer"><img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" style="vertical-align:middle"></a>
-        <a href="https://www.linkedin.com/in/vansh-sood-783519352/" target="_blank" rel="noopener noreferrer"><img alt="LinkedIn" src="https://img.icons8.com/material-outlined/24/linkedin.png" style="vertical-align:middle"></a>
-        <img alt="Email" src="https://img.icons8.com/material-outlined/24/new-post.png" style="vertical-align:middle"> <span style="vertical-align:middle">vanshsood4@gmail.com</span>
-      </p>
-    </td>
-  </tr>
-
-    <!-- Vansh -->
-   <tr>
-     <td style="vertical-align:top; padding:12px;">
-       <div style="width:300px; height:300px; overflow:hidden; border-radius:50%; display:block;">
-        <img
-          src="Vansh.jpeg"
-          alt="Vansh Sood"
-          style="width:100%; height:100%; object-fit:cover; display:block;"
-        />
-      </div>
-    </td>
-    <td style="vertical-align:top; padding:12px;">
-      <strong>Name Name</strong><br/>
-     Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-      <p style="margin-top:8px;">
-        <a href="https://github.com/Vansh-Sood" target="_blank" rel="noopener noreferrer"><img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" style="vertical-align:middle"></a>
-        <a href="https://www.linkedin.com/in/vansh-sood-783519352/" target="_blank" rel="noopener noreferrer"><img alt="LinkedIn" src="https://img.icons8.com/material-outlined/24/linkedin.png" style="vertical-align:middle"></a>
-        <img alt="Email" src="https://img.icons8.com/material-outlined/24/new-post.png" style="vertical-align:middle"> <span style="vertical-align:middle">vanshsood4@gmail.com</span>
-      </p>
-    </td>
-  </tr>
-
-   <!-- Vansh -->
-   <tr>
-     <td style="vertical-align:top; padding:12px;">
-       <div style="width:300px; height:300px; overflow:hidden; border-radius:50%; display:block;">
-        <img
-          src="Vansh.jpeg"
-          alt="Vansh Sood"
-          style="width:100%; height:100%; object-fit:cover; display:block;"
-        />
-      </div>
-    </td>
-    <td style="vertical-align:top; padding:12px;">
-      <strong>Name Name</strong><br/>
-     Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-      <p style="margin-top:8px;">
-        <a href="https://github.com/Vansh-Sood" target="_blank" rel="noopener noreferrer"><img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" style="vertical-align:middle"></a>
-        <a href="https://www.linkedin.com/in/vansh-sood-783519352/" target="_blank" rel="noopener noreferrer"><img alt="LinkedIn" src="https://img.icons8.com/material-outlined/24/linkedin.png" style="vertical-align:middle"></a>
-        <img alt="Email" src="https://img.icons8.com/material-outlined/24/new-post.png" style="vertical-align:middle"> <span style="vertical-align:middle">vanshsood4@gmail.com</span>
-      </p>
+        <strong>Name Name</strong><br/>
+           Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leoeu            aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel               class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+        <p style="margin-top:8px;">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
+             <img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" style="vertical-align:middle">
+          </a>
+          <a href="https://www.linkedin.com/in/vansh-sood-783519352/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
+            <img alt="LinkedIn" src="https://img.icons8.com/material-outlined/24/linkedin.png" style="vertical-align:middle">
+          </a>
+          <img alt="Email" src="https://img.icons8.com/material-outlined/24/new-post.png" style="vertical-align:middle"> <span style="vertical-align:middle">u23.com@gmail.com</span>
+        </p>
     </td>
   </tr>
   
-    <!-- Vansh -->
-   <tr>
-     <td style="vertical-align:top; padding:12px;">
-       <div style="width:300px; height:300px; overflow:hidden; border-radius:50%; display:block;">
-        <img
-          src="Vansh.jpeg"
-          alt="Vansh Sood"
-          style="width:100%; height:100%; object-fit:cover; display:block;"
-        />
-      </div>
-    </td>
-    <td style="vertical-align:top; padding:12px;">
-      <strong>Name Name</strong><br/>
-     Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-      <p style="margin-top:8px;">
-        <a href="https://github.com/Vansh-Sood" target="_blank" rel="noopener noreferrer"><img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" style="vertical-align:middle"></a>
-        <a href="https://www.linkedin.com/in/vansh-sood-783519352/" target="_blank" rel="noopener noreferrer"><img alt="LinkedIn" src="https://img.icons8.com/material-outlined/24/linkedin.png" style="vertical-align:middle"></a>
-        <img alt="Email" src="https://img.icons8.com/material-outlined/24/new-post.png" style="vertical-align:middle"> <span style="vertical-align:middle">vanshsood4@gmail.com</span>
-      </p>
-    </td>
-  </tr>
-  
-    <!-- Vansh -->
-   <tr>
-     <td style="vertical-align:top; padding:12px;">
-       <div style="width:300px; height:300px; overflow:hidden; border-radius:50%; display:block;">
-        <img
-          src="Vansh.jpeg"
-          alt="Vansh Sood"
-          style="width:100%; height:100%; object-fit:cover; display:block;"
-        />
-      </div>
-    </td>
-    <td style="vertical-align:top; padding:12px;">
-      <strong>Name Name</strong><br/>
-     Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-      <p style="margin-top:8px;">
-        <a href="https://github.com/Vansh-Sood" target="_blank" rel="noopener noreferrer"><img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" style="vertical-align:middle"></a>
-        <a href="https://www.linkedin.com/in/vansh-sood-783519352/" target="_blank" rel="noopener noreferrer"><img alt="LinkedIn" src="https://img.icons8.com/material-outlined/24/linkedin.png" style="vertical-align:middle"></a>
-        <img alt="Email" src="https://img.icons8.com/material-outlined/24/new-post.png" style="vertical-align:middle"> <span style="vertical-align:middle">vanshsood4@gmail.com</span>
-      </p>
-    </td>
-  </tr>
+
   
 </table>
 
@@ -178,5 +91,5 @@ Gym-Manager/
 | <img alt="API status" src="https://img.shields.io/uptimerobot/status/m801465365-843700d64b7c53d6c1e77361?label=status&style=flat-square" /> | <img alt="Uptime 7d" src="https://img.shields.io/uptimerobot/ratio/7/m801465365-843700d64b7c53d6c1e77361?label=uptime&style=flat-square" /> | <img alt="Uptime 30d" src="https://img.shields.io/uptimerobot/ratio/30/m801465365-843700d64b7c53d6c1e77361?label=uptime&style=flat-square" /> | -->
 
 
-© 2025 GTAV — University of Pretoria COS 301 Capstone Project
+© 2025 GTAV — University of Pretoria COS 214 Project
 
