@@ -1,7 +1,7 @@
 #include "FlowerFactory.h"
 #include <fstream>
 
-Plant* FlowerFactory::createPlant()
+Plant* FlowerFactory::createPlant(std::string name, std::string type, double price)
 {  
   std::ifstream myfile ("FACTORY/Flower.txt");
   std::cout <<  "You have created your " << name << " Flower\n";

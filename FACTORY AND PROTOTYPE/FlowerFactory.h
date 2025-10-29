@@ -12,7 +12,7 @@ class FlowerFactory: public PlantFactory
    double price;//!CHANGES
    
    public:
-   virtual Plant* createPlant();
+   virtual Plant* createPlant(std::string name, std::string type, double price);//!CHANGES
    virtual std::string getFactoryType();
 
 };

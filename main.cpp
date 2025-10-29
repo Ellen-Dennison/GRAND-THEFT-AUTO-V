@@ -2,6 +2,8 @@
 #include <string>
 
 #include "FACTORY AND PROTOTYPE/TreeFactory.h"
+#include "FACTORY AND PROTOTYPE/FlowerFactory.h"
+#include "FACTORY AND PROTOTYPE/HerbFactory.h"
 #include "DECORATOR/GiftWrappingDecorator.h"
 #include "DECORATOR/DecorativePotDecorator.h"
 #include "COMPOSITE/PlantItem.h"
@@ -17,12 +19,17 @@ int main()
   std::string type = "Tree";
   double price = 2500.55;
 
-  //FACTORY
+  //TREE FACTORY
   TreeFactory* t1 = new TreeFactory;
   Plant* tree1 = t1->createPlant(name,type,price);
 
+  //FLOWER FACTORY
+  FlowerFactory* f1 = new FlowerFactory;
+  //HERB FACTORY
+
   //DELETE
   delete t1;
+  
  
 
   std::cout << "-----------------------------------------------\n";
