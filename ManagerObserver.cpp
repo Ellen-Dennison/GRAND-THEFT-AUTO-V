@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <sstream>
 #include <algorithm>
+#include <vector>
 
 ManagerObserver::ManagerObserver(const std::string& managerName) : name(managerName), totalRevenue(0.0), totalSales(0), successfulRevivals(0), plantDeaths(0), active(true){
     std::cout << "Manager " << name << " has started overseeing nursery operations." << std::endl;
@@ -184,7 +185,7 @@ void ManagerObserver::displayStatistics() const{
     std::cout << "========================================" << std::endl;
 
     std::cout << "\n--- Financial Performance --- " << std::endl;
-    std::cout << "Total Revenue: R" << std::fixed << std::setprecision(2) << totalRevenue <, std::endl;
+    std::cout << "Total Revenue: R" << std::fixed << std::setprecision(2) << totalRevenue << std::endl;
     std::cout << "Total Sales: " << totalSales << std::endl;
     if(totalSales > 0){
         double avgSale = totalRevenue / totalSales;
@@ -204,7 +205,7 @@ void ManagerObserver::displayStatistics() const{
 
     //Plant health stats
     std::cout << "\n--- Plant Health Statistics --- " << std::endl;
-    std::cout << "Successful Revivals: " << std::fixed << std::setprecision(2) << totalRevenue <, std::endl;
+    std::cout << "Successful Revivals: " << std::fixed << std::setprecision(2) << totalRevenue << std::endl;
     std::cout << "Plant Deaths: " << plantDeaths << std::endl;
 
     int totalCritical = successfulRevivals + plantDeaths;
@@ -237,7 +238,7 @@ void ManagerObserver::display() const{
 
 
 std::string ManagerObserver::extractPlantType(const std::string& message) const {
-    std::vector <std::string> plantTypes = {"Rose", "Succulent", "Lavender", "Baobab"};
+    std::vector<std::string> plantTypes = {"Rose", "Succulent", "Lavender", "Baobab"};
     for (const std::string &plantType: plantTypes) {
         if (message.find(plantType) != std::string::npos) {
             return plantType;

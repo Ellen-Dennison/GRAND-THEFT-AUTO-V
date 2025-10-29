@@ -10,7 +10,7 @@
 
 class ManagerObserver:public Observer{
 private:
-    std::string ManagerName;
+    std::string name;
 
     double totalRevenue;
     int totalSales;
