@@ -198,7 +198,7 @@ void Plant::revivePlant(PlantMemento* memento) {
     } else {
         std::cout << name << " doesn't need revival - Plant is healthy" << std::endl;
     }
-}*/
+}
 
 std::string Plant::getName() const{ 
     return name; 
