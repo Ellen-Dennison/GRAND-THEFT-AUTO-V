@@ -8,6 +8,14 @@
 #include "ManagerObserver.h"
 #include "StaffObserver.h"
 
+class TestPlant: public Plant
+{
+public:
+    TestPlant(const std::string& name, const std::string& type, double health) : Plant(name, type, health) {}
+    void grow() {}
+    void water() {}
+};
+
 TEST_CASE("Observer notification system works correctly"){
     Subject subject;
     ManagerObserver manager("Alice");
@@ -29,7 +37,7 @@ TEST_CASE("Observer notification system works correctly"){
 }
 
 TEST_CASE("WaterPlantCommand correctly waters a plant"){
-    Plant* p = new Plant("Rose", "Flower", 50.0);
+    Plant* p = new TestPlant("Rose", "Flower", 50.0);
     double oldHealth = p->getHealth();
 
     WaterPlantsCommand cmd(p);
@@ -41,7 +49,7 @@ TEST_CASE("WaterPlantCommand correctly waters a plant"){
 }
 
 TEST_CASE("AdvanceTimeCommand correctly simulates time passage"){
-    Plant* p = new Plant("Tulip", "Flower", 30.0);
+    Plant* p = new Flower("Tulip", "Flower", 30.0);
     double oldHealth = p->getHealth();
 
     AdvanceTimeCommand cmd(p);
