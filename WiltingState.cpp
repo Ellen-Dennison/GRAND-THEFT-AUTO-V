@@ -1,13 +1,16 @@
 #include "WiltingState.h"
 #include "DeadState.h"
 
-void WiltingState::grow() {
+void WiltingState::grow() 
+{
     plant->adjustHealth(-5);
     std::cout<<plant->getName()<<" is wilting. Health declining..."<<std::endl;
 
-    if(plant->getHealth() <=0){
-        plant->setState(new DeadState);
+    if(plant->getHealth() <=0)
+    {
         std::cout<<plant->getName()<<" has DIED."<<std::endl;
+        plant->setState(new DeadState);
+        
     }
 }
 
