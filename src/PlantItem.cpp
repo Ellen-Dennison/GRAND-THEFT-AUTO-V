@@ -6,9 +6,9 @@ PlantItem::PlantItem(Plant* p)
 { this->plant = p; }
 
 PlantItem::~PlantItem()
-{}
+{ }
 
-void PlantItem::display()
+void PlantItem::display() const
 {   
     std::cout << WHITE << "\n******************************************" << RESET;  
     std::cout << "\n\t\t" << plant->getType() << std::endl; 
@@ -19,8 +19,8 @@ void PlantItem::display()
 
 
 
-double PlantItem::getTotalValue()
+double PlantItem::getTotalValue() const
 { return plant->getPrice(); }
 
-int PlantItem::getCount()
+int PlantItem::getCount() const
 { return 1; } 
