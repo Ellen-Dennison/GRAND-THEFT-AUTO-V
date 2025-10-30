@@ -1,21 +1,20 @@
-#include "GiftWrappingDecorator.h"
+#include "DecorativePotDecorator.h"
 #include <fstream>
 
-
-GiftWrappingDecorator::GiftWrappingDecorator(Plant *p)
+DecorativePotDecorator::DecorativePotDecorator(Plant *p)
     : PlantDecorator(p)
 {}
 
-double GiftWrappingDecorator::getPrice() const{  
-  return wrappedPlant->getPrice() + 25.00; 
+double DecorativePotDecorator::getPrice() const { 
+  return wrappedPlant->getPrice() + 100.00; 
 }
 
-void GiftWrappingDecorator::display() const{
+void DecorativePotDecorator::display() const{
     wrappedPlant->display();
-    std::cout<<wrappedPlant->getName() << " with gift wrapping at an extra R25.00 fee" << std::endl;
-    std::cout << "Total Price: R" << getPrice() << std::endl;  
+    std::cout<<wrappedPlant->getName() <<" with decorative Pot at a R100.00 extra fee" << std::endl;
+    std::cout <<"Total Price: R" << getPrice() << std::endl;
 }
 
-Plant* GiftWrappingDecorator::clone() const{ 
-    return new GiftWrappingDecorator(wrappedPlant->clone());
+Plant* DecorativePotDecorator::clone() const{
+    return new DecorativePotDecorator(wrappedPlant->clone()); 
 }
