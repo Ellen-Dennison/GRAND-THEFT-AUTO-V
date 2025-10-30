@@ -18,7 +18,7 @@ PlantMemento::~PlantMemento() {
 
 }
 
-std::string PlantMemento::getStateName() const {
+std::string PlantMemento::getState() const {
     return stateName;
 }
 
@@ -26,7 +26,7 @@ int PlantMemento::getAge() const {
     return age;
 }
 
-int PlantMemento::getHealthLevel() const {
+int PlantMemento::getHealth() const {
     return healthLevel;
 }
 
