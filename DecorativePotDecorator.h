@@ -1,18 +1,15 @@
 #ifndef DECORATIVEPOTDECORATOR_H
 #define DECORATIVEPOTDECORATOR_H
-#include "PlantDecorator.h"
 
-class DecorativePotDecorator:public PlantDecorator
-{   
-   private:
-   double price;
-    
-   public:
-        DecorativePotDecorator(Plant* plant);
-        virtual double getPrice();
-        virtual void display();
-        virtual Plant* clone() const;
-   
+#include "PlantDecorator.h"
+#include "Plant.h"
+
+class DecorativePotDecorator : public PlantDecorator{   
+    public:
+        DecorativePotDecorator(Plant* p);
+        double getPrice() const override;
+        void display() const override;
+        Plant* clone() const override;
 };
 
 #endif
