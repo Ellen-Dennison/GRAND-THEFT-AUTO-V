@@ -4,6 +4,7 @@ CXXFLAGS = -std=c++11 -Wall -Wextra -g
 
 # Target executable
 TARGET = nursery
+TEST = test_runner
 
 # Source folder
 SRC_DIR = src
