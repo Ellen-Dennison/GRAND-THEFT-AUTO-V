@@ -1,3 +1,0 @@
-C:/Users/user/CLionProjects/GRAND-THEFT-AUTO-V/cmake-build-debug/CMakeFiles/GRAND-THEFT-AUTO-V.dir
-C:/Users/user/CLionProjects/GRAND-THEFT-AUTO-V/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/user/CLionProjects/GRAND-THEFT-AUTO-V/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -18,8 +18,9 @@ std::string StaffWorkFlowDecorator::getName(){
 }
 
 void StaffWorkFlowDecorator::displayRoles(){
-  if(wrappedStaff){
-    wrappedStaff->displayRoles;
+  if(wrappedStaff)
+  {
+    wrappedStaff->displayRoles();
   }
 }
 

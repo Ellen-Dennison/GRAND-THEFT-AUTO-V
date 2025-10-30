@@ -1,4 +1,5 @@
 #include "StaffWorkFlow.h"
+#include <iostream>
 
 std::string StaffWorkFlow::getName(){
     return staffName;

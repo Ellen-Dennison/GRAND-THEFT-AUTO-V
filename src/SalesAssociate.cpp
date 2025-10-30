@@ -13,7 +13,7 @@ void SalesAssociate::performMainTask() {
     std::cout << staffName << " working on the sales floor\n";
     
     //- Ask mediator for sales floor access
-    std::vector<Plant*> salesFloor = mediator->getSalesFloorPlants();
+    std::vector<Plant*> salesFloor = mediator->getSalesFloor();
     
     if (salesFloor.empty()) {
         std::cout << "  No plants on sales floor\n";
@@ -57,7 +57,8 @@ void SalesAssociate::assistCustomer(Customer* customer) {
     // Get sales floor through mediator
     std::vector<Plant*> salesFloor = mediator->getSalesFloor();
     
-    std::string preference = customer->getPreferredPlantType();
+    //std::string preference = customer->getPreferredPlantType();//!function not implemented
+    std::string preference = "empty";
     double budget = customer->getBudget();
     
     std::cout << "  Customer looking for: " << preference 
