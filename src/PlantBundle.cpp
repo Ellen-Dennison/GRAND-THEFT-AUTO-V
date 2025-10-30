@@ -37,7 +37,7 @@ PlantBundle::~PlantBundle()
 {   
    for (int i = 0; i < items.size(); i++) 
    {
-      if(items[i] != nullptr)
+      if( items[i] != nullptr )
       { delete items[i]; }
    }
    items.clear();
@@ -46,11 +46,11 @@ PlantBundle::~PlantBundle()
 void PlantBundle::add( PlantComponent* item ) 
 { items.push_back(item); }
 
-void PlantBundle::remove( PlantComponent* item ) 
+void PlantBundle::remove(PlantComponent* item) 
 {
    for (int i = 0; i < items.size(); i++) 
    {
-    if(items[i] == item)
+    if( items[i] == item)
     { items.erase(items.begin() + i); }
    }
 }
@@ -67,3 +67,5 @@ double PlantBundle::getTotalValue() const
 
 int PlantBundle::getCount() 
 { return items.size(); }
+
+

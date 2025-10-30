@@ -10,6 +10,7 @@ class PlantItem:public PlantComponent
   public:
       PlantItem(Plant* p);
       virtual ~PlantItem();
+      std::string getName() const;
       virtual void display() const;
       virtual double getTotalValue() const;
       virtual int getCount() const; 
