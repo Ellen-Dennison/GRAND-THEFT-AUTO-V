@@ -5,7 +5,8 @@
 #include <string>
 #include "Plant.h"
 
-class PlantDecorator : public Plant{
+class PlantDecorator : public Plant
+{
   
 protected:
     Plant* wrappedPlant;
@@ -13,9 +14,9 @@ protected:
 public:
     PlantDecorator(Plant* p);
     virtual ~PlantDecorator();
-    std::string getName() const override;
-    std::string getType() const override;
-    double getPrice() const override;
+    virtual std::string getName()const override;
+    virtual std::string getType() const override;
+    virtual double getPrice() const override;
     void display()const override;
     Plant* clone() const override = 0;
   

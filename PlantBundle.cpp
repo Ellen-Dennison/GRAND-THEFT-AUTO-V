@@ -2,7 +2,7 @@
 #include "colours.h"
 #include <ctime>
 
-void PlantBundle::display()
+void PlantBundle::display() const 
 {  
    time_t timestamp;
    time(&timestamp);
@@ -15,7 +15,12 @@ void PlantBundle::display()
    { 
      items[i]->display(); 
    }
-   std::cout << "SUBTOTAL : " << RED << this->getNonDiscount() << RESET << std::endl; 
+
+    double price = 0;
+    for (int i = 0; i < items.size(); i++) 
+    { price += items[i]->getTotalValue(); }
+ 
+   std::cout << "SUBTOTAL : " << RED << price << RESET << std::endl; 
    std::cout << "TOTAL WITH DISCOUNT : " << BOLDRED  << this->getTotalValue() << RESET << std::endl; 
    std::cout << WHITE << "\n******************************************\n" << RESET;  
 
@@ -29,7 +34,14 @@ PlantBundle::PlantBundle(std::string bundleName, double discount)
 }
 
 PlantBundle::~PlantBundle()
-{}
+{   
+   for (int i = 0; i < items.size(); i++) 
+   {
+      if(items[i] != nullptr)
+      { delete items[i]; }
+   }
+   items.clear();
+}
 
 void PlantBundle::add( PlantComponent* item ) 
 { items.push_back(item); }
@@ -43,21 +55,14 @@ void PlantBundle::remove( PlantComponent* item )
    }
 }
 
-double PlantBundle::getTotalValue() 
+double PlantBundle::getTotalValue() const 
 {    
-    
+    double discountPrice = 0;
     for (int i = 0; i < items.size(); i++) 
     { discountPrice += items[i]->getTotalValue(); }
     discountPrice -= (discountPrice * (discount/100.00));
     return discountPrice;
     
-}
-
-double PlantBundle::getNonDiscount()
-{
-  for (int i = 0; i < items.size(); i++) 
-  { price += items[i]->getTotalValue(); }
-  return price;
 }
 
 int PlantBundle::getCount() 
