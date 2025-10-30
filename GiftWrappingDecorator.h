@@ -1,17 +1,15 @@
 #ifndef GIFTWRAPPINGDECORATOR_H
 #define GIFTWRAPPINGDECORATOR_H
+
 #include "PlantDecorator.h"
+#include "Plant.h"
 
-class GiftWrappingDecorator:public PlantDecorator
-{
-    private:
-    double price;
-
+class GiftWrappingDecorator : public PlantDecorator{   
     public:
-        GiftWrappingDecorator(Plant* plant);
-        virtual double getPrice();
-        virtual void display();
-        virtual Plant* clone() const;
+        GiftWrappingDecorator(Plant* p);
+        double getPrice() const override;
+        void display() const override;
+        Plant* clone() const override;
 };
 
 #endif
