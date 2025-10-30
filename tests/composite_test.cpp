@@ -9,6 +9,7 @@ TEST_CASE("Testing the function customer adding more items to the order")
    PlantItem *p1 = new PlantItem(f1);
    CHECK(p1->getTotalValue() == 44.77);
    CHECK(p1->getTotalValue() == 12.77);
+   CHECK(p1->getName() == "lover");
    delete f1;
 
 }

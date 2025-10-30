@@ -17,6 +17,8 @@ void PlantItem::display() const
     std::cout << WHITE  << "******************************************\n" << RESET;  
 }
 
+std::string PlantItem::getName()
+{return plant->getName();}
 
 
 double PlantItem::getTotalValue() const
