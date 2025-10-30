@@ -8,7 +8,8 @@ class Command {
 public:
     virtual ~Command(){}
     virtual void execute() = 0;
-    virtual void undo();//new
+    virtual void undo() {
+        }
     virtual std::string getDescription() const{
         return "Command";
     }
