@@ -8,6 +8,7 @@
 #include "DailyWateringStrategy.h"
 #include "BiWeeklyWateringStrategy.h"
 #include "WeeklyWateringStrategy.h"
+#include "PlantMemento"
 
 #include <iostream>
 
