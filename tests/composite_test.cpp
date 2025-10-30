@@ -19,5 +19,5 @@ TEST_CASE("Testing the function customer adding more items to the order")
 TEST_CASE("Testing the composite portion of the composite design pattern")
 {
 
-    
+
 }
