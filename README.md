@@ -37,7 +37,7 @@ Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapi
     </td>
     <td style="vertical-align:top; padding:5px;">
         <strong>Ellen Dennsion</strong><br/>
-           Personally, a gang of five is better than four.
+           Personally, a gang of five is better than four. The cops have nothing on us those were just proxies.
         <p style="margin-top:8px;">
           <a href="https://github.com/Ellen-Dennison" target="_blank" rel="noopener noreferrer" text-decoration ="none">
              <img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" vertical-align="middle">
