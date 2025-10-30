@@ -7,6 +7,7 @@
 #include "WateringStrategy.h"
 #include "PlantState.h"
 #include "PlantMemento.h"
+class PlantState;
 
 class Plant{
 protected:

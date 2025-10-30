@@ -11,10 +11,12 @@ void WiltingState::grow() {
     }
 }
 
-std::string WiltingState::getStateName(){
+std::string WiltingState::getStateName() const
+{
     return "Wilting";
 }
 
-bool WiltingState::canBeSold(){
+bool WiltingState::canBeSold() const
+{
     return false;
 }

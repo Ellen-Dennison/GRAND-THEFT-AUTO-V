@@ -5,7 +5,8 @@
 #include <iostream>
 #include <string>
 
-class FloweringState : public PlantState{
+class FloweringState : public PlantState
+{
 public:
     FloweringState();
     void grow();

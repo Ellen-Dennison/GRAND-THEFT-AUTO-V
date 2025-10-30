@@ -4,7 +4,8 @@
 #include <iostream>
 #include <string>
 
-class Plant;
+//class Plant;
+#include "Plant.h"
 
 class PlantState{
 protected:

@@ -4,10 +4,12 @@ void DeadState::grow() {
     //Dead can't grow
 }
 
-std::string DeadState::getStateName(){
+std::string DeadState::getStateName() const
+{
     return "Dead";
 }
 
-bool DeadState::canBeSold(){
+bool DeadState::canBeSold() const
+{
     return false;
 }

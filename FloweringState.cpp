@@ -1,13 +1,16 @@
 #include "FloweringState.h"
 
-void FloweringState::grow() {
+void FloweringState::grow() 
+{
     //can't grow further. stays
 }
 
-std::string FloweringState::getStateName(){
+std::string FloweringState::getStateName() const
+{
     return "Flowering";
 }
 
-bool FloweringState::canBeSold(){
+bool FloweringState::canBeSold() const
+{
     return true;
 }
