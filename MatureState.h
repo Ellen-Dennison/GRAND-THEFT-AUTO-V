@@ -8,8 +8,8 @@
 class MatureState : public PlantState{
 public:
     void grow();
-    std::string getStateName();
-    bool canBeSold();
+    std::string getStateName() const override;
+    bool canBeSold() const override;
 
 };
 

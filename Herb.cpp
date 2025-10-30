@@ -10,6 +10,7 @@ Herb::Herb(std::string name, double price)
     setWateringStrategy(new BiWeeklyWateringStrategy());
 }
 
-Plant* Herb::clone() const {
+Plant* Herb::clone() const 
+{
     return new Herb(*this);
 }

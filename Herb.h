@@ -1,15 +1,15 @@
-#include "Herb.h"
+#ifndef HERB_H
+#define HERB_H
 #include "BiWeeklyWateringStrategy.h"
+#include "Plant.h"
 #include <iostream>
 
-Herb::Herb(std::string name, double price) 
-    : Plant(name, "Herb", price) {
-    sunlightNeeds = FULL_SUN;
-    fertilizerNeeds = MONTHLY_FERTILIZER;
-    optimalSeason = SUMMER;
-    setWateringStrategy(new BiWeeklyWateringStrategy());
-}
+class Herb:public Plant
+{   
+    public:
+    Herb(std::string name, double price);
+    Plant* clone() const;
+};
 
-Plant* Herb::clone() const {
-    return new Herb(*this);
-}
+
+#endif

@@ -36,7 +36,7 @@ Plant::Plant(const Plant& other)
     // Deep copy state to create new state object
     std::string stateName = other.currState->getStateName();
     if (stateName == "Seedling") {
-        currState = new SeedlingState();
+        currState = new SeedlingState;
     } else if (stateName == "Growing") {
         currState = new GrowingState();
     } else if (stateName == "Mature") {
