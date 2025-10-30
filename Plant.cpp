@@ -217,6 +217,19 @@ void Plant::setPrice(double p){
     price = p; 
 }
 
+void Plant::display() const 
+{
+    std::cout << "Plant: " << name << " | Type: " << type << std::endl;
+    /* std::cout << "State: " << currState->getStateName()
+              << " | Age: " << age << " weeks | Health: " << healthLevel << "%" << std::endl;
+    std::cout << "Price: R" << price << " | Neglect Counter: " << neglectCounter << std::endl;
+    std::cout << "Watering Info: " << getWateringInfo() << std::endl;
+    std::cout << "Sunlight: " << getSunlightDescription() << std::endl;
+    std::cout << "Fertilizer: " << getFertilizerDescription() << std::endl;
+    std::cout << "Optimal Season: " << getSeasonDescription() << std::endl;
+    std::cout << "Ready for Sale: " << (isReadyForSale() ? "Yes" : "No") << std::endl; */
+}
+
 /* int Plant::getAge() const{ 
     return age; 
 }
@@ -276,14 +289,4 @@ std::string Plant::getFertilizerDescription() const {
     }
 }
 
-void Plant::display() const {
-    std::cout << "Plant: " << name << " | Type: " << type << std::endl;
-    std::cout << "State: " << currState->getStateName()
-              << " | Age: " << age << " weeks | Health: " << healthLevel << "%" << std::endl;
-    std::cout << "Price: R" << price << " | Neglect Counter: " << neglectCounter << std::endl;
-    std::cout << "Watering Info: " << getWateringInfo() << std::endl;
-    std::cout << "Sunlight: " << getSunlightDescription() << std::endl;
-    std::cout << "Fertilizer: " << getFertilizerDescription() << std::endl;
-    std::cout << "Optimal Season: " << getSeasonDescription() << std::endl;
-    std::cout << "Ready for Sale: " << (isReadyForSale() ? "Yes" : "No") << std::endl;
-} */
+ */

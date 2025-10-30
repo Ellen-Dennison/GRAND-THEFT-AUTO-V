@@ -29,10 +29,11 @@ public:
     //Plant(const Plant& other);  // Copy constructor
     virtual ~Plant() {};
     virtual Plant* clone() const = 0;
-    std::string getName()const;
-    std::string getType() const;
-    double getPrice() const;
+    virtual std::string getName()const;
+    virtual std::string getType() const;
+    virtual double getPrice() const;
     virtual void setPrice(double p);
+    virtual void display() const;
     /* void setState(PlantState* state);
     void setWateringStrategy(WateringStrategy* strategy);
     void grow();
@@ -55,7 +56,7 @@ public:
     std::string getSunlightDescription() const;
     std::string getFertilizerDescription() const;
     std::string getSeasonDescription() const;
-    virtual void display() const;
++  
  */
 };
 

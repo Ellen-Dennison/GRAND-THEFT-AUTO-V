@@ -1,6 +1,6 @@
 #ifndef PLANTCOMPONENT_H
 #define PLANTCOMPONENT_H
-#include "../Plant.h"
+#include "Plant.h"
 
 class PlantComponent
 {
