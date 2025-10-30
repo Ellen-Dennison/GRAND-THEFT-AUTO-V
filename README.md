@@ -36,10 +36,10 @@ Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapi
       </div>
     </td>
     <td style="vertical-align:top; padding:5px;">
-        <strong>Name Dennsion</strong><br/>
-           Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. 
+        <strong>Ellen Dennsion</strong><br/>
+           Personally, a gang of five is better than four.
         <p style="margin-top:8px;">
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" text-decoration ="none">
+          <a href="https://github.com/Ellen-Dennison" target="_blank" rel="noopener noreferrer" text-decoration ="none">
              <img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" vertical-align="middle">
           </a>
          </br>
