@@ -8,6 +8,8 @@ TARGET = nursery
 # Source folder
 SRC_DIR = src
 
+#
+
 # Source files (with src/ prefix)
 SOURCES = $(addprefix $(SRC_DIR)/, \
           main.cpp \
@@ -35,6 +37,8 @@ SOURCES = $(addprefix $(SRC_DIR)/, \
           PlantDecorator.cpp \
           GiftWrappingDecorator.cpp \
           DecorativePotDecorator.cpp)
+
+TESTSOURCES = 
 
 # Object files (strip src/ and replace .cpp with .o)
 OBJECTS = $(patsubst $(SRC_DIR)/%.cpp, %.o, $(SOURCES))
