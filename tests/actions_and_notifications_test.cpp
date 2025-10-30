@@ -7,14 +7,7 @@
 #include "Subject.h"
 #include "ManagerObserver.h"
 #include "StaffObserver.h"
-
-class TestPlant: public Plant
-{
-public:
-    TestPlant(const std::string& name, const std::string& type, double health) : Plant(name, type, health) {}
-    void grow() {}
-    void water() {}
-};
+#include "Flower.h"
 
 TEST_CASE("Observer notification system works correctly"){
     Subject subject;
@@ -37,10 +30,12 @@ TEST_CASE("Observer notification system works correctly"){
 }
 
 TEST_CASE("WaterPlantCommand correctly waters a plant"){
-    Plant* p = new TestPlant("Rose", "Flower", 50.0);
+    Plant* p = new Flower("Rose",50.0);
+
+    std::vector<Plant*> plants = {p};
     double oldHealth = p->getHealth();
 
-    WaterPlantsCommand cmd(p);
+    WaterPlantsCommand cmd(plants);
     CHECK_NOTHROW(cmd.execute());
 
     CHECK(p->getHealth() >= oldHealth);
@@ -49,10 +44,12 @@ TEST_CASE("WaterPlantCommand correctly waters a plant"){
 }
 
 TEST_CASE("AdvanceTimeCommand correctly simulates time passage"){
-    Plant* p = new Flower("Tulip", "Flower", 30.0);
+    Plant* p = new Flower("Tulip",30.0);
+    std::vector<Plant*> plants = {p};
+
     double oldHealth = p->getHealth();
 
-    AdvanceTimeCommand cmd(p);
+    AdvanceTimeCommand cmd(plants, 1);
     CHECK_NOTHROW(cmd.execute());
 
     CHECK(p->getHealth() <= oldHealth);
