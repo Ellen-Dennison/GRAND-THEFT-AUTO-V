@@ -10,7 +10,7 @@ class PlantItem:public PlantComponent
   public:
       PlantItem(Plant* p);
       ~PlantItem();
-      void display() override;
+      void display() const override;
       double getTotalValue() const override;
       int getCount() const override;  
       ~PlantItem()

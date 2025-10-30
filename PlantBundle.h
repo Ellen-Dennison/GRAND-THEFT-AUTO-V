@@ -11,16 +11,14 @@ class PlantBundle:public PlantComponent
         std::string bundleName;
         std::vector<PlantComponent*> items;
         double discount;
-        double price;//!CHANGES
 
   public:
         PlantBundle(std::string bundleName, double discount);
         ~PlantBundle();
         void add( PlantComponent* item );
         void remove( PlantComponent* item );
-        void display() override;
+        void display() const override;
         double getTotalValue() const override;
-        double getNonDiscount();//!CHANGES
         virtual int getCount();
     
 };

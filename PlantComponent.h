@@ -5,7 +5,7 @@
 class PlantComponent
 {
     public:
-        virtual void display() = 0;
+        virtual void display() const = 0;
         virtual double getTotalValue() const = 0;
         virtual int getCount() const  = 0;
         ~PlantComponent();
