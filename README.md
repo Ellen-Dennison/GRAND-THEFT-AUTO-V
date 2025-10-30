@@ -2,7 +2,7 @@
   <img src="https://www.exitlag.com/blog/wp-content/uploads/2024/12/gta-v-16x9-1.jpg" alt="Grand-Theft-Auto-V" width="300">
 </p>
 
-<div align="center">
+<div align="left">
 
 # GRAND THEFT AUTO V
 
@@ -11,7 +11,11 @@ Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapi
 
 <img src="https://media.tenor.com/htFVFkpa_SQAAAAM/gta-v-grand-theft-auto.gif.gif" alt="Animated GIF" width="200">
 
+## 👩🏾‍💻 How to run our project
 
+<div>make run</div>
+<div>make run</div>
+<div>make run</div>
 
 ## 👥 Team Members
 
@@ -149,48 +153,12 @@ Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapi
 
   
 </table>
+</br>
 
----
-
-
-<!-- 
-
-## 🗂️ Repository Structure & Branching
-
-</div>
-
-
-
-```
-Gym-Manager/
-├── apps/
-│   ├── mobile/        <-- Expo React Native client (App Store & Play Store)
-│   └── web/           <-- Next.js web front‑end (Vercel)
-├── documents/         <-- SRS, mock‑ups, domain model, user‑stories
-├── infra/
-│   └── postgres/      <-- DDL scripts, seed data, DB README
-├── packages/
-│   └── js-library/    <-- Shared TypeScript utils + Zod schemas
-├── services/
-│   └── api/           <-- Node + Express REST API (Drizzle ORM, Jest)
-└── README.md
-```
-
-* **Mono-repo** managed with Git workspaces.
-* **Main ↔ dev ↔ sub-dev ↔ feature/** branching model.
-
-  * `main` = production-ready code.
-  * `dev` = integration branch for general development.
-  * `sub-dev/*` branches = specialized development streams, e.g.:
-    * `dev-api` = backend/API development
-    * `dev-mobile` = mobile app development
-    * `dev-web` = web frontend development
-  * `feature/` branches = day-to-day task-specific work, usually branched off the relevant sub-dev branch.
-
-### Uptime/Availability
-[**Full status (details & history)**](https://stats.uptimerobot.com/l8KHTmilDD)
-| <img alt="API status" src="https://img.shields.io/uptimerobot/status/m801465365-843700d64b7c53d6c1e77361?label=status&style=flat-square" /> | <img alt="Uptime 7d" src="https://img.shields.io/uptimerobot/ratio/7/m801465365-843700d64b7c53d6c1e77361?label=uptime&style=flat-square" /> | <img alt="Uptime 30d" src="https://img.shields.io/uptimerobot/ratio/30/m801465365-843700d64b7c53d6c1e77361?label=uptime&style=flat-square" /> | -->
-
+## 🗂️ Read our report here
+<a href="https://docs.google.com/document/d/1eTlIpR7Nj3Ug5PbFX11YB4J5lktUktFVabwlhYKQjbQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Link to the report</a>
+</br>
+<a href="" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Link to the uml diagrams</a>
 
 © 2025 GTAV — University of Pretoria COS 214 Project
 
