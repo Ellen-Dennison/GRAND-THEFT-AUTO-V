@@ -39,7 +39,8 @@ SOURCES = $(addprefix $(SRC_DIR)/, \
           PlantDecorator.cpp \
           GiftWrappingDecorator.cpp \
           DecorativePotDecorator.cpp\
-          PlantItem.cpp)
+          PlantItem.cpp\
+          PlantBundle.cpp)
 
 TEST_SOURCES = $(wildcard $(TST_DIR)/*.cpp)
 TESTABLE_SOURCES = $(filter-out $(SRC_DIR)/main.cpp, $(SOURCES))
