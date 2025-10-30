@@ -1,8 +1,5 @@
 #include "PlantDecorator.h"
 
-PlantDecorator::PlantDecorator(Plant *p)
-{ wrappedPlant = p; }
-
 PlantDecorator::~PlantDecorator()
 {}
 

@@ -9,6 +9,7 @@ class DecorativePotDecorator:public PlantDecorator
     
    public:
         DecorativePotDecorator(Plant* plant);
+        ~DecorativePotDecorator();
         virtual double getPrice();
         virtual void display();
         virtual Plant* clone() const;

@@ -9,6 +9,7 @@ class GiftWrappingDecorator:public PlantDecorator
 
     public:
         GiftWrappingDecorator(Plant* plant);
+        ~GiftWrappingDecorator();
         virtual double getPrice();
         virtual void display();
         virtual Plant* clone() const;
