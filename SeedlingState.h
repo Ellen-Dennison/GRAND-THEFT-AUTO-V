@@ -7,7 +7,7 @@
 
 class SeedlingState : public PlantState{
 public:
-    SeedlingState();
+    SeedlingState() {};
     void grow();
     std::string getStateName() const override;
     bool canBeSold() const override;

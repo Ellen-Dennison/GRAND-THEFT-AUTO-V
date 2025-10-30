@@ -38,17 +38,17 @@ Plant::Plant(const Plant& other)
     if (stateName == "Seedling") {
         currState = new SeedlingState;
     } else if (stateName == "Growing") {
-        currState = new GrowingState();
+        currState = new GrowingState;
     } else if (stateName == "Mature") {
-        currState = new MatureState();
+        currState = new MatureState;
     } else if (stateName == "Flowering") {
-        currState = new FloweringState();
+        currState = new FloweringState;
     } else if (stateName == "Wilting") {
-        currState = new WiltingState();
+        currState = new WiltingState;
     } else if (stateName == "Dead") {
-        currState = new DeadState();
+        currState = new DeadState;
     } else {
-        currState = new SeedlingState();  // default
+        currState = new SeedlingState;  // default
     }
     currState->setPlant(this);
     
@@ -57,11 +57,11 @@ Plant::Plant(const Plant& other)
         // Check which strategy it is and create a new one
         std::string schedule = other.wateringStrategy->getWateringSchedule();
         if (schedule.find("Daily") != std::string::npos) {
-            wateringStrategy = new DailyWateringStrategy();
+            wateringStrategy = new DailyWateringStrategy;
         } else if (schedule.find("Weekly") != std::string::npos && schedule.find("Bi") == std::string::npos) {
-            wateringStrategy = new WeeklyWateringStrategy();
+            wateringStrategy = new WeeklyWateringStrategy;
         } else if (schedule.find("Bi-weekly") != std::string::npos) {
-            wateringStrategy = new BiWeeklyWateringStrategy();
+            wateringStrategy = new BiWeeklyWateringStrategy;
         } else {
             wateringStrategy = nullptr;
         }
@@ -97,14 +97,14 @@ void Plant::grow(){
     if (neglectCounter >= 4 && currState->getStateName() != "Dead" && currState->getStateName() != "Wilting") {
         std::cout << "WARNING: " << name << " neglected for " << neglectCounter << " weeks." << std::endl;
         std::cout << name << " is now entering Wilting state" << std::endl;
-        setState(new WiltingState());
+        setState(new WiltingState);
     }
     
     //If condition too poor that it goes into wilting state
     if (currState->getStateName() != "Wilting" && currState->getStateName() != "Dead") {
         if (healthLevel < 30) {
             std::cout << "WARNING: " << name << " is wilting due to poor health." << std::endl;
-            setState(new WiltingState());
+            setState(new WiltingState);
         }
     }
     

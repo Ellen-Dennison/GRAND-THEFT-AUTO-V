@@ -1,6 +1,7 @@
 #include "DeadState.h"
 
-void DeadState::grow() {
+void DeadState::grow() 
+{
     //Dead can't grow
 }
 

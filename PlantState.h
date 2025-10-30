@@ -12,7 +12,7 @@ protected:
     Plant* plant;
 
 public:
-    virtual ~PlantState(){};
+    virtual ~PlantState() {};
     void setPlant(Plant* p);
     virtual void grow() = 0;
     virtual std::string getStateName() const = 0;

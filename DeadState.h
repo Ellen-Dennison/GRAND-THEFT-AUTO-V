@@ -7,7 +7,7 @@
 
 class DeadState : public PlantState{
 public:
-    DeadState();
+    DeadState() {};
     void grow();
     std::string getStateName() const override;
     bool canBeSold() const override;

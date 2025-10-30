@@ -7,7 +7,7 @@
 
 class WiltingState : public PlantState{
 public:
-    WiltingState();
+    WiltingState() {};
     void grow();
     std::string getStateName() const override;
     bool canBeSold() const override;
