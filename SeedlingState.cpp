@@ -2,8 +2,8 @@
 #include "GrowingState.h"
 #include "Plant.h"
 
-SeedlingState::SeedlingState() : PlantState() {
-}
+SeedlingState::SeedlingState():PlantState() 
+{}
 
 void SeedlingState::grow() {
     if(plant->getAge() > 3){
