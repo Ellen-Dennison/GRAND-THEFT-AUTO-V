@@ -39,9 +39,9 @@ public:
     PlantMemento* createMemento() const;
     void restoreFromMemento(PlantMemento* memento);
     void revivePlant(PlantMemento* memento);
-    std::string getName()const;
-    std::string getType() const;
-    double getPrice() const;
+    virtual std::string getName()const;
+    virtual std::string getType() const;
+    virtual double getPrice() const;
     virtual void setPrice(double p);
     int getAge() const;
     int getHealth() const;
