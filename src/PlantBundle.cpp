@@ -65,7 +65,7 @@ double PlantBundle::getTotalValue() const
     
 }
 
-int PlantBundle::getCount() 
+int PlantBundle::getCount() const
 { return items.size(); }
 
 

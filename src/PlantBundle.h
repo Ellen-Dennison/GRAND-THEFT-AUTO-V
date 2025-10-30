@@ -19,7 +19,7 @@ class PlantBundle:public PlantComponent
         void remove( PlantComponent* item );
         void display() const override;
         double getTotalValue() const override;
-        virtual int getCount();
+        virtual int getCount() const override;
     
 };
 

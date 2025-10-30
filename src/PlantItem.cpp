@@ -6,7 +6,10 @@ PlantItem::PlantItem(Plant* p)
 { this->plant = p; }
 
 PlantItem::~PlantItem()
-{ }
+{ 
+  if (plant != nullptr)
+  { delete plant; }
+}
 
 void PlantItem::display() const
 {   
