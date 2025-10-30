@@ -2,25 +2,20 @@
 #include <fstream>
 
 
-GiftWrappingDecorator::GiftWrappingDecorator(Plant *plant):PlantDecorator(plant)
+GiftWrappingDecorator::GiftWrappingDecorator(Plant *p)
+    : PlantDecorator(p)
 {}
 
-double GiftWrappingDecorator::getPrice()
-{  
-  wrappedPlant->setPrice(wrappedPlant->getPrice() + 25.00);
+double GiftWrappingDecorator::getPrice() const{  
   return wrappedPlant->getPrice() + 25.00; 
 }
 
-void GiftWrappingDecorator::display()
-{
-  std::ifstream myfile ("DECORATOR/gift.txt");
-  std::cout << std::endl << wrappedPlant->getName() << " + Gift Wrapping (R25.00)\n";
-  std::string line;
-  while ( getline (myfile,line) )
-  {  std::cout << line << '\n'; }
-  myfile.close();
-  
+void GiftWrappingDecorator::display() const{
+    wrappedPlant->display();
+    std::cout<<wrappedPlant->getName() << " with gift Wrapping at a extra R25.00 fee" << std::endl;
+    std::cout << "Total Price: R" << getPrice() << std::endl;  
 }
 
-Plant* GiftWrappingDecorator::clone() const
-{ return wrappedPlant->clone(); }
+Plant* GiftWrappingDecorator::clone() const{ 
+    return new GiftWrappingDecorator(wrappedPlant->clone());
+}

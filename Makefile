@@ -27,7 +27,10 @@ SOURCES = main.cpp \
           WateringStrategy.cpp \
 		  DailyWateringStrategy.cpp \
 		  WeeklyWateringStrategy.cpp \
-		  BiWeeklyWateringStrategy.cpp
+		  BiWeeklyWateringStrategy.cpp \
+		  PlantDecorator.cpp \
+		  GiftWrappingDecorator.cpp \
+		  DecorativePotDecorator.cpp 
 
 # Object files (replace .cpp with .o)
 OBJECTS = $(SOURCES:.cpp=.o)

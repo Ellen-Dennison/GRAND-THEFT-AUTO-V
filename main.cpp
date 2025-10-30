@@ -10,6 +10,8 @@
 #include "HerbFactory.h"
 #include "SucculentFactory.h"
 #include "TreeFactory.h"
+#include "DecorativePotDecorator.h"
+#include "GiftWrappingDecorator.h"
 
 void printSeparator(const std::string& title) {
     std::cout << "\n" << std::string(60, '=') << std::endl;
@@ -322,6 +324,122 @@ void testCompleteNurserySimulation() {
     for (Plant* p : nursery) delete p;
 }
 
+void testDecorators() {
+    printSeparator("TEST 8: Plant Decorators & Customization");
+    
+    std::cout << "=== CUSTOMER CUSTOMIZATION OPTIONS ===\n" << std::endl;
+    
+    //Create base plants
+    Plant* rose = (new FlowerFactory("Rose", 89.99))->createPlant();
+    Plant* basil = (new HerbFactory("Basil", 65.00))->createPlant();
+    Plant* oak = (new TreeFactory("Oak", 450.00))->createPlant();
+    
+    std::cout << "--- Original Plants (No Customization) ---\n" << std::endl;
+    std::cout << "1. "; rose->display();
+    std::cout << "\n2. "; basil->display();
+    std::cout << "\n3. "; oak->display();
+    std::cout << std::endl;
+    
+    //Apply single decorations
+    std::cout << "\n--- Single Decoration Options ---\n" << std::endl;
+    
+    std::cout << "OPTION A: Rose with Decorative Pot\n" << std::endl;
+    Plant* decoratedRose = new DecorativePotDecorator(rose);
+    decoratedRose->display();
+    std::cout << std::endl;
+    
+    std::cout << "OPTION B: Basil with Gift Wrapping\n" << std::endl;
+    Plant* giftBasil = new GiftWrappingDecorator(basil);
+    giftBasil->display();
+    std::cout << std::endl;
+    
+    //Stacking decorators
+    std::cout << "\n--- Premium Package (Stacked Decorators) ---\n" << std::endl;
+    std::cout << "Oak Tree - Decorative Pot + Gift Wrapping\n" << std::endl;
+    Plant* decoratedOak = new DecorativePotDecorator(oak);
+    Plant* premiumOak = new GiftWrappingDecorator(decoratedOak);
+    premiumOak->display();
+    std::cout << std::endl;
+    
+    //Price comparison
+    std::cout << "\n--- Price Comparison Summary ---\n" << std::endl;
+    Plant* sunflower = (new FlowerFactory("Sunflower", 45.00))->createPlant();
+    Plant* potSunflower = new DecorativePotDecorator(
+        (new FlowerFactory("Sunflower", 45.00))->createPlant()
+    );
+    Plant* giftSunflower = new GiftWrappingDecorator(
+        (new FlowerFactory("Sunflower", 45.00))->createPlant()
+    );
+    Plant* fullPackageSunflower = new GiftWrappingDecorator(
+        new DecorativePotDecorator(
+            (new FlowerFactory("Sunflower", 45.00))->createPlant()
+        )
+    );
+    
+    std::cout << "Sunflower Options:" << std::endl;
+    std::cout << "  Basic: R" << sunflower->getPrice() << std::endl;
+    std::cout << "  + Decorative Pot: R" << potSunflower->getPrice() << std::endl;
+    std::cout << "  + Gift Wrapping: R" << giftSunflower->getPrice() << std::endl;
+    std::cout << "  + Both: R" << fullPackageSunflower->getPrice() << std::endl;
+    std::cout << std::endl;
+    
+    //Test that decorated plants still function normally
+    std::cout << "\n--- Decorated Plants Still Grow & Function ---\n" << std::endl;
+    
+    Plant* herb = (new HerbFactory("Rosemary", 72.50))->createPlant();
+    Plant* decoratedHerb = new DecorativePotDecorator(herb);
+    
+    std::cout << "Before care:" << std::endl;
+    std::cout << "  State: " << decoratedHerb->getState() 
+              << " | Health: " << decoratedHerb->getHealth() << "%" << std::endl;
+    
+    decoratedHerb->water();
+    decoratedHerb->grow();
+    
+    std::cout << "After watering & growing:" << std::endl;
+    std::cout << "  State: " << decoratedHerb->getState() 
+              << " | Health: " << decoratedHerb->getHealth() << "%" << std::endl;
+    std::cout << "  Still functions normally with decoration!" << std::endl;
+    std::cout << std::endl;
+    
+    // Customer scenarios
+    std::cout << "\n--- Customer Purchase Scenarios ---\n" << std::endl;
+    
+    std::cout << "Scenario 1: Birthday Gift" << std::endl;
+    Plant* birthdayGift = new GiftWrappingDecorator(
+        new DecorativePotDecorator(
+            (new FlowerFactory("Orchid", 125.00))->createPlant()
+        )
+    );
+    birthdayGift->display();
+    std::cout << std::endl;
+    
+    std::cout << "Scenario 2: Office Desk Plant (Basic)" << std::endl;
+    Plant* deskPlant = (new SucculentFactory("Aloe Vera", 55.00))->createPlant();
+    deskPlant->display();
+    std::cout << std::endl;
+    
+    std::cout << "Scenario 3: Housewarming Present (Pot Only)" << std::endl;
+    Plant* housewarmingGift = new DecorativePotDecorator(
+        (new HerbFactory("Basil", 65.00))->createPlant()
+    );
+    housewarmingGift->display();
+    std::cout << std::endl;
+    
+    // Cleanup
+    delete decoratedRose;
+    delete giftBasil;
+    delete premiumOak;
+    delete sunflower;
+    delete potSunflower;
+    delete giftSunflower;
+    delete fullPackageSunflower;
+    delete decoratedHerb;
+    delete birthdayGift;
+    delete deskPlant;
+    delete housewarmingGift;
+}
+
 
 
 int main() {
@@ -339,6 +457,7 @@ int main() {
         testWateringStrategies();
         testSaleReadiness();
         testExpensiveVsCheapPlants();
+        testDecorators();
         testCompleteNurserySimulation();
         
         printSeparator("ALL TESTS COMPLETED SUCCESSFULLY");
