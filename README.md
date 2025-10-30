@@ -35,23 +35,21 @@ Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapi
         />
       </div>
     </td>
-    <td style="vertical-align:top; padding:12px;">
-        <strong>Name Name</strong><br/>
+    <td style="vertical-align:top; padding:5px;">
+        <strong>Name Dennsion</strong><br/>
            Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. 
         <p style="margin-top:8px;">
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
-             <img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" style="vertical-align:middle">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" text-decoration ="none">
+             <img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" vertical-align="middle">
           </a>
-          <a href="https://www.linkedin.com/in/vansh-sood-783519352/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
-            <img alt="LinkedIn" src="https://img.icons8.com/material-outlined/24/linkedin.png" style="vertical-align:middle">
-          </a>
-          <img alt="Email" src="https://img.icons8.com/material-outlined/24/new-post.png" style="vertical-align:middle"> <span style="vertical-align:middle">u23849259@tuks.co.za</span>
+         </br>
+          <a href = "mailto:u23849259@tuks.co.za" margin-bottom="100px">u23849259@tuks.co.za</a>
         </p>
     </td>
   </tr>
 
   <tr>
-     <td style="vertical-align:top; padding:12px;">
+     <td style="vertical-align:top; padding:5px;">
        <div style="width:300px; height:300px; overflow:hidden; border-radius:50%; display:block;">
         <img
           src="pics/pic2.jpg"
@@ -60,23 +58,21 @@ Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapi
         />
       </div>
     </td>
-    <td style="vertical-align:top; padding:12px;">
+    <td style="vertical-align:top; padding:5px;">
         <strong>Name Name</strong><br/>
            Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. 
         <p style="margin-top:8px;">
           <a href="https://github.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
              <img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" style="vertical-align:middle">
           </a>
-          <a href="https://www.linkedin.com/in/vansh-sood-783519352/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
-            <img alt="LinkedIn" src="https://img.icons8.com/material-outlined/24/linkedin.png" style="vertical-align:middle">
-          </a>
-          <img alt="Email" src="https://img.icons8.com/material-outlined/24/new-post.png" style="vertical-align:middle"> <span style="vertical-align:middle">u23@tuks.co.za</span>
+            </br>
+           <a href = "mailto:u23849259@tuks.co.za" margin-bottom="100px">u23849259@tuks.co.za</a>
         </p>
     </td>
   </tr>
 
   <tr>
-     <td style="vertical-align:top; padding:12px;">
+     <td style="vertical-align:top; padding:5px;">
        <div style="width:300px; height:300px; overflow:hidden; border-radius:50%; display:block;">
         <img
           src="pics/pic3.jpg"
@@ -92,16 +88,14 @@ Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapi
           <a href="https://github.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
              <img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" style="vertical-align:middle">
           </a>
-          <a href="https://www.linkedin.com/in/vansh-sood-783519352/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
-            <img alt="LinkedIn" src="https://img.icons8.com/material-outlined/24/linkedin.png" style="vertical-align:middle">
-          </a>
-          <img alt="Email" src="https://img.icons8.com/material-outlined/24/new-post.png" style="vertical-align:middle"> <span style="vertical-align:middle">u23@tuks.co.za</span>
+            </br>
+          <a href = "mailto:u23849259@tuks.co.za" margin-bottom="100px">u23849259@tuks.co.za</a>
         </p>
     </td>
   </tr>
 
   <tr>
-     <td style="vertical-align:top; padding:12px;">
+     <td style="vertical-align:top; padding:5px;">
        <div style="width:300px; height:300px; overflow:hidden; border-radius:50%; display:block;">
         <img
           src="pics/pic4.jpg"
@@ -117,16 +111,14 @@ Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapi
           <a href="https://github.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
              <img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" style="vertical-align:middle">
           </a>
-          <a href="https://www.linkedin.com/in/vansh-sood-783519352/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
-            <img alt="LinkedIn" src="https://img.icons8.com/material-outlined/24/linkedin.png" style="vertical-align:middle">
-          </a>
-          <img alt="Email" src="https://img.icons8.com/material-outlined/24/new-post.png" style="vertical-align:middle"> <span style="vertical-align:middle">u23@tuks.co.za</span>
+            </br>
+          <a href = "mailto:u23849259@tuks.co.za" margin-bottom="100px">u23849259@tuks.co.za</a>
         </p>
     </td>
   </tr>
 
   <tr>
-     <td style="vertical-align:top; padding:12px;">
+     <td style="vertical-align:top; padding:5px;">
        <div style="width:300px; height:300px; overflow:hidden; border-radius:50%; display:block;">
         <img
           src="pics/pic5.jpg"
@@ -135,17 +127,15 @@ Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapi
         />
       </div>
     </td>
-    <td style="vertical-align:top; padding:12px;">
+    <td style="vertical-align:top; padding:5px;">
         <strong>Name Name</strong><br/>
            Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. 
         <p style="margin-top:8px;">
           <a href="https://github.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
              <img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" style="vertical-align:middle">
           </a>
-          <a href="https://www.linkedin.com/in/vansh-sood-783519352/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
-            <img alt="LinkedIn" src="https://img.icons8.com/material-outlined/24/linkedin.png" style="vertical-align:middle">
-          </a>
-          <img alt="Email" src="https://img.icons8.com/material-outlined/24/new-post.png" style="vertical-align:middle"> <span style="vertical-align:middle">u23@tuks.co.za</span>
+            </br>
+         <a href = "mailto:u23849259@tuks.co.za" margin-bottom="100px">u23849259@tuks.co.za</a>
         </p>
     </td>
   </tr>
