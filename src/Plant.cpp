@@ -164,7 +164,7 @@ void Plant::resetNeglect() {
     neglectCounter = 0;
 }
 
-/*PlantMemento* Plant::createMemento() const {
+PlantMemento* Plant::createMemento() const {
     return new PlantMemento(currState->getStateName(), age, healthLevel);
 }
 
