@@ -29,7 +29,10 @@ PlantBundle::PlantBundle(std::string bundleName, double discount)
 }
 
 PlantBundle::~PlantBundle()
-{}
+{
+  if(!nullptr)
+  {}
+}
 
 void PlantBundle::add( PlantComponent* item ) 
 { items.push_back(item); }
@@ -43,9 +46,9 @@ void PlantBundle::remove( PlantComponent* item )
    }
 }
 
-double PlantBundle::getTotalValue() 
+double PlantBundle::getTotalValue() const 
 {    
-    
+    double discountPrice = 0;
     for (int i = 0; i < items.size(); i++) 
     { discountPrice += items[i]->getTotalValue(); }
     discountPrice -= (discountPrice * (discount/100.00));

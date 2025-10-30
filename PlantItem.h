@@ -10,9 +10,14 @@ class PlantItem:public PlantComponent
   public:
       PlantItem(Plant* p);
       ~PlantItem();
-      virtual void display();
-      virtual double getTotalValue();
-      virtual int getCount();  
+      void display() override;
+      double getTotalValue() const override;
+      int getCount() const override;  
+      ~PlantItem()
+      {
+        if (plant != nullptr)
+        {delete plant;}
+      }
 
 
 };

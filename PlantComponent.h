@@ -6,8 +6,9 @@ class PlantComponent
 {
     public:
         virtual void display() = 0;
-        virtual double getTotalValue() = 0;
-        virtual int getCount() = 0;
+        virtual double getTotalValue() const = 0;
+        virtual int getCount() const  = 0;
+        ~PlantComponent();
 
 };
 
