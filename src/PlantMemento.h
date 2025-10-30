@@ -52,7 +52,7 @@ public:
      *
      * @return The state name as a string
      */
-    std::string getStateName() const;
+    std::string getState() const;
 
     /**
      * @brief Gets the stored age
@@ -66,7 +66,7 @@ public:
      *
      * @return The plant's health level at the time of snapshot
      */
-    int getHealthLevel() const;
+    int getHealth() const;
 
 
     /**
