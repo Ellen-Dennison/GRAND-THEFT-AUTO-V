@@ -36,7 +36,7 @@ void RevivePlantCommand::execute() {
         return;
     }
 
-    std::string currentState = plant->getStateName();
+    std::string currentState = plant->getState();
     std::cout << "Current plant state: " << currentState << std::endl;
 
     if (currentState == "Dead") {
@@ -69,11 +69,11 @@ void RevivePlantCommand::execute() {
 
     std::cout << "\nRestoring plant from saved state..." << std::endl;
 
-    int previousHealth = plant->getHealthLevel();
+    int previousHealth = plant->getHealth();
     plant->restoreFromMemento(memento);
 
     std::string restoredState = plant->getState();
-    int restoredHealth = plant->getHealthLevel();
+    int restoredHealth = plant->getHealth();
 
     std:: cout << "\nRestoration complete:" << std::endl;
     std::cout << " State: Wilting -> " << restoredState << std::endl;
