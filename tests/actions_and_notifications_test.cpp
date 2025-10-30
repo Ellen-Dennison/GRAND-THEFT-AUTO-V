@@ -1,13 +1,13 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 
-#include "Plant.h"
-#include "WaterPlantsCommand.h"
-#include "AdvanceTimeCommand.h"
-#include "Subject.h"
-#include "ManagerObserver.h"
-#include "StaffObserver.h"
-#include "Flower.h"
+#include "../src/Plant.h"
+#include "../src/WaterPlantsCommand.h"
+#include "../src/AdvanceTimeCommand.h"
+#include "../src/Subject.h"
+#include "../src/ManagerObserver.h"
+#include "../src/StaffObserver.h"
+#include "../src/Flower.h"
 
 TEST_CASE("Observer notification system works correctly"){
     Subject subject;
