@@ -170,9 +170,9 @@ PlantMemento* Plant::createMemento() const {
 }
 
 void Plant::restoreFromMemento(PlantMemento* memento) {
-    healthLevel = memento->getHealthLevel();
+    healthLevel = memento->getHealth();
     
-    std::string savedState = memento->getStateName();
+    std::string savedState = memento->getState();
     if (savedState == "Seedling") {
         setState(new SeedlingState());
     } else if (savedState == "Growing") {
