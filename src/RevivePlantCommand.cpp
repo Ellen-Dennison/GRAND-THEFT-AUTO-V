@@ -62,8 +62,8 @@ void RevivePlantCommand::execute() {
     }
 
     std::cout << "\nSaved state found:" << std::endl;
-    std::cout << " Saved State: " << memento->getStateName() << std::endl;
-    std::cout << " Saved Health: " << memento->getHealthLevel() << "%" << std::endl;
+    std::cout << " Saved State: " << memento->getState() << std::endl;
+    std::cout << " Saved Health: " << memento->getHealth() << "%" << std::endl;
     std::cout << " Saved Age: " << memento->getAge() << "weeks"<< std::endl;
 
 
