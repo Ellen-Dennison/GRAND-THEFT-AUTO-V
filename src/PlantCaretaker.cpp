@@ -105,9 +105,9 @@ void PlantCaretaker::displayAllMementos() const {
         for (const auto &pair: mementos) {
 
             std::cout << "Plant ID: " << pair.first << std::endl;
-            std::cout << "State: " << pair.second->getStateName() << std::endl;
+            std::cout << "State: " << pair.second->getState() << std::endl;
             std::cout << "Age: " << pair.second->getAge() << " weeks" << std::endl;
-            std::cout << "Health: " << pair.second->getHealthLevel() << "%"<< std::endl;
+            std::cout << "Health: " << pair.second->getHealth() << "%"<< std::endl;
             std::cout << "--------------------------" << std::endl;
         }
     }
