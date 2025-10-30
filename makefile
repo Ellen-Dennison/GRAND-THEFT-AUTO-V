@@ -5,6 +5,10 @@ CXXFLAGS = -std=c++11 -Wall -Wextra -g
 # Target executable
 TARGET = nursery
 
+#Needed test information
+
+
+
 # Source files
 SOURCES = main.cpp \
           Plant.cpp \
@@ -39,11 +43,13 @@ OBJECTS = $(SOURCES:.cpp=.o)
 all: $(TARGET)
 	@echo "Build complete! Run with 'make run'"
 
+
 # Link object files to create executable
 $(TARGET): $(OBJECTS)
 	@echo "Linking..."
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJECTS)
 	@echo "Executable '$(TARGET)' created successfully!"
+
 
 # Compile source files to object files
 %.o: %.cpp
@@ -64,3 +70,215 @@ clean:
 
 # Phony targets (not actual files)
 .PHONY: all run clean
+
+#IGNORE BOTTOM
+# Variables
+PROJECT_NAME = GRAND-THEFT-AUTO-V
+SRCDIR = src
+TESTDIR = tests
+BUILDDIR = build
+COVERAGE_BUILDDIR = $(BUILDDIR)/coverage
+BINDIR = bin
+DOCSDIR = docs
+COVERAGEDIR = coverage
+TARGET = $(BINDIR)/$(PROJECT_NAME)
+TEST_TARGET = $(BINDIR)/$(PROJECT_NAME)_tests
+ZIP_FILE_NAME = $(PROJECT_NAME).zip
+TEMP_DIR = temp
+DOXYFILE = Doxyfile
+DOCTEST_URL = https://raw.githubusercontent.com/doctest/doctest/master/doctest/doctest.h
+
+# OS detection
+OS := $(shell uname)
+
+# Compiler
+ifeq ($(OS), Darwin)
+    CXX = clang++
+else
+    CXX = g++
+endif
+
+# Coverage flags
+COVERAGE_FLAGS = -fprofile-arcs -ftest-coverage
+
+# Include directories (add all the folders with header files)
+INCLUDES = -I$(SRCDIR) -I$(TESTDIR)
+
+# Compiler flags
+CXXFLAGS += -std=c++17
+
+# Main source and object (normal build)
+MAIN_SRC = $(SRCDIR)/main.cpp
+MAIN_OBJ = $(BUILDDIR)/src/main.o
+
+# Find all .cpp files in src excluding main.cpp (only if src directory exists)
+SOURCES := $(if $(wildcard $(SRCDIR)/*),$(filter-out $(MAIN_SRC), $(shell find $(SRCDIR) -name '*.cpp')))
+OBJECTS := $(patsubst $(SRCDIR)/%.cpp, $(BUILDDIR)/src/%.o, $(SOURCES))
+
+# Coverage build objects
+COVERAGE_OBJECTS := $(patsubst $(SRCDIR)/%.cpp, $(COVERAGE_BUILDDIR)/src/%.o, $(SOURCES))
+
+# Test files and objects
+TEST_SOURCES := $(if $(wildcard $(TESTDIR)/*),$(shell find $(TESTDIR) -name '*.cpp'))
+TEST_OBJECTS := $(patsubst $(TESTDIR)/%.cpp, $(BUILDDIR)/tests/%.o, $(TEST_SOURCES))
+COVERAGE_TEST_OBJECTS := $(patsubst $(TESTDIR)/%.cpp, $(COVERAGE_BUILDDIR)/tests/%.o, $(TEST_SOURCES))
+
+# Compile and link the program (normal build)
+$(TARGET): $(OBJECTS) $(MAIN_OBJ)
+	@mkdir -p $(BINDIR)
+	@$(CXX) $(OBJECTS) $(MAIN_OBJ) $(CXXFLAGS) -o $(TARGET)
+
+# Compile and link the test executable (normal build, exclude main.cpp)
+$(TEST_TARGET): $(OBJECTS) $(TEST_OBJECTS)
+	@mkdir -p $(BINDIR)
+	$(CXX) $(OBJECTS) $(TEST_OBJECTS) $(CXXFLAGS) -o $(TEST_TARGET)
+
+# Compile and link the program (coverage build)
+$(BINDIR)/$(PROJECT_NAME)_coverage: $(COVERAGE_OBJECTS)
+	@mkdir -p $(BINDIR)
+	@$(CXX) $(COVERAGE_OBJECTS) $(CXXFLAGS) $(COVERAGE_FLAGS) -o $(BINDIR)/$(PROJECT_NAME)_coverage
+
+# Compile and link the test executable (coverage build, exclude main.cpp)
+$(BINDIR)/$(PROJECT_NAME)_tests_coverage: $(COVERAGE_OBJECTS) $(COVERAGE_TEST_OBJECTS)
+	@mkdir -p $(BINDIR)
+	$(CXX) $(COVERAGE_OBJECTS) $(COVERAGE_TEST_OBJECTS) $(CXXFLAGS) $(COVERAGE_FLAGS) -o $(BINDIR)/$(PROJECT_NAME)_tests_coverage
+
+# Compile each .cpp file into an object file (normal build)
+$(BUILDDIR)/src/%.o: $(SRCDIR)/%.cpp
+	@mkdir -p $(dir $@)
+	$(CXX) $(CXXFLAGS) -c $< -o $@ $(INCLUDES)
+
+# Compile each .cpp file into an object file (coverage build)
+$(COVERAGE_BUILDDIR)/src/%.o: $(SRCDIR)/%.cpp
+	@mkdir -p $(dir $@)
+	$(CXX) $(CXXFLAGS) $(COVERAGE_FLAGS) -c $< -o $@ $(INCLUDES)
+
+# Compile test files into object files (normal build)
+$(BUILDDIR)/tests/%.o: $(TESTDIR)/%.cpp
+	@mkdir -p $(dir $@)
+	$(CXX) $(CXXFLAGS) -c $< -o $@ $(INCLUDES)
+
+# Compile test files into object files (coverage build)
+$(COVERAGE_BUILDDIR)/tests/%.o: $(TESTDIR)/%.cpp
+	@mkdir -p $(dir $@)
+	$(CXX) $(CXXFLAGS) $(COVERAGE_FLAGS) -c $< -o $@ $(INCLUDES)
+
+# Clean build and coverage files
+clean:
+	@if [ -d $(BUILDDIR) ] && [ "$$(ls -A $(BUILDDIR))" ]; then \
+        rm -rf $(BUILDDIR)/*; \
+        echo "\033[1;32m✓ Cleaned build directory: $(BUILDDIR)\033[0m"; \
+	fi
+	@if [ -d $(BINDIR) ] && [ "$$(ls -A $(BINDIR))" ]; then \
+        rm -rf $(BINDIR)/*; \
+        echo "\033[1;32m✓ Cleaned binary directory: $(BINDIR)\033[0m"; \
+	fi
+	@if [ -d $(COVERAGEDIR) ] && [ "$$(ls -A $(COVERAGEDIR))" ]; then \
+        rm -rf $(COVERAGEDIR)/*; \
+        echo "\033[1;32m✓ Cleaned coverage directory: $(COVERAGEDIR)\033[0m"; \
+	fi
+
+# Run the compiled project (normal build, without coverage flags)
+run: $(TARGET)
+	@$(TARGET)
+
+# Run tests
+test: $(TEST_TARGET)
+	@$(TEST_TARGET)
+
+# Memory leak detection (macOS uses `leaks`, Linux uses `valgrind`)
+leaks: test
+	@if [ "$(OS)" = "Darwin" ]; then \
+	    export MallocStackLogging=1; \
+	    leaks -atExit --list -- $(TEST_TARGET) | awk 'BEGIN { print "Memory Leak Summary:\\n" } /^Process/ { print } /^Leak/ { print }'; \
+	elif [ "$(OS)" = "Linux" ]; then \
+	    valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all $(TEST_TARGET); \
+	else \
+	    echo "Unsupported OS for memory leak check. Please use macOS or Linux."; \
+	fi
+
+# Run tests and generate coverage report
+coverage: $(BINDIR)/$(PROJECT_NAME)_tests_coverage
+	@mkdir -p $(COVERAGEDIR)
+	@$(BINDIR)/$(PROJECT_NAME)_tests_coverage
+	@gcovr -r . --exclude='$(TESTDIR)/.*' --html --html-details -o $(COVERAGEDIR)/index.html
+	@gcovr -r . --exclude='$(TESTDIR)/.*' --print-summary
+	@echo "Coverage report generated in the 'coverage' directory."
+
+
+# Doxygen Setup and Configuration
+doxygen:
+	@if [ ! -f $(DOXYFILE) ]; then \
+	    doxygen -g $(DOXYFILE); \
+	    echo "\033[1;32m✓ Doxygen configuration file created at $(DOXYFILE)\033[0m"; \
+	fi
+	@if [ "$(OS)" = "Darwin" ]; then \
+	    sed -i '' 's|^INPUT .*|INPUT = src|' $(DOXYFILE); \
+	    sed -i '' 's|^FILE_PATTERNS .*|FILE_PATTERNS = *.cpp *.h|' $(DOXYFILE); \
+	    sed -i '' 's|^OUTPUT_DIRECTORY .*|OUTPUT_DIRECTORY = $(DOCSDIR)/doxygen|' $(DOXYFILE); \
+	    sed -i '' 's|^RECURSIVE .*|RECURSIVE = YES|' $(DOXYFILE); \
+	else \
+	    sed -i 's|^INPUT .*|INPUT = src|' $(DOXYFILE); \
+	    sed -i 's|^FILE_PATTERNS .*|FILE_PATTERNS = *.cpp *.h|' $(DOXYFILE); \
+	    sed -i 's|^OUTPUT_DIRECTORY .*|OUTPUT_DIRECTORY = $(DOCSDIR)/doxygen|' $(DOXYFILE); \
+	    sed -i 's|^RECURSIVE .*|RECURSIVE = YES|' $(DOXYFILE); \
+	fi
+
+# Generate Doxygen documentation
+docs: doxygen
+	@mkdir -p $(DOCSDIR)/doxygen
+	doxygen $(DOXYFILE)
+
+# Clean Doxygen documentation
+clean-docs:
+	@rm -rf $(DOCSDIR)/doxygen/*
+
+# Declare 'class' as a phony target
+.PHONY: class
+
+
+hеlp:
+	@echo "\033[1;35m🎉 CONGRATULATIONS! You have unlocked the sacred Makefile Easter Egg! 🎉\033[0m"
+	@sleep 1
+	@echo "\033[1;36mHere's your random dose of motivation (or confusion):\033[0m"
+	@quotes=("\"Debugging: Because no one writes perfect code, except me. Just kidding, I’m in deep trouble.\" 😅" \
+		"\"Keep calm and semicolon;\" 😎" \
+		"\"Why do Java developers wear glasses? Because they don’t C#.\" 🤓" \
+		"\"I would love to change the world, but they won’t give me the source code.\" 🌍" \
+		"\"In case of emergency, git commit and push. Then panic.\" 😱" \
+		"\"To err is human. To blame someone else is even more human.\" 🤡" \
+		"\"404 Motivation not found.\" 😵" \
+		"\"There are 10 types of people in the world: those who understand binary and those who don’t.\" 🔢" \
+		"\"I have a bad feeling about this… Ah yes, it's a merge conflict.\" ⚔️" \
+		"\"The only kind of joke a JavaScript developer can understand: callback humor.\" 😂" \
+		"\"I was going to optimize my code… but I wrote this Easter egg instead.\" 🐣" \
+		"\"I told my computer I needed a break. Now it won’t stop sending me Kit-Kats.\" 🍫" \
+		"\"99 little bugs in the code, 99 little bugs. Take one down, patch it around, 127 bugs in the code.\" 🐛" \
+		"\"How many programmers does it take to change a light bulb? None, that’s a hardware problem!\" 💡" \
+		"\"There’s no place like 127.0.0.1\" 🏠"); \
+	rand=$$((RANDOM % $${#quotes[@]})); \
+	echo "\033[1;33m$${quotes[$$rand]}\033[0m";
+	@echo "\033[1;32mYou've been blessed with this random wisdom. Now go forth and conquer your bugs! 🐛👨‍💻\033[0m"
+
+# Help command
+help:
+	@echo "\033[1;33mMakefile Help:\033[0m"
+	@echo ""
+	@echo "\033[1;32mTargets:\033[0m"
+	@echo "  \033[1;36msetup\033[0m             - Set up initial project structure with necessary folders and main.cpp."
+	@echo "  \033[1;36mclass\033[0m             - Create a new class with header and source files."
+	@echo "                        Syntax: make class CLASS=ClassName or make class folder/ClassName."
+	@echo "  \033[1;36mctest\033[0m             - Create a new test file in the tests/ directory."
+	@echo "                        Syntax: make ctest TEST=TestName or make ctest folder/TestName."
+	@echo "  \033[1;36mrun\033[0m               - Compile and run the project (normal build)."
+	@echo "  \033[1;36mtest\033[0m              - Compile and run unit tests (normal build)."
+	@echo "  \033[1;36mcoverage\033[0m          - Compile the project, run the tests with coverage flags, and generate a coverage report in the 'coverage' folder."
+	@echo "  \033[1;36mzip\033[0m               - Zip all files and folders in src and include a simple Makefile."
+	@echo "  \033[1;36mclean\033[0m             - Clean build artifacts (object files, executables, coverage files, and build directories)."
+	@echo "  \033[1;36mdoxygen\033[0m           - Set up Doxygen configuration file."
+	@echo "  \033[1;36mdocs\033[0m              - Generate Doxygen documentation."
+	@echo "  \033[1;36mclean-docs\033[0m        - Clean Doxygen documentation."
+	@echo "  \033[1;36mleaks\033[0m             - Check for memory leaks using leaks on macOS or valgrind on Linux."
+
+# Phony targets
+.PHONY: setup setup-tests class run test zip clean help doxygen docs clean-docs coverage leaks
