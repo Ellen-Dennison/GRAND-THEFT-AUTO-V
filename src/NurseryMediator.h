@@ -25,7 +25,7 @@
 #include "TreeFactory.h"
 #include "HerbFactory.h"
 
-using namespace std;
+
 
 /**
  * @class NurseryMediator
@@ -48,7 +48,7 @@ private:
     vector<Plant*> salesFloor;
 
     /** @brief Map linking plant type names to their corresponding factory objects. */
-    map<string, PlantFactory*> factories;
+    map<std::string, PlantFactory*> factories;
 
     /** @brief Caretaker responsible for managing plant mementos (state backups). */
     PlantCaretaker* careTaker;
@@ -71,7 +71,7 @@ public:
      * @brief Adds a new plant of the given type to the greenhouse.
      * @param plantType The string name of the plant type (e.g., "Flower", "Tree").
      */
-    void addNewPlant(string plantType);
+    void addNewPlant(std::string plantType);
 
     /**
      * @brief Performs care routines on all greenhouse plants (watering, sunlight, fertilizing).
@@ -108,7 +108,7 @@ public:
      * @param wantsWrapping Whether the customer wants gift wrapping.
      * @return A pointer to a newly created PlantOrder if successful, nullptr otherwise.
      */
-    PlantOrder* processCustomerOrder(string cusName, string plantType, bool wantsPot, bool wantsWrapping);
+    PlantOrder* processCustomerOrder(std::string cusName, std::string plantType, bool wantsPot, bool wantsWrapping);
 
     /**
      * @brief Simulates a customer browsing the sales floor.

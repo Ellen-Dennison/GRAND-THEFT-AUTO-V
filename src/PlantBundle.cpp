@@ -6,9 +6,8 @@ void PlantBundle::display() const
 {  
    time_t timestamp;
    time(&timestamp);
-   std::cout << "\nHere's is your final order\n";
-   std::cout << WHITE << "\n******************************************\n" << RESET;  
-   std::cout << "\t" << "GRAND THEFT AUTO V" << std::endl; 
+   std::cout << "\nHere's is your final order\n";  
+   std::cout << "\t" << "==GRAND THEFT AUTO V==" << std::endl; 
    std::cout << "\t" << bundleName << std::endl; 
    std::cout << "\t" << ctime(&timestamp)  << std::endl;
    for (int i = 0; i < items.size(); i++) 
@@ -20,10 +19,9 @@ void PlantBundle::display() const
     for (int i = 0; i < items.size(); i++) 
     { price += items[i]->getTotalValue(); }
  
-   std::cout << "SUBTOTAL : " << RED << price << RESET << std::endl; 
-   std::cout << "TOTAL WITH DISCOUNT : " << BOLDRED  << this->getTotalValue() << RESET << std::endl; 
-   std::cout << WHITE << "\n******************************************\n" << RESET;  
-
+   std::cout << "==Subtotal💸==" << RED << price << RESET << std::endl; 
+   std::cout << "==Total with discount💰==" << BOLDRED  << this->getTotalValue() << RESET << std::endl; 
+   
 
 }
 

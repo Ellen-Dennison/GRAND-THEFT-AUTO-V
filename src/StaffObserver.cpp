@@ -19,7 +19,7 @@ void StaffObserver::update (const std::string& message) {
     }
 
     std::cout << "\n[" << staffName << " (" << role << ")] Notification received:" << std::endl;
-    std::cout << " ->" << message << std::endl;
+    std::cout << " → " << message << std::endl;
 
     std::string lowerMessage = message;
     std::transform(lowerMessage.begin(), lowerMessage.end(), lowerMessage.begin(), ::tolower);
@@ -82,26 +82,26 @@ void StaffObserver::update (const std::string& message) {
     else if(role == "DeliveryDriver") {
         if(lowerMessage.find("purchased") != std::string::npos) {
 
-                std::cout << " " << staffName <<"I'll prepare for delivery!" << std::endl;
-            } else if(lowerMessage.find("delivery") != std::string::npos){
-                std::cout << " " << staffName << ": On it! Checking delivery schedule." << std::endl;
+            std::cout << " " << staffName << ": I'll prepare for delivery!" << std::endl;
+        } else if(lowerMessage.find("delivery") != std::string::npos){
+            std::cout << " " << staffName << ": On it! Checking delivery schedule." << std::endl;
 
-            }
         }
+    }
 
     else if(role == "Landscaper") {
         if(lowerMessage.find("arrangement") != std::string::npos || lowerMessage.find("bundle") != std::string::npos) {
 
-            std::cout << " " << staffName <<"I'll create a beautiful arrangement!" << std::endl;
+            std::cout << " " << staffName << ": I'll create a beautiful arrangement!" << std::endl;
         } else if(lowerMessage.find("mature") != std::string::npos){
             std::cout << " " << staffName << ": Perfect timing for landscaping projects!" << std::endl;
 
         }
     }
-    else if(role == "GreenHouseManager") {
+    else if(role == "GreenhouseManager") {
         if(lowerMessage.find("wilting") != std::string::npos || lowerMessage.find("died") != std::string::npos) {
 
-            std::cout << " " << staffName <<"I'll review our care protocols and staff performance." << std::endl;
+            std::cout << " " << staffName << ": I'll review our care protocols and staff performance." << std::endl;
         } else if(lowerMessage.find("new plant added") != std::string::npos){
             std::cout << " " << staffName << ": Noted. I'll oversee its growth cycle." << std::endl;
 
@@ -153,7 +153,7 @@ void StaffObserver::display() const{
 }
 
 void StaffObserver::handleEvent(const std::string& eventType, const std::string& details) {
-    std::cout << staffName << " handling " << eventType << "event: " << details << std::endl;
+    std::cout << staffName << " handling " << eventType << " event: " << details << std::endl;
 }
 
 std::string StaffObserver::extractPlantType(const std::string& message) const {
