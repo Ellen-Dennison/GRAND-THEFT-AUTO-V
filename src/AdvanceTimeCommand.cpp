@@ -60,7 +60,7 @@ void AdvanceTimeCommand::execute() {
     std::cout << "============================\n" << std::endl;
 }
 std::string AdvanceTimeCommand::getDescription() const{
-    return "Advance time by " + std::to_string(weeks) + " week(s) for " + std::to_string(plants.size()) + " plants(s)";
+    return "Advance time by " + std::to_string(weeks) + " week(s) for " + std::to_string(plants.size()) + " plant(s)";
 }
 
 bool AdvanceTimeCommand::isUndoable() const {
