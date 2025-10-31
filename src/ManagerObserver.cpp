@@ -46,7 +46,7 @@ void ManagerObserver::update(const std::string& message) {
             if(!plantType.empty()){
                 std::cout << " " << plantType << " sales: " << plantSalesCount[plantType];
 
-                std::string bestSeller = getBestSellingPart();
+                std::string bestSeller = getBestSellingPlant();
                 if(plantType == bestSeller) {
                     std::cout << " (best seller)";
 
@@ -56,6 +56,17 @@ void ManagerObserver::update(const std::string& message) {
 
         }
     }
+
+    else if(lowerMessage.find("revived") != std::string::npos || lowerMessage.find("revival") != std::string::npos){
+        successfulRevivals++;
+
+        std::cout << "\n[Manager " << name << "] Plant revival tracked:" << std::endl;
+        std::cout << " Successful Revivals: " << successfulRevivals << std::endl;
+
+        double successRate = getRevivalSuccessRate();
+        std::cout << " Revival Success Rate: "  << std::fixed << std::setprecision(1) << successRate << "%" << std::endl;
+    }
+
     else if(lowerMessage.find("died") != std::string::npos || lowerMessage.find("death") != std::string::npos) {
         plantDeaths++;
 
@@ -145,7 +156,7 @@ int ManagerObserver::getPlantSalesCount(const std::string& plantType ) const{
     return 0;
 }
 
-std::string ManagerObserver::getBestSellingPart() const{
+std::string ManagerObserver::getBestSellingPlant() const{
     if(plantSalesCount.empty()) {
         return "";
     }
@@ -196,7 +207,7 @@ void ManagerObserver::displayStatistics() const{
         std::cout << "\n--- Sales by Plant Type ---" << std::endl;
         for(const auto& pair : plantSalesCount){
             std::cout << " " << pair.first << ": " << pair.second << " sale(s)";
-            if(pair.first == getBestSellingPart()){
+            if(pair.first == getBestSellingPlant()){
                 std::cout << " (BEST SELLER)";
             }
             std::cout << std::endl;
@@ -205,7 +216,7 @@ void ManagerObserver::displayStatistics() const{
 
     //Plant health stats
     std::cout << "\n--- Plant Health Statistics --- " << std::endl;
-    std::cout << "Successful Revivals: " << std::fixed << std::setprecision(2) << totalRevenue << std::endl;
+    std::cout << "Successful Revivals: " << successfulRevivals<< std::endl;
     std::cout << "Plant Deaths: " << plantDeaths << std::endl;
 
     int totalCritical = successfulRevivals + plantDeaths;
