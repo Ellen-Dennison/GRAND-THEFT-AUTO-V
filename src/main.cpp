@@ -152,6 +152,10 @@ void testNurserySimulation() {
             notifSystem->notify("Plants reaching maturity - prepare for move to sales floor!");
         }
     }
+// Continue caring to reach maturity (need age > 7)
+std::cout << "\n--- Extra Care Week (Week 9) ---" << std::endl;
+nursery->careForGreenhouse();
+nursery->advanceTime(1);
 
     
     nursery->displayInventory();
@@ -173,7 +177,7 @@ void testNurserySimulation() {
         }
     }
 
-    std::cout << "\nMoved  plants to sales floor successfully\n" << std::endl;
+    std::cout << "\nMoved plants to sales floor successfully\n" << std::endl;
 
     std::cout << "\nSales Floor Now OFFICIALLY Open!\n" << std::endl;
 }
