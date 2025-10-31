@@ -82,14 +82,14 @@ Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapi
       </div>
     </td>
     <td style="vertical-align:top; padding:12px;">
-        <strong>Name Name</strong><br/>
-           Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. 
+        <strong>Nomzi Phosa</strong><br/>
+           Responsible for the staff management of the system. You can't get good plants without these hands doing all the work! 
         <p style="margin-top:8px;">
           <a href="https://github.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
              <img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" style="vertical-align:middle">
           </a>
             </br>
-          <a href = "mailto:u23849259@tuks.co.za" margin-bottom="100px">u23849259@tuks.co.za</a>
+          <a href = "mailto:u23577160@tuks.co.za" margin-bottom="100px">u23849259@tuks.co.za</a>
         </p>
     </td>
   </tr>
