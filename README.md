@@ -89,7 +89,7 @@ Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapi
              <img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" style="vertical-align:middle">
           </a>
             </br>
-          <a href = "mailto:u23577160@tuks.co.za" margin-bottom="100px">u23849259@tuks.co.za</a>
+          <a href = "mailto:u23577160@tuks.co.za" margin-bottom="100px">u23577160@tuks.co.za</a>
         </p>
     </td>
   </tr>
