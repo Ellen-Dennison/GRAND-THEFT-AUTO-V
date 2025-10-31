@@ -8,6 +8,7 @@
 #include "DailyWateringStrategy.h"
 #include "BiWeeklyWateringStrategy.h"
 #include "WeeklyWateringStrategy.h"
+#include "PlantMemento.h"
 
 #include <iostream>
 
@@ -164,14 +165,14 @@ void Plant::resetNeglect() {
     neglectCounter = 0;
 }
 
-/*PlantMemento* Plant::createMemento() const {
+PlantMemento* Plant::createMemento() const {
     return new PlantMemento(currState->getStateName(), age, healthLevel);
 }
 
 void Plant::restoreFromMemento(PlantMemento* memento) {
-    healthLevel = memento->getHealthLevel();
+    healthLevel = memento->getHealth();
     
-    std::string savedState = memento->getStateName();
+    std::string savedState = memento->getState();
     if (savedState == "Seedling") {
         setState(new SeedlingState());
     } else if (savedState == "Growing") {
@@ -198,7 +199,7 @@ void Plant::revivePlant(PlantMemento* memento) {
     } else {
         std::cout << name << " doesn't need revival - Plant is healthy" << std::endl;
     }
-}*/
+}
 
 std::string Plant::getName() const{ 
     return name; 
