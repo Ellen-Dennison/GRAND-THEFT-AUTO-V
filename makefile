@@ -25,6 +25,7 @@ SOURCES = $(addprefix $(SRC_DIR)/, \
           SucculentFactory.cpp \
           TreeFactory.cpp \
           PlantFactory.cpp \
+          PlantMemento.cpp\
           SeedlingState.cpp \
           GrowingState.cpp \
           MatureState.cpp \
