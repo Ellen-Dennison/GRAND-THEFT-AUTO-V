@@ -33,7 +33,10 @@
 #include "GreenhouseWorker.h"
 #include "SalesAssociate.h"
 #include "PlantOrder.h"
-
+#include "Customer.h"
+#include "PlantComponent.h"
+#include "PlantItem.h"
+#include "PlantBundle.h"
 
 void printSeparator(const std::string& title) {
     std::cout << "\n" << std::string(60, '=') << std::endl;
@@ -102,6 +105,31 @@ void testCompleteNurseryWorkflow() {
     nursery->saveHealthyStates();
     std::cout<<std::endl;
     std::cout<<"Plant States Saved!"<<std::endl;
+
+    //Week 9: Capitalism
+    std::cout<<"===WEEK 9: SELLING PLANTS AND CUSTOMERS ARE READY TO BUY ITEMS==="<<std::endl;
+
+    //comes in sets name and budget and asks for recommandations and see what plant are available
+    Customer* guy = new Customer("Jack-Jack", 2000.00);
+    guy->askForRecommendation();
+    guy->browseSalesFloor(nursery->getGreenhouse());
+
+    //customer wants to buy a plant now but the customer would like some customisation to their order too
+    guy->expressInterest("Flower");
+    guy->requestCustomisation("Pot-plant");
+    //decoarating the customers plant before final purchase
+    Plant* flower = new Flower("Sunflower", 50);
+    PlantDecorator* JackJackPlant = new DecorativePotDecorator(flower);
+    //jackJackPlant->
+    guy->makePurchase(100.00);
+
+
+
+
+    delete guy;
+    delete flower;
+    delete JackJackPlant;
+    
 
 }
 

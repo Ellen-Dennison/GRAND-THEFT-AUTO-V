@@ -40,7 +40,8 @@ NurseryMediator::~NurseryMediator() {
 }
 
 // 🌱 Add new plant
-void NurseryMediator::addNewPlant(string plantType) {
+void NurseryMediator::addNewPlant(string plantType) 
+{
     if (factories.find(plantType) == factories.end()) {
         std::cout << "❌ Unknown plant type: " << plantType << std::endl;
         return;
