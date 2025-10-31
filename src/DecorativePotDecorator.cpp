@@ -11,7 +11,7 @@ double DecorativePotDecorator::getPrice() const {
 
 void DecorativePotDecorator::display() const{
     wrappedPlant->display();
-    std::cout<<wrappedPlant->getName() <<" with decorative Pot at a R100.00 extra fee" << std::endl;
+    std::cout<<wrappedPlant->getName() <<" with decorative Pot🪴 at a R100.00 extra fee" << std::endl;
     std::cout <<"Total Price: R" << getPrice() << std::endl;
 }
 

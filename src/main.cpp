@@ -117,18 +117,20 @@ void testCompleteNurseryWorkflow() {
     //customer wants to buy a plant now but the customer would like some customisation to their order too
     guy->expressInterest("Flower");
     guy->requestCustomisation("Pot-plant");
-    //decoarating the customers plant before final purchase
-    Plant* flower = new Flower("Sunflower", 50);
-    PlantDecorator* JackJackPlant = new DecorativePotDecorator(flower);
+    //!decoarating the customers plant before final purchase
+    
+    //PlantDecorator* JackJackPlant = new DecorativePotDecorator(flower);
     //jackJackPlant->
-    guy->makePurchase(100.00);
 
-
+    //combining the customer's multiple orders into one large order so the customer can finaly make the purchase
+    //PlantComponent* JackJackitems = new PlantItem();
+    //PlantComponent* finalOrder = new PlantBundle();
+    //finalOrder->display()
+    //guy->makePurchase(100.00);
 
 
     delete guy;
-    delete flower;
-    delete JackJackPlant;
+    //delete JackJackPlant;
     
 
 }
