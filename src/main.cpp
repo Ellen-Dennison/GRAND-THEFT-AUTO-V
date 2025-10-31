@@ -44,7 +44,8 @@ void printSeparator(const std::string& title) {
     std::cout << std::string(60, '=') << "\n" << std::endl;
 }
 
-void testCompleteNurseryWorkflow() {    
+void testCompleteNurseryWorkflow() 
+{    
     std::cout << "🌿 WELCOME TO GRAND THEFT NURSERY 🌿\n" << std::endl;
     std::cout << "Simulating 3 months in the life of our nursery...\n" << std::endl;
     
