@@ -39,6 +39,11 @@ TEST_CASE("Testing the composite portion of the composite design pattern")
    for (int i = 0; i < 4; i++)
    { PlantItems.push_back(new PlantItem( plants[i]) ); }
    CHECK(PlantItems.size() == 4);
+
+   for (int i = 0; i < 4; i++)
+   { p1->add(PlantItems[i]); }
+   CHECK(p1->getTotalValue() == 564.9);
+   CHECK(p1->getCount() == 4);
     
    //p1->add();
    delete p1;

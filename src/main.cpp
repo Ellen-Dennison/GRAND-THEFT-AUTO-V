@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include<string>
+#include <string>
+
 #include "Plant.h"
 #include "Flower.h"
 #include "Herb.h"
@@ -27,6 +29,26 @@
 #include "NurseryMediator.h"
 #include "Customer.h"
 #include "PlantCaretaker.h"
+#include "PlantOrder.h"
+
+#include "PlantMemento.h"
+#include "PlantCaretaker.h"
+#include "Subject.h"
+#include "ManagerObserver.h"
+#include "StaffObserver.h"
+#include "Command.h"
+#include "AdvanceTimeCommand.h"
+#include "WaterPlantsCommand.h"
+#include "RevivePlantCommand.h"
+#include "NurseryMediator.h"
+#include "StaffWorkFlow.h"
+#include "StaffWorkFlowDecorator.h"
+#include "LandscaperRole.h"
+#include "DeliveryRole.h"
+#include "SalesRole.h"
+#include "ManagerRole.h"
+#include "GreenhouseWorker.h"
+#include "SalesAssociate.h"
 #include "PlantOrder.h"
 
 
@@ -355,106 +377,68 @@ void testDecorators() {
     std::cout << "1. "; rose->display();
     std::cout << "\n2. "; basil->display();
     std::cout << "\n3. "; oak->display();
+void testCompleteNurseryWorkflow() {    
+    std::cout << "🌿 WELCOME TO GRAND THEFT NURSERY 🌿\n" << std::endl;
+    std::cout << "Simulating 3 months in the life of our nursery...\n" << std::endl;
+    
+    //Week 0: Setup
+    std::cout<<"===WEEK 0: NURSERY SETUP & STAFF HIRING==="<<std::endl;
+    
+    NurseryMediator* nursery = new NurseryMediator();
+    
+    //Hire initial staff
+    std::cout << "Hiring Initial Staff:\n" << std::endl;
+    StaffWorkFlow* Kobe = new GreenhouseWorker("Kobe", nursery);
+    StaffWorkFlow* Naledi = new SalesAssociate("Naledi", nursery);
+    StaffWorkFlow* Trevor = new GreenhouseWorker("Trevor", nursery);
+    
+    Kobe->displayRoles();
+    std::cout << std::endl;
+    Naledi->displayRoles();
+    std::cout << std::endl;
+    Trevor->displayRoles();
     std::cout << std::endl;
     
-    //Apply single decorations
-    std::cout << "\n--- Single Decoration Options ---\n" << std::endl;
+    //Setup observer system
+    Subject* notifSystem = new Subject();
+    ManagerObserver* manager = new ManagerObserver("Sarah");
+    StaffObserver* kobeObs = new StaffObserver("Kobe", "GreenhouseWorker");
+    StaffObserver* nalediObs = new StaffObserver("Naledi", "SalesAssociate");
     
-    std::cout << "OPTION A: Rose with Decorative Pot\n" << std::endl;
-    Plant* decoratedRose = new DecorativePotDecorator(rose);
-    decoratedRose->display();
-    std::cout << std::endl;
+    notifSystem->attach(manager);
+    notifSystem->attach(kobeObs);
+    notifSystem->attach(nalediObs);
     
-    std::cout << "OPTION B: Basil with Gift Wrapping\n" << std::endl;
-    Plant* giftBasil = new GiftWrappingDecorator(basil);
-    giftBasil->display();
-    std::cout << std::endl;
+    std::cout << "\nNotification System Active!\n" << std::endl;
+    notifSystem->notify("Nursery is now open for business!");
     
-    //Stacking decorators
-    std::cout << "\n--- Premium Package (Stacked Decorators) ---\n" << std::endl;
-    std::cout << "Oak Tree - Decorative Pot + Gift Wrapping\n" << std::endl;
-    Plant* decoratedOak = new DecorativePotDecorator(oak);
-    Plant* premiumOak = new GiftWrappingDecorator(decoratedOak);
-    premiumOak->display();
-    std::cout << std::endl;
+    //Week 1: plantations:
+    std::cout<<"===WEEK 1: PLANTING SEASON BEGINS==="<<std::endl;
     
-    //Price comparison
-    std::cout << "\n--- Price Comparison Summary ---\n" << std::endl;
-    Plant* sunflower = (new FlowerFactory("Sunflower", 45.00))->createPlant();
-    Plant* potSunflower = new DecorativePotDecorator(
-        (new FlowerFactory("Sunflower", 45.00))->createPlant()
-    );
-    Plant* giftSunflower = new GiftWrappingDecorator(
-        (new FlowerFactory("Sunflower", 45.00))->createPlant()
-    );
-    Plant* fullPackageSunflower = new GiftWrappingDecorator(
-        new DecorativePotDecorator(
-            (new FlowerFactory("Sunflower", 45.00))->createPlant()
-        )
-    );
+    std::cout << "Kobe's first day at work as a greenhouse worker - He plants new stock\n" << std::endl;
+    Kobe->executeWorkDay();
     
-    std::cout << "Sunflower Options:" << std::endl;
-    std::cout << "  Basic: R" << sunflower->getPrice() << std::endl;
-    std::cout << "  + Decorative Pot: R" << potSunflower->getPrice() << std::endl;
-    std::cout << "  + Gift Wrapping: R" << giftSunflower->getPrice() << std::endl;
-    std::cout << "  + Both: R" << fullPackageSunflower->getPrice() << std::endl;
-    std::cout << std::endl;
+    // Add diverse inventory
+    std::cout << "\nReceiving New Plant Shipment:\n" << std::endl;
+    nursery->addNewPlant("Flower");  // Rose
+    nursery->addNewPlant("Flower");  // Tulip
+    nursery->addNewPlant("Flower");  // Orchid
+    nursery->addNewPlant("Herb");    // Basil
+    nursery->addNewPlant("Herb");    // Rosemary
+    nursery->addNewPlant("Succulent"); // Aloe
+    nursery->addNewPlant("Succulent"); // Cactus
+    nursery->addNewPlant("Tree");    // Oak
     
-    //Test that decorated plants still function normally
-    std::cout << "\n--- Decorated Plants Still Grow & Function ---\n" << std::endl;
+    notifSystem->notify("8 new plants added to greenhouse inventory");
     
-    Plant* herb = (new HerbFactory("Rosemary", 72.50))->createPlant();
-    Plant* decoratedHerb = new DecorativePotDecorator(herb);
+    nursery->displayInventory();
     
-    std::cout << "Before care:" << std::endl;
-    std::cout << "  State: " << decoratedHerb->getState() 
-              << " | Health: " << decoratedHerb->getHealth() << "%" << std::endl;
-    
-    decoratedHerb->water();
-    decoratedHerb->grow();
-    
-    std::cout << "After watering & growing:" << std::endl;
-    std::cout << "  State: " << decoratedHerb->getState() 
-              << " | Health: " << decoratedHerb->getHealth() << "%" << std::endl;
-    std::cout << "  Still functions normally with decoration!" << std::endl;
-    std::cout << std::endl;
-    
-    // Customer scenarios
-    std::cout << "\n--- Customer Purchase Scenarios ---\n" << std::endl;
-    
-    std::cout << "Scenario 1: Birthday Gift" << std::endl;
-    Plant* birthdayGift = new GiftWrappingDecorator(
-        new DecorativePotDecorator(
-            (new FlowerFactory("Orchid", 125.00))->createPlant()
-        )
-    );
-    birthdayGift->display();
-    std::cout << std::endl;
-    
-    std::cout << "Scenario 2: Office Desk Plant (Basic)" << std::endl;
-    Plant* deskPlant = (new SucculentFactory("Aloe Vera", 55.00))->createPlant();
-    deskPlant->display();
-    std::cout << std::endl;
-    
-    std::cout << "Scenario 3: Housewarming Present (Pot Only)" << std::endl;
-    Plant* housewarmingGift = new DecorativePotDecorator(
-        (new HerbFactory("Basil", 65.00))->createPlant()
-    );
-    housewarmingGift->display();
-    std::cout << std::endl;
-    
-    // Cleanup
-    delete decoratedRose;
-    delete giftBasil;
-    delete premiumOak;
-    delete sunflower;
-    delete potSunflower;
-    delete giftSunflower;
-    delete fullPackageSunflower;
-    delete decoratedHerb;
-    delete birthdayGift;
-    delete deskPlant;
-    delete housewarmingGift;
+    // Save healthy states for all plants
+    std::cout << "\nSaving Healthy Plant States...\n" << std::endl;
+    nursery->saveHealthyStates();
+    std::cout<<std::endl;
+    std::cout<<"Plant States Saved!"<<std::endl;
+
 }
 
 //Testing Staff management
@@ -643,8 +627,7 @@ void testPolymorphism(NurseryMediator* nursery) {
     }
 }
 
-int main() 
-{
+int main() {
     std::cout << "\n";
     std::cout << "╔════════════════════════════════════════════════════════════╗" << std::endl;
     std::cout << "║             PLANT NURSERY MANAGEMENT SYSTEM                ║" << std::endl;
@@ -691,6 +674,10 @@ int main()
         delete nursery; 
         printSeparator("ALL TESTS COMPLETED SUCCESSFULLY");
         
+    
+    try {
+        testCompleteNurseryWorkflow();
+                
     } catch (const std::exception& e) {
         std::cerr << "\nERROR: " << e.what() << std::endl;
         return 1;

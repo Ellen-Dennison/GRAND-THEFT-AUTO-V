@@ -20,40 +20,45 @@ SOURCES = $(addprefix $(SRC_DIR)/, \
           Herb.cpp \
           Succulent.cpp \
           Tree.cpp \
+          PlantFactory.cpp \
           FlowerFactory.cpp \
           HerbFactory.cpp \
           SucculentFactory.cpp \
           TreeFactory.cpp \
-          PlantFactory.cpp \
-          PlantMemento.cpp\
+          PlantState.cpp \
           SeedlingState.cpp \
           GrowingState.cpp \
           MatureState.cpp \
           FloweringState.cpp \
           WiltingState.cpp \
           DeadState.cpp \
-          PlantState.cpp \
           WateringStrategy.cpp \
           DailyWateringStrategy.cpp \
           WeeklyWateringStrategy.cpp \
           BiWeeklyWateringStrategy.cpp \
           PlantDecorator.cpp \
           GiftWrappingDecorator.cpp \
-          DecorativePotDecorator.cpp\
-          StaffWorkFlow.cpp\
-          StaffWorkFlowDecorator.cpp\
-          GreenhouseWorker.cpp\
-          SalesAssociate.cpp\
-          SalesRole.cpp\
-          DeliveryRole.cpp\
-          ManagerRole.cpp\
-          LandscaperRole.cpp\
-          NurseryMediator.cpp\
-          PlantItem.cpp\
-          Customer.cpp\
-          PlantCaretaker.cpp\
-          PlantOrder.cpp\
-          PlantBundle.cpp)
+          DecorativePotDecorator.cpp \
+          PlantMemento.cpp \
+          PlantCaretaker.cpp \
+          Subject.cpp \
+          ManagerObserver.cpp \
+          StaffObserver.cpp \
+          StaffWorkFlow.cpp \
+          StaffWorkFlowDecorator.cpp \
+          GreenhouseWorker.cpp \
+          SalesAssociate.cpp \
+          SalesRole.cpp \
+          ManagerRole.cpp \
+          LandscaperRole.cpp \
+          DeliveryRole.cpp \
+          PlantOrder.cpp \
+          Customer.cpp \
+          NurseryMediator.cpp \
+          Command.cpp \
+          AdvanceTimeCommand.cpp \
+          WaterPlantsCommand.cpp \
+          RevivePlantCommand.cpp)
 
 TEST_SOURCES = $(wildcard $(TST_DIR)/*.cpp)
 TESTABLE_SOURCES = $(filter-out $(SRC_DIR)/main.cpp, $(SOURCES))

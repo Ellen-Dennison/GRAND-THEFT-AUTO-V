@@ -40,7 +40,7 @@ public:
 
     int getPlantSalesCount(const std::string& plantType ) const;
 
-    std::string getBestSellingPart() const;
+    std::string getBestSellingPlant() const;
 
     int getSuccessfulRevivals() const;
 

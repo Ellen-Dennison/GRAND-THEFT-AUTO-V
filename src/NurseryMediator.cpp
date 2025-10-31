@@ -6,7 +6,7 @@
 #include "PlantMemento.h"
 #include <algorithm>
 #include <iostream>
-using namespace std;
+
 
 NurseryMediator::NurseryMediator() {
     plantIdCounter = 0;
@@ -42,7 +42,7 @@ NurseryMediator::~NurseryMediator() {
 // 🌱 Add new plant
 void NurseryMediator::addNewPlant(string plantType) {
     if (factories.find(plantType) == factories.end()) {
-        cout << "❌ Unknown plant type: " << plantType << endl;
+        std::cout << "❌ Unknown plant type: " << plantType << std::endl;
         return;
     }
 
@@ -55,23 +55,23 @@ void NurseryMediator::addNewPlant(string plantType) {
 
     greenhouse.push_back(newPlant);
 
-    cout << "🌿 Added new " << plantType << " (" << newPlant->getName() << ") to greenhouse.\n";
+    std::cout << "🌿 Added new " << plantType << " (" << newPlant->getName() << ") to greenhouse.\n";
 }
 
 // 💧 Care for plants
 void NurseryMediator::careForGreenhouse() {
-    cout << "\n💧 Caring for greenhouse plants...\n";
+    std::cout << "\n💧 Caring for greenhouse plants...\n";
     for (auto* plant : greenhouse) {
         plant->water();
         plant->provideSunlight();
         plant->fertilize();
-        cout << "✅ " << plant->getName() << " cared for.\n";
+        std::cout << "✅ " << plant->getName() << " cared for.\n";
     }
 }
 
 // ⏳ Advance time
 void NurseryMediator::advanceTime(int weeks) {
-    cout << "\n⏳ Advancing time by " << weeks << " weeks...\n";
+    std::cout << "\n⏳ Advancing time by " << weeks << " weeks...\n";
     for (auto* plant : greenhouse)
         for (int i = 0; i < weeks; ++i)
             plant->grow();
@@ -81,12 +81,12 @@ void NurseryMediator::advanceTime(int weeks) {
 
 // 🌾 Move mature plants to sales floor
 void NurseryMediator::harvestMaturePlants() {
-    cout << "\n🌾 Harvesting ready plants...\n";
+    std::cout << "\n🌾 Harvesting ready plants...\n";
     auto it = greenhouse.begin();
     while (it != greenhouse.end()) {
         Plant* plant = *it;
         if (plant->isReadyForSale()) {
-            cout << "🪴 " << plant->getName() << " moved to sales floor.\n";
+            std::cout << "🪴 " << plant->getName() << " moved to sales floor.\n";
             salesFloor.push_back(plant);
             it = greenhouse.erase(it);
         } else {
@@ -97,12 +97,12 @@ void NurseryMediator::harvestMaturePlants() {
 
 // 💾 Save healthy states (Memento)
 void NurseryMediator::saveHealthyStates() {
-    cout << "\n💾 Saving healthy plant states...\n";
+    std::cout << "\n💾 Saving healthy plant states...\n";
     for (auto* plant : greenhouse) {
         if (plant->getHealth() > 70) {
             // ✅ Pass plant name + memento
             careTaker->saveMemento(plant->getName(), plant->createMemento());
-            cout << "📸 Saved state for " << plant->getName() << endl;
+            std::cout << "📸 Saved state for " << plant->getName() << endl;
         }
     }
 }
@@ -112,16 +112,16 @@ void NurseryMediator::checkForWiltingPlants() {
     cout << "\n🧪 Checking for wilting plants...\n";
     for (auto* plant : greenhouse) {
         if (plant->getHealth() < 40) {
-            cout << "⚠️ " << plant->getName() << " is wilting! Health = "
-                 << plant->getHealth() << endl;
+            std::cout << "⚠️ " << plant->getName() << " is wilting! Health = "
+                 << plant->getHealth() << std::endl;
         }
     }
 }
 
 // 🛍️ Process customer orders
-PlantOrder* NurseryMediator::processCustomerOrder(string cusName, string plantType,
+PlantOrder* NurseryMediator::processCustomerOrder(std::string cusName, std::string plantType,
                                                   bool wantsPot, bool wantsWrapping) {
-    cout << "\n🛍️ Processing order for " << cusName << ": " << plantType << endl;
+    std::cout << "\n🛍️ Processing order for " << cusName << ": " << plantType << std::endl;
 
     for (auto it = salesFloor.begin(); it != salesFloor.end(); ++it) {
         Plant* plant = *it;
@@ -132,42 +132,42 @@ PlantOrder* NurseryMediator::processCustomerOrder(string cusName, string plantTy
             order->hasDecorativePot = wantsPot;
             order->hasGiftWrapping = wantsWrapping;
 
-            cout << "✅ Order created for " << cusName << " (" << plant->getName() << ")\n";
+            std::cout << "✅ Order created for " << cusName << " (" << plant->getName() << ")\n";
             salesFloor.erase(it);
             return order;
         }
     }
 
-    cout << "❌ No " << plantType << " plants available.\n";
+    std::cout << "❌ No " << plantType << " plants available.\n";
     return NULL;
 }
 
 // 👀 Customer browsing
 void NurseryMediator::customerBrowsingInteraction(Customer* customer) {
-    cout << "\n👀 " << customer->getName() << " is browsing the sales floor...\n";
+    std::cout << "\n👀 " << customer->getName() << " is browsing the sales floor...\n";
     customer->browseSalesFloor(salesFloor);
 }
 
 // 📊 Inventory display
 void NurseryMediator::displayInventory() {
-    cout << "\n📊 Nursery Inventory Summary\n";
-    cout << "---------------------------------\n";
-    cout << "🌱 Greenhouse: " << greenhouse.size() << " plants\n";
-    cout << "🪴 Sales Floor: " << salesFloor.size() << " plants\n";
+   std::cout << "\n📊 Nursery Inventory Summary\n";
+    std::cout << "---------------------------------\n";
+    std::cout << "🌱 Greenhouse: " << greenhouse.size() << " plants\n";
+    std::cout << "🪴 Sales Floor: " << salesFloor.size() << " plants\n";
 
-    cout << "\nGreenhouse Plants:\n";
+    std::cout << "\nGreenhouse Plants:\n";
     for (auto* plant : greenhouse) {
-        cout << "  - " << plant->getName()
+        std::cout << "  - " << plant->getName()
              << " (" << plant->getType()
              << "), Health: " << plant->getHealth()
-             << ", Age: " << plant->getAge() << endl;
+             << ", Age: " << plant->getAge() << std::endl;
     }
 
-    cout << "\nSales Floor Plants:\n";
+    std::cout << "\nSales Floor Plants:\n";
     for (auto* plant : salesFloor) {
-        cout << "  - " << plant->getName()
+        std::cout << "  - " << plant->getName()
              << " (" << plant->getType()
-             << "), Price: " << plant->getPrice() << endl;
+             << "), Price: " << plant->getPrice() << std::endl;
     }
 }
 
