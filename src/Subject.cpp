@@ -29,13 +29,13 @@ void Subject::detach(Observer* observer){
         std::cout << "Observer " << observer->getName() << " (" << observer->getRole() << ") detached from subject" << std::endl;
         observers.erase(it);
     }else{
-        std::cerr << "Warning: Observer" << observer->getName()<< " was not attached" << std::endl;
+        std::cerr << "Warning: Observer" << observer->getName() << " was not attached" << std::endl;
 
     }
 }
 void Subject::notify(const std::string& message){
     if(message.empty()){
-        std::cerr << "Warning: Attempting to notify with empty messages" << std::endl;
+        std::cerr << "Warning: Attempting to notify with empty message" << std::endl;
         return;
     }
     if(observers.empty()){
