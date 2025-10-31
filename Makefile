@@ -39,6 +39,7 @@ SOURCES = $(addprefix $(SRC_DIR)/, \
           PlantDecorator.cpp \
           GiftWrappingDecorator.cpp \
           DecorativePotDecorator.cpp\
+          NurseryMediator.cpp\
           PlantItem.cpp\
           PlantBundle.cpp)
 
