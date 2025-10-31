@@ -59,7 +59,9 @@ SOURCES = $(addprefix $(SRC_DIR)/, \
           AdvanceTimeCommand.cpp \
           WaterPlantsCommand.cpp \
           RevivePlantCommand.cpp\
-          Command.cpp)
+          Command.cpp\
+          PlantBundle.cpp\
+          PlantItem.cpp)
 
 TEST_SOURCES = $(wildcard $(TST_DIR)/*.cpp)
 TESTABLE_SOURCES = $(filter-out $(SRC_DIR)/main.cpp, $(SOURCES))
