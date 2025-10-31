@@ -47,13 +47,13 @@ void Customer::requestCustomisation(string customType) {
 
 
 void Customer::makePurchase(double amount) {
-    cout << "💰 " << name << " is attempting to make a purchase of R" << amount << "..." << endl;
+    cout << "\n💰 " << name << " is attempting to make a purchase of R" << amount << "..." << endl;
 
     if (amount > budget) {
-        cout << "❌ " << name << " cannot afford this purchase. (Budget: R" << budget << ")\n";
+        cout << "\n❌ " << name << " cannot afford this purchase. (Budget: R" << budget << ")\n";
         return;
     }
 
     budget -= amount;
-    cout << "✅ Purchase successful! Remaining budget: R" << budget << endl;
+    cout << "\n✅ Purchase successful! Remaining budget: R" << budget << endl;
 }

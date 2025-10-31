@@ -7,20 +7,20 @@ void PlantBundle::display() const
    time_t timestamp;
    time(&timestamp);
    std::cout << "\nHere's is your final order\n";  
-   std::cout << "\t" << "==GRAND THEFT AUTO V==" << std::endl; 
+   std::cout << "========GRAND THEFT AUTO V========" << std::endl; 
    std::cout << "\t" << bundleName << std::endl; 
    std::cout << "\t" << ctime(&timestamp)  << std::endl;
-   for (int i = 0; i < items.size(); i++) 
+   for (auto i = 0u; i < items.size(); i++) 
    { 
      items[i]->display(); 
    }
 
     double price = 0;
-    for (int i = 0; i < items.size(); i++) 
+    for (auto i = 0u; i < items.size(); i++) 
     { price += items[i]->getTotalValue(); }
  
-   std::cout << "==Subtotal💸==" << RED << price << RESET << std::endl; 
-   std::cout << "==Total with discount💰==" << BOLDRED  << this->getTotalValue() << RESET << std::endl; 
+   std::cout << "Subtotal💸 : " << RED << price << RESET << std::endl; 
+   std::cout << "Total with discount💰 :  " << BOLDRED  << this->getTotalValue() << RESET << std::endl; 
    
 
 }
@@ -33,7 +33,7 @@ PlantBundle::PlantBundle(std::string bundleName, double discount)
 
 PlantBundle::~PlantBundle()
 {   
-   for (int i = 0; i < items.size(); i++) 
+   for (auto i = 0u; i < items.size(); i++) 
    {
       if( items[i] != nullptr )
       { delete items[i]; }
@@ -46,7 +46,7 @@ void PlantBundle::add( PlantComponent* item )
 
 void PlantBundle::remove(PlantComponent* item) 
 {
-   for (int i = 0; i < items.size(); i++) 
+   for (auto i = 0u; i < items.size(); i++) 
    {
     if( items[i] == item)
     { items.erase(items.begin() + i); }
@@ -56,7 +56,7 @@ void PlantBundle::remove(PlantComponent* item)
 double PlantBundle::getTotalValue() const 
 {    
     double discountPrice = 0;
-    for (int i = 0; i < items.size(); i++) 
+    for (auto i = 0u; i < items.size(); i++) 
     { discountPrice += items[i]->getTotalValue(); }
     discountPrice -= (discountPrice * (discount/100.00));
     return discountPrice;

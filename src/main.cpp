@@ -33,6 +33,11 @@
 #include "GreenhouseWorker.h"
 #include "SalesAssociate.h"
 #include "PlantOrder.h"
+#include "Customer.h"
+#include "PlantDecorator.h"
+#include "DecorativePotDecorator.h"
+#include "PlantItem.h"
+#include "PlantBundle.h"
 
 void testNurserySimulation() {    
     std::cout << "WELCOME TO GRAND THEFT NURSERY\n" << std::endl;
@@ -99,7 +104,7 @@ void testNurserySimulation() {
     //Week 2-4: Plant Growth Phase
     std::cout<<"===WEEKS 2-4:PLANT GROWTH & CARE PHASE==="<<std::endl;
     
-    PlantCaretaker* caretaker = new PlantCaretaker();
+    //PlantCaretaker* caretaker = new PlantCaretaker();
     std::vector<Plant*> greenhousePlants = nursery->getGreenhouse();
     
     for (int week=2; week<=4; week++) {
@@ -152,10 +157,11 @@ void testNurserySimulation() {
             notifSystem->notify("Plants reaching maturity - prepare for move to sales floor!");
         }
     }
-// Continue caring to reach maturity (need age > 7)
-std::cout << "\n--- Extra Care Week (Week 9) ---" << std::endl;
-nursery->careForGreenhouse();
-nursery->advanceTime(1);
+
+    // Continue caring to reach maturity (need age > 7)
+    std::cout << "\n--- Extra Care Week (Week 9) ---" << std::endl;
+    nursery->careForGreenhouse();
+    nursery->advanceTime(1);
 
     
     nursery->displayInventory();
@@ -165,8 +171,10 @@ nursery->advanceTime(1);
     //Find and move mature or flowering plants
     auto it = greenhousePlants.begin();
     int movedCount = 0;
-    while (it != greenhousePlants.end()) {
-        if (*it && ((*it)->getState() == "Mature" || (*it)->getState() == "Flowering")) {
+    while (it != greenhousePlants.end()) 
+    {
+        if (*it && ((*it)->getState() == "Mature" || (*it)->getState() == "Flowering")) 
+        {
             std::cout << "Moving " << (*it)->getName() << " (" << (*it)->getState() 
                     << ") to sales floor..." << std::endl;
             salesFloor.push_back(*it);  // Add to sales floor
@@ -176,10 +184,75 @@ nursery->advanceTime(1);
             ++it;
         }
     }
-
     std::cout << "\nMoved plants to sales floor successfully\n" << std::endl;
-
+    
+    //Capitalism
+    /* 
+     asking for recommandations
+     browsing plants 
+     decoarate your plants
+     bundle your order 
+     either use order builder/ or the customer make purchase function to finalise the order 
+    */
+    //asking for recommandations and browsing plants 
     std::cout << "\nSales Floor Now OFFICIALLY Open!\n" << std::endl;
+    std::cout <<"== Welcome beloved customer🎀 ==\n";
+    Customer* JackJack = new Customer("JackJack", 1500.00);
+    JackJack->askForRecommendation();
+    JackJack->browseSalesFloor(salesFloor);
+
+    //Decorate plants
+    std::cout << "\n==🏗️ getting your oder ready==\n";
+    std::vector<DecorativePotDecorator*> JackJacksPlants;
+    it = salesFloor.begin(); //!is this allowed
+    int count = 0;
+    while (it != salesFloor.end()) 
+    {   
+        if((*it)->getType() == "Flower")
+        { 
+          JackJacksPlants.push_back(new DecorativePotDecorator((*it)));//making multiple decorator items
+          JackJacksPlants[count]->display();
+          ++count;
+        }
+        ++it;
+    }
+
+    //making the bundle order
+    //using the decorator clone method to do this 
+    std::cout << "\n==🔚 Finalising your order Jackjack==\n";
+    std::vector<PlantItem*> JJPlants;
+    PlantBundle* JackJacksOrder = new PlantBundle("JackJacks's order", 25.00);
+    for (auto i = 0u; i < JackJacksPlants.size(); i++)
+    {
+       JJPlants.push_back(new PlantItem(JackJacksPlants[i]->clone()));
+       JJPlants[i]->display();
+    }
+
+    std::cout << "\n==💳 Here are your totals==\n";
+    for ( auto i = 0u; i < JJPlants.size(); i++)
+    {
+      JackJacksOrder->add(JJPlants[i]);
+    }
+    JackJacksOrder->display();
+    JackJack->makePurchase(JackJacksOrder->getTotalValue());
+    
+    //clean-up
+    //decorator 
+    for (auto i = 0u; i < JackJacksPlants.size(); i++)
+    {
+      if(JackJacksPlants[i] != nullptr)
+      {
+         delete JackJacksPlants[i];
+      }
+    }
+    JackJacksPlants.clear();
+    delete JackJack;
+    delete JackJacksOrder;
+    std::cout << "\n== 🩵 Thank you hope to see you soon ==\n";
+
+
+
+      
 }
 
 

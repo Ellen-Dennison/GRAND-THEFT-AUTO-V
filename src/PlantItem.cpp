@@ -13,11 +13,11 @@ PlantItem::~PlantItem()
 
 void PlantItem::display() const
 {   
-    std::cout << WHITE << "\n=====================" << RESET;  
-    std::cout << "\n\t\t" << plant->getType() << std::endl; 
-    std::cout << "Your item🌻 " << BLUE << plant->getName() << std::endl << RESET; 
-    std::cout << "Price💸 " << BLUE << plant->getPrice() << std::endl; 
-    std::cout << WHITE  << "=====================\n" << RESET;  
+    std::cout << "\n=====================";  
+    std::cout << "\n" << plant->getType() << std::endl; 
+    std::cout << "Your item🛍️  " << BLUE << plant->getName() << std::endl << RESET; 
+    std::cout << "Price💸 " << BLUE << plant->getPrice() << RESET << std::endl; 
+    std::cout << "=====================\n";  
 }
 
 std::string PlantItem::getName() const
