@@ -31,7 +31,6 @@ add_executable(GRAND-THEFT-AUTO-V
         src/Herb.h
         src/HerbFactory.cpp
         src/HerbFactory.h
-        src/main.cpp
         src/ManagerObserver.cpp
         src/ManagerObserver.h
         src/MatureState.cpp
@@ -61,6 +60,7 @@ add_executable(GRAND-THEFT-AUTO-V
         src/Succulent.h
         src/SucculentFactory.cpp
         src/SucculentFactory.h
+        src/testnotificationsandactions.cpp
         src/Tree.cpp
         src/Tree.h
         src/TreeFactory.cpp
@@ -71,6 +71,7 @@ add_executable(GRAND-THEFT-AUTO-V
         src/WeeklyWateringStrategy.h
         src/WiltingState.cpp
         src/WiltingState.h
+
 
 
 )
