@@ -7,7 +7,7 @@
 # GRAND THEFT AUTO V
 
  
-Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. 
+Something about the plant life that calls to a person.
 
 <img src="https://media.tenor.com/htFVFkpa_SQAAAAM/gta-v-grand-theft-auto.gif.gif" alt="Animated GIF" width="200">
 
@@ -37,7 +37,7 @@ Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapi
     </td>
     <td style="vertical-align:top; padding:5px;">
         <strong>Ellen Dennsion</strong><br/>
-           Personally, a gang of five is better than four. The cops have nothing on us those were just proxies.
+           Personally, a gang of five is better than four. The cops have nothing on us; those were just proxies.
         <p style="margin-top:8px;">
           <a href="https://github.com/Ellen-Dennison" target="_blank" rel="noopener noreferrer" text-decoration ="none">
              <img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" vertical-align="middle">
@@ -62,7 +62,7 @@ Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapi
         <strong>Kwanele Phakathi</strong><br/>
            The chaos maestro. Grows plants fast and wild like how heists are run 
         <p style="margin-top:8px;">
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
+          <a href="https://github.com/Kwanele-P" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
              <img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" style="vertical-align:middle">
           </a>
             </br>
@@ -85,7 +85,7 @@ Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapi
         <strong>Nomzi Phosa</strong><br/>
            Responsible for the staff management of the system. You can't get good plants without these hands doing all the work! 
         <p style="margin-top:8px;">
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
+          <a href="https://github.com/NomziPhosa" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
              <img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" style="vertical-align:middle">
           </a>
             </br>
@@ -108,7 +108,7 @@ Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapi
         <strong>Talifhani Seaba</strong><br/>
            These plants don't pay no bills, homie. They just sit there lookin' pretty and mindin' their own business
         <p style="margin-top:8px;">
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
+          <a href="https://github.com/TalifhaniSeaba" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
              <img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" style="vertical-align:middle">
           </a>
             </br>
@@ -128,14 +128,14 @@ Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapi
       </div>
     </td>
     <td style="vertical-align:top; padding:5px;">
-        <strong>Name Name</strong><br/>
+        <strong>Mbali Thobejane</strong><br/>
            Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. 
         <p style="margin-top:8px;">
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
+          <a href="https://github.com/mbalz916" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
              <img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" style="vertical-align:middle">
           </a>
             </br>
-         <a href = "mailto:u23849259@tuks.co.za" margin-bottom="100px">u23849259@tuks.co.za</a>
+         <a href = "mailto:u23543672@tuks.co.za" margin-bottom="100px">u23543672@tuks.co.za</a>
         </p>
     </td>
   </tr>
