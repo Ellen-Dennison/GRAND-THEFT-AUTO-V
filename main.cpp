@@ -34,15 +34,8 @@
 #include "SalesAssociate.h"
 #include "PlantOrder.h"
 
-
-void printSeparator(const std::string& title) {
-    std::cout << "\n" << std::string(60, '=') << std::endl;
-    std::cout << "  " << title << std::endl;
-    std::cout << std::string(60, '=') << "\n" << std::endl;
-}
-
-void testCompleteNurseryWorkflow() {    
-    std::cout << "🌿 WELCOME TO GRAND THEFT NURSERY 🌿\n" << std::endl;
+void testNurserySimulation() {    
+    std::cout << "WELCOME TO GRAND THEFT NURSERYY\n" << std::endl;
     std::cout << "Simulating 3 months in the life of our nursery...\n" << std::endl;
     
     //Week 0: Setup
@@ -114,7 +107,7 @@ int main() {
     std::cout << "╚════════════════════════════════════════════════════════════╝" << std::endl;
     
     try {
-        testCompleteNurseryWorkflow();
+        testNurserySimulation();
                 
     } catch (const std::exception& e) {
         std::cerr << "\nERROR: " << e.what() << std::endl;
