@@ -25,6 +25,7 @@ SOURCES = $(addprefix $(SRC_DIR)/, \
           SucculentFactory.cpp \
           TreeFactory.cpp \
           PlantFactory.cpp \
+          PlantMemento.cpp\
           SeedlingState.cpp \
           GrowingState.cpp \
           MatureState.cpp \
@@ -39,8 +40,19 @@ SOURCES = $(addprefix $(SRC_DIR)/, \
           PlantDecorator.cpp \
           GiftWrappingDecorator.cpp \
           DecorativePotDecorator.cpp\
+          StaffWorkFlow.cpp\
+          StaffWorkFlowDecorator.cpp\
+          GreenhouseWorker.cpp\
+          SalesAssociate.cpp\
+          SalesRole.cpp\
+          DeliveryRole.cpp\
+          ManagerRole.cpp\
+          LandscaperRole.cpp\
           NurseryMediator.cpp\
           PlantItem.cpp\
+          Customer.cpp\
+          PlantCaretaker.cpp\
+          PlantOrder.cpp\
           PlantBundle.cpp)
 
 TEST_SOURCES = $(wildcard $(TST_DIR)/*.cpp)

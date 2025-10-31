@@ -18,6 +18,7 @@ class GreenhouseWorker : public StaffWorkFlow {
     public:
         std::string getType() override;
         void displayRoles() override;
+        std::string getName() override;
 };
 
 #endif

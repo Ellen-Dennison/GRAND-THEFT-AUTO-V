@@ -57,3 +57,7 @@ void GreenhouseWorker::displayRoles() {
     std::cout << "  - Harvest mature plants\n";
     std::cout << "  - Report plant issues\n";
 }
+
+std::string GreenhouseWorker::getName(){
+    return staffName;
+}

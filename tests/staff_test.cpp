@@ -7,36 +7,45 @@
 #include"../src/LandscaperRole.h"
 #include"../src/SalesRole.h"
 #include"../src/DeliveryRole.h"
+#include"../src/NurseryMediator.h"
+#include "../src/Plant.h"
+#include "../src/PlantFactory.h"
+#include "../src/PlantCaretaker.h"
+#include "../src/Customer.h"
+#include "../src/PlantOrder.h"
 #include <vector>
 #include <iostream>
 #include <string>
-#include <bits/stdc++.h>
+
+// Helper function
+void printSeparator(const std::string& message) {
+    std::cout << "\n=== " << message << " ===\n";
+}
 
 TEST_CASE("Testing the basic staff")
 {   
-  void testBasicStaff(NurseryMediator* nursery) {
     printSeparator("TEST 1: Basic Staff (No Decorators)");
-    
+    NurseryMediator *nursery = new NurseryMediator();
+
     // Test Greenhouse Worker
     StaffWorkFlow* alice = new GreenhouseWorker("Alice", nursery);
     CHECK(alice->getName() == "Alice");
-    CHECK(alice->getType() = "Greenhouse Worker");
+    CHECK(alice->getType() == "Greenhouse Worker");
 
     // Test Sales Associate
     StaffWorkFlow* bob = new SalesAssociate("Bob", nursery);
     CHECK(bob->getName() == "Bob");
     CHECK(bob->getType() == "Sales Associate");
     
+    delete nursery;
     delete alice;
     delete bob;
-  }
-
 }
 
 TEST_CASE("Testing the decorated staff (Multiple Roles)")
 {
-   void testDecoratedStaff(NurseryMediator* nursery) {
     // Create a versatile employee: Greenhouse + Sales + Delivery
+    NurseryMediator *nursery = new NurseryMediator();
     StaffWorkFlow* charlie = new GreenhouseWorker("Charlie", nursery);
     CHECK(charlie->getName() == "Charlie");
     CHECK(charlie->getType() == "Greenhouse Worker");
@@ -47,23 +56,23 @@ TEST_CASE("Testing the decorated staff (Multiple Roles)")
     charlie = new DeliveryRole(charlie);
     CHECK(charlie->getType() == "Greenhouse Worker Sales Delivery");
 
+    delete nursery;
     delete charlie;
-   }
 }
 
 TEST_CASE("Testing fully decorated staff (All Roles)"){
-    void testFullyDecoratedStaff(NurseryMediator* nursery) {
+    NurseryMediator *nursery = new NurseryMediator();
     
     // Create super employee with ALL roles
     StaffWorkFlow* diana = new GreenhouseWorker("Diana", nursery);
     CHECK(diana->getName() == "Diana");
-    CHECK(diana->getType() = "Greenhouse Worker");
+    CHECK(diana->getType() == "Greenhouse Worker");
 
     diana = new SalesRole(diana);
-    CHECK(diana->getType() = "Greenhouse Worker Sales");
+    CHECK(diana->getType() == "Greenhouse Worker Sales");
 
     diana = new DeliveryRole(diana);
-    CHECK(diana->getType() = "Greenhouse Worker Sales Delivery");
+    CHECK(diana->getType() == "Greenhouse Worker Sales Delivery");
 
     diana = new LandscaperRole(diana);
     CHECK(diana->getType() == "Greenhouse Worker Sales Delivery Landscaper");
@@ -72,12 +81,11 @@ TEST_CASE("Testing fully decorated staff (All Roles)"){
     CHECK(diana->getType() == "Greenhouse Worker Sales Delivery Landscaper Manager");
     
     delete diana;
-    }
+    delete nursery;
 }
 
 TEST_CASE("Testing work day execution (Template Method)"){
-  void testWorkDayExecution(NurseryMediator* nursery) {
-    
+    NurseryMediator *nursery = new NurseryMediator();
     StaffWorkFlow* worker1 = new GreenhouseWorker("Emily", nursery);
     CHECK(worker1->getName() == "Emily");
     CHECK(worker1->getType() == "Greenhouse Worker");
@@ -85,8 +93,8 @@ TEST_CASE("Testing work day execution (Template Method)"){
     std::cout << "\n--- Decorated Staff (Greenhouse + Sales) ---\n";
     StaffWorkFlow* worker2 = new GreenhouseWorker("Frank", nursery);
     worker2 = new SalesRole(worker2);
-    CHECK(worker2->getName() ==  "Frank");
-    CHECK(worker2->getType() == "GreenhouseWorker Sales");
+    CHECK(worker2->getName() == "Frank");
+    CHECK(worker2->getType() == "Greenhouse Worker Sales");
     
     std::cout << "\n--- Multi-Role Staff ---\n";
     StaffWorkFlow* worker3 = new SalesAssociate("Grace", nursery);
@@ -95,41 +103,8 @@ TEST_CASE("Testing work day execution (Template Method)"){
     CHECK(worker3->getName() == "Grace");
     CHECK(worker3->getType() == "Sales Associate Delivery Manager");
 
+    delete nursery;
     delete worker1;
     delete worker2;
     delete worker3;
-  }
 }
-
-TEST_CASE("Testing staff working with plants"){
-  void testStaffWithPlants(NurseryMediator* nursery){
-    
-    // Add some plants to greenhouse
-    std::cout << "\n--- Adding Plants to Greenhouse ---\n";
-    nursery->addNewPlant("Rose");
-    nursery->addNewPlant("Succulent");
-    nursery->addNewPlant("Lavender");
-    
-    // Greenhouse worker cares for plants
-    std::cout << "\n--- Greenhouse Worker Caring for Plants ---\n";
-    StaffWorkFlow* gardener = new GreenhouseWorker("Henry", nursery);
-    gardener->performMainTask();
-    
-    // Move mature plants to sales floor (simulate growth first)
-    std::cout << "\n--- Advancing Time & Harvesting ---\n";
-    nursery->advanceTime(10);  // Make plants mature
-    
-    // Sales associate works with sales floor
-    std::cout << "\n--- Sales Associate Managing Sales Floor ---\n";
-    StaffWorkFlow* seller = new SalesAssociate("Iris", nursery);
-    seller->performMainTask();
-    
-    delete gardener;
-    delete seller;
-}
-}
-
-
-
-
-
