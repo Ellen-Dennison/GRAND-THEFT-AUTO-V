@@ -154,7 +154,8 @@ void testCompleteNurseryWorkflow()
 }
 
 //Testing Staff management
-void printSeparator2(std::string title = "") {
+void printSeparator2(std::string title = "") 
+{
     std::cout << "\n";
     std::cout << "═══════════════════════════════════════════════════════════\n";
     if (!title.empty()) {
@@ -339,7 +340,8 @@ void testPolymorphism(NurseryMediator* nursery) {
     }
 }
 
-int main() {
+int main() 
+{
     std::cout << "\n";
     std::cout << "╔════════════════════════════════════════════════════════════╗" << std::endl;
     std::cout << "║             PLANT NURSERY MANAGEMENT SYSTEM                ║" << std::endl;
@@ -397,6 +399,8 @@ int main() {
 
 
     
-        return 0;
+   
+    return 0;
 }
+ }
 
