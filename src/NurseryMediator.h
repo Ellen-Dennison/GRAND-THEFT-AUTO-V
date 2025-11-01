@@ -47,8 +47,14 @@ private:
     /** @brief Collection of plants available on the sales floor. */
     vector<Plant*> salesFloor;
 
-    /** @brief Map linking plant type names to their corresponding factory objects. */
-    map<std::string, PlantFactory*> factories;
+    /**
+     * @brief Registry of plant factories organized by plant type and variety.
+     * 
+     * Nested map structure: outer key = plant type (Flower, Herb. Succulent, Tree)
+     * inner key = plant Name ("Rose", "Basil", etc.), value = factory pointer
+     * Used to create new plants through the Factory pattern.
+     */
+    std::map<std::string, std::map<std::string, PlantFactory*>> factories;
 
     /** @brief Caretaker responsible for managing plant mementos (state backups). */
     PlantCaretaker* careTaker;
@@ -56,9 +62,23 @@ private:
     /** @brief Counter used to assign unique IDs to plants. */
     int plantIdCounter;
 
+    /**
+     * @brief Helper method to remove Plant from greenhouse
+     * could be used once Plant is ready to be harvested
+     * @param plant Pointer points to plant to be removed
+     */
+    bool removePlantFromGreenhouse(Plant* plant);
+
+    /**
+     * @brief Helper methods to remove Plant from salesFloor
+     * could be used once Plant is sold or is revived and reverts to the growing state
+     * @param plant Pointer points to plant to be removed
+     */
+    bool removePlantFromSalesFloor(Plant* plant);
+
 public:
     /**
-     * @brief Constructs a new NurseryMediator and initializes plant factories.
+     * @brief Constructs a new NurseryMediator.
      */
     NurseryMediator();
 
@@ -68,10 +88,27 @@ public:
     ~NurseryMediator();
 
     /**
-     * @brief Adds a new plant of the given type to the greenhouse.
-     * @param plantType The string name of the plant type (e.g., "Flower", "Tree").
+     * @brief Register a plant factory for a specific plant
+     * @param plantType The general type (e.g., "Flower", "Herb", "Succulent", "Tree")
+     * @param plantName The specific plant (e.g., "Rose", "Tulip", "Basil")
+     * @param factory Pointer to the factory
      */
-    void addNewPlant(std::string plantType);
+    void registerFactory(const std::string& plantType, const std::string& plantName, PlantFactory* factory);
+
+    /**
+     * @brief Create and add a new plant to the greenhouse using registered factory
+     * @param plantType The general type
+     * @param plantName The specific plant
+     */
+    void addNewPlant(const std::string& plantType, const std::string& plantName);
+
+    /**
+     * @brief Create multiple plants of the same variety
+     * @param plantType The general type
+     * @param plantName The specific plant
+     * @param qty Number of plants to create
+     */
+    void addMultiplePlants(const std::string& plantType, const std::string& varietyName, int qty);
 
     /**
      * @brief Performs care routines on all greenhouse plants (watering, sunlight, fertilizing).
@@ -119,7 +156,39 @@ public:
     /**
      * @brief Displays a summary of the current nursery inventory (greenhouse and sales floor).
      */
-    void displayInventory();
+    void displayInventory() const;
+
+    /**
+     * @brief Display only greenhouse plants
+     */
+    void displayGreenhouseInventory() const;
+
+    /**
+     * @brief Display only sales floor plants
+     */
+    void displaySalesFloorInventory() const;
+
+    /**
+     * @brief Display all registered factories
+     */
+    void displayRegisteredFactories() const;
+
+    /**
+     * @brief Get count of plants in greenhouse
+     */
+    int getGreenhouseCount() const;
+
+    /**
+     * @brief Get count of plants on sales floor
+     */
+    int getSalesFloorCount() const;
+
+    /**
+     * @brief Get count of specific plant type in a location
+     * @param type The plant type to count
+     * @param inGreenhouse true for greenhouse, false for sales floor
+     */
+    int getPlantCountByType(const std::string& type, bool inGreenhouse = true) const;
 
     /**
      * @brief Returns a reference to the greenhouse plant collection.
