@@ -129,7 +129,7 @@ Something about the plant life that calls to a person.
     </td>
     <td style="vertical-align:top; padding:5px;">
         <strong>Mbali Thobejane</strong><br/>
-           Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. 
+          Running commands, reviving chaos, and getting “arrested” for making the system too efficient. 
         <p style="margin-top:8px;">
           <a href="https://github.com/mbalz916" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
              <img alt="GitHub" src="https://img.icons8.com/material-outlined/24/github.png" style="vertical-align:middle">
