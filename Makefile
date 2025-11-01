@@ -114,7 +114,7 @@ test: $(TEST)
 # Clean up generated files
 clean:
 	@echo "Cleaning up..."
-	rm -f $(OBJECTS) $(TARGET) $(TST_OBJECTS) $(TEST) 
+	rm -f $(OBJECTS) $(TARGET) $(TST_OBJECTS) $(TEST) $(TESTABLE_OBJECTS)
 	@echo "Clean complete!"
 
 # Phony targets (not actual files)
