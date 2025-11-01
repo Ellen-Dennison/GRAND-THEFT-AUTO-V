@@ -33,9 +33,6 @@
 #include "GreenhouseWorker.h"
 #include "SalesAssociate.h"
 #include "PlantOrder.h"
-#include "Customer.h"
-#include "PlantDecorator.h"
-#include "DecorativePotDecorator.h"
 #include "PlantItem.h"
 #include "PlantBundle.h"
 
@@ -72,26 +69,48 @@ void testNurserySimulation() {
     notifSystem->attach(nalediObs);
     
     std::cout << "\nNotification System Active!\n" << std::endl;
+
+    //Register plant factories
+    std::cout<<"Registering Plant Factories:\n\n";
+    nursery->registerFactory("Flower", "Rose", new FlowerFactory("Rose", 89.99));
+    nursery->registerFactory("Flower", "Tulip", new FlowerFactory("Tulip", 65.50));
+    nursery->registerFactory("Flower", "Orchid", new FlowerFactory("Orchid", 125.00));
+    nursery->registerFactory("Herb", "Basil", new HerbFactory("Basil", 65.00));
+    nursery->registerFactory("Herb", "Rosemary", new HerbFactory("Rosemary", 72.50));
+    nursery->registerFactory("Succulent", "Aloe Vera", new SucculentFactory("Aloe Vera", 55.00));
+    nursery->registerFactory("Succulent", "Cactus", new SucculentFactory("Cactus", 45.50));
+    nursery->registerFactory("Tree", "Oak", new TreeFactory("Oak", 450.00));
+
+    nursery->displayRegisteredFactories();
+
     notifSystem->notify("Nursery is now open for business!");
     
     //Week 1: plantations:
     std::cout<<"===WEEK 1: PLANTING SEASON BEGINS==="<<std::endl;
     
-    std::cout << "Kobe's first day at work as a greenhouse worker - He plants new stock\n" << std::endl;
-    Kobe->executeWorkDay();
-    
     // Add diverse inventory
-    std::cout << "\nReceiving New Plant Shipment:\n" << std::endl;
-    nursery->addNewPlant("Flower");  // Rose
-    nursery->addNewPlant("Flower");  // Tulip
-    nursery->addNewPlant("Flower");  // Orchid
-    nursery->addNewPlant("Herb");    // Basil
-    nursery->addNewPlant("Herb");    // Rosemary
-    nursery->addNewPlant("Succulent"); // Aloe
-    nursery->addNewPlant("Succulent"); // Cactus
-    nursery->addNewPlant("Tree");    // Oak
+    std::cout << "\nReceiving New Seed Shipment....\n" << std::endl;
+
+    std::cout << "Kobe's first day at work as a greenhouse worker - He plants new stock\n" << std::endl;
+
+    int initialCount = nursery->getGreenhouseCount();
+
+    nursery->addNewPlant("Flower", "Rose");      
+    nursery->addNewPlant("Flower", "Rose");      
+    nursery->addNewPlant("Flower", "Tulip");     
+    nursery->addNewPlant("Flower", "Orchid");    
+    nursery->addNewPlant("Herb", "Basil");       
+    nursery->addNewPlant("Herb", "Rosemary");    
+    nursery->addNewPlant("Succulent", "Aloe Vera"); 
+    nursery->addNewPlant("Succulent", "Cactus"); 
+    nursery->addNewPlant("Tree", "Oak"); 
+
+    std::cout<<std::endl;
+    Kobe->executeWorkDay();
+
     
-    notifSystem->notify("8 new plants added to greenhouse inventory");
+    int plantsAdded = nursery->getGreenhouseCount() - initialCount;
+    notifSystem->notify(std::to_string(plantsAdded) + " new plants added to greenhouse inventory");
     
     nursery->displayInventory();
     
@@ -104,10 +123,10 @@ void testNurserySimulation() {
     //Week 2-4: Plant Growth Phase
     std::cout<<"===WEEKS 2-4:PLANT GROWTH & CARE PHASE==="<<std::endl;
     
-    //PlantCaretaker* caretaker = new PlantCaretaker();
+    PlantCaretaker* caretaker = new PlantCaretaker();
     std::vector<Plant*> greenhousePlants = nursery->getGreenhouse();
     
-    for (int week=2; week<=4; week++) {
+    for (int week=2; week<=5; week++) {
         std::cout << "\n--- Week " << week << " ---" << std::endl;
         
         //Kobe cares for plants
@@ -115,6 +134,21 @@ void testNurserySimulation() {
         Command* waterCmd = new WaterPlantsCommand(greenhousePlants);
         waterCmd->execute();
         delete waterCmd;
+
+        //Trevor cares for plants
+        std::cout << "\nTrevor providing sunlight to all plants..." << std::endl;
+        for (Plant* plant : greenhousePlants) {
+            if (plant) {
+                plant->provideSunlight();
+            }
+        }
+
+        std::cout << "\nKobe fertilizing all plants..." << std::endl;
+        for (Plant* plant : greenhousePlants) {
+            if (plant) {
+                plant->fertilize();
+            }
+        }
         
         // Advance time
         std::cout << "Week progressing..." << std::endl;
@@ -144,11 +178,15 @@ void testNurserySimulation() {
     
     std::cout << "\nKobe's Expanded Workday:\n" << std::endl;
     Kobe->executeWorkDay();
+
+    Command* advanceCmd = new AdvanceTimeCommand(greenhousePlants, 1);
+    advanceCmd->execute();
+    delete advanceCmd;
     
     //Week 6-8: Continue growinng plants and get them ready for sale
     std::cout<<"===WEEKS 6-8: PREPARING PLANTS FOR SALE==="<<std::endl;
     
-    for (int week=5; week <= 8; week++) {
+    for (int week=6; week <= 8; week++) {
         std::cout << "\n--- Week " << week << " ---" << std::endl;
         nursery->careForGreenhouse();
         nursery->advanceTime(1);
@@ -158,34 +196,13 @@ void testNurserySimulation() {
         }
     }
 
-    // Continue caring to reach maturity (need age > 7)
-    std::cout << "\n--- Extra Care Week (Week 9) ---" << std::endl;
-    nursery->careForGreenhouse();
-    nursery->advanceTime(1);
-
-    
+    nursery->harvestMaturePlants();
     nursery->displayInventory();
-    //Moving plants manually. Need to add method for this in mediator
-    greenhousePlants = nursery->getGreenhouse();
-    std::vector<Plant*>& salesFloor = nursery->getSalesFloor();
-    //Find and move mature or flowering plants
-    auto it = greenhousePlants.begin();
-    int movedCount = 0;
-    while (it != greenhousePlants.end()) 
-    {
-        if (*it && ((*it)->getState() == "Mature" || (*it)->getState() == "Flowering")) 
-        {
-            std::cout << "Moving " << (*it)->getName() << " (" << (*it)->getState() 
-                    << ") to sales floor..." << std::endl;
-            salesFloor.push_back(*it);  // Add to sales floor
-            it = greenhousePlants.erase(it);  // Remove from greenhouse
-            movedCount++;
-        } else {
-            ++it;
-        }
-    }
-    std::cout << "\nMoved plants to sales floor successfully\n" << std::endl;
-    
+
+    std::cout<<std::endl;
+    std::cout << "\nSales Floor Now OFFICIALLY Open and ready for customers to salvage!\n" << std::endl;
+
+    //Week 9
     //Capitalism
     /* 
      asking for recommandations
@@ -194,17 +211,34 @@ void testNurserySimulation() {
      bundle your order 
      either use order builder/ or the customer make purchase function to finalise the order 
     */
-    //asking for recommandations and browsing plants 
-    std::cout << "\nSales Floor Now OFFICIALLY Open!\n" << std::endl;
+    std::cout<<"WEEK 9:===GRAND OPENING SALES DAY!==="<<std::endl;
+
+    std::cout<<"\nCustomers are arriving at Grand Theft Nursery!\n"<<std::endl;
+    notifSystem->notify("Sales day has begun. Customers are entering!");
+
+    std::vector<Plant*>& salesFloor = nursery->getSalesFloor();
+
+    //asking for recommandations and browsing plants
+    std::cout << "\n--- Customer JackJack arrives ---" << std::endl;     
     std::cout <<"== Welcome beloved customer🎀 ==\n";
+
+    //Naledi->executeWorkDay();
+
     Customer* JackJack = new Customer("JackJack", 1500.00);
+
     JackJack->askForRecommendation();
+
+
+    std::cout<<"Naledi shows JackJack around the sales floor...\n"<<std::endl;
+
     JackJack->browseSalesFloor(salesFloor);
+    std::cout<<std::endl;
+
 
     //Decorate plants
     std::cout << "\n==🏗️ getting your oder ready==\n";
     std::vector<DecorativePotDecorator*> JackJacksPlants;
-    it = salesFloor.begin(); //!is this allowed
+    auto it = salesFloor.begin(); //!is this allowed. No. needed auto**
     int count = 0;
     while (it != salesFloor.end()) 
     {   
