@@ -47,8 +47,7 @@ public:
     /**
  * @brief Gets a description of the command
  *
-     * @return A string describing the command's operation
-     *
+ * @return A string describing the command's operation
  * @note Default implementation returns a generic message
  * @note Concrete commands should override to provide specific descriptions
  */
@@ -59,7 +58,7 @@ public:
     /**
      * @brief Checks if the command can be undone
      *
-     * @return true if the command supports undo(), false oterwise
+     * @return true if the command supports undo(), false otherwise
      *
      * @note Default implementation returns false
      * @note override in derived classes that implement undo()
