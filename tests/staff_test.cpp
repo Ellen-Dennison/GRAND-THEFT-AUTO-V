@@ -51,10 +51,10 @@ TEST_CASE("Testing the decorated staff (Multiple Roles)")
     CHECK(charlie->getType() == "Greenhouse Worker");
 
     charlie = new SalesRole(charlie);
-    CHECK(charlie->getType() == "Greenhouse Worker Sales");
+    CHECK(charlie->getType() == "Greenhouse Worker + Sales");
 
     charlie = new DeliveryRole(charlie);
-    CHECK(charlie->getType() == "Greenhouse Worker Sales Delivery");
+    CHECK(charlie->getType() == "Greenhouse Worker + Sales + Delivery");
 
     delete nursery;
     delete charlie;
@@ -69,16 +69,16 @@ TEST_CASE("Testing fully decorated staff (All Roles)"){
     CHECK(diana->getType() == "Greenhouse Worker");
 
     diana = new SalesRole(diana);
-    CHECK(diana->getType() == "Greenhouse Worker Sales");
+    CHECK(diana->getType() == "Greenhouse Worker + Sales");
 
     diana = new DeliveryRole(diana);
-    CHECK(diana->getType() == "Greenhouse Worker Sales Delivery");
+    CHECK(diana->getType() == "Greenhouse Worker + Sales + Delivery");
 
     diana = new LandscaperRole(diana);
-    CHECK(diana->getType() == "Greenhouse Worker Sales Delivery Landscaper");
+    CHECK(diana->getType() == "Greenhouse Worker + Sales + Delivery + Landscaper");
 
     diana = new ManagerRole(diana);
-    CHECK(diana->getType() == "Greenhouse Worker Sales Delivery Landscaper Manager");
+    CHECK(diana->getType() == "Greenhouse Worker + Sales + Delivery + Landscaper + Manager");
     
     delete diana;
     delete nursery;
@@ -94,14 +94,14 @@ TEST_CASE("Testing work day execution (Template Method)"){
     StaffWorkFlow* worker2 = new GreenhouseWorker("Frank", nursery);
     worker2 = new SalesRole(worker2);
     CHECK(worker2->getName() == "Frank");
-    CHECK(worker2->getType() == "Greenhouse Worker Sales");
+    CHECK(worker2->getType() == "Greenhouse Worker + Sales");
     
     std::cout << "\n--- Multi-Role Staff ---\n";
     StaffWorkFlow* worker3 = new SalesAssociate("Grace", nursery);
     worker3 = new DeliveryRole(worker3);
     worker3 = new ManagerRole(worker3);
     CHECK(worker3->getName() == "Grace");
-    CHECK(worker3->getType() == "Sales Associate Delivery Manager");
+    CHECK(worker3->getType() == "Sales Associate + Delivery + Manager");
 
     delete nursery;
     delete worker1;
