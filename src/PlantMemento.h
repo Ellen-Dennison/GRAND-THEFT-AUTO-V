@@ -6,6 +6,7 @@
  * The snapshot contains the plant's important attributes like the state name, age and health level.
  *
  * Design Pattern: Memento (Memento participant)
+ * Related Classes: PlantCaretaker (Caretaker), Plant (Originator)
  */
 
 #ifndef PLANTMEMENTO_H
