@@ -45,7 +45,7 @@ TEST_CASE("Testing the composite portion of the composite design pattern")
    CHECK(p1->getTotalValue() == 564.9);
    CHECK(p1->getCount() == 4);
     
-   //p1->add();
+   
    delete p1;
 
 
