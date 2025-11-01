@@ -7,8 +7,9 @@
 
 /**
  * @brief Represents the Wilting state of a plant
- * The WiltingState class defines behavior for a plant that has been neglected to the point of no return.
- * In this state, the plant can neither be sold nor revived
+ * The WiltingState class defines behavior for a plant that has been
+ * neglected long enough to reach poor health level conditions
+ * In this state, the plant cannot be sold as it is dying
  */
 class WiltingState : public PlantState{
 public:
