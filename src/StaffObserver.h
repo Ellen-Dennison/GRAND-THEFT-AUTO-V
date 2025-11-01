@@ -1,4 +1,12 @@
-
+/**
+ * @file StaffObserver.h
+ * @brief Concrete observer implementation for nursery staff memebers
+ *
+ * The Observer pattern creates a one-to-many dependency between objects, where one object, the subject, changes state , all its dependents (observers) are notified and updated automatically.
+ *
+ * Design Pattern: Observer (Concrete Observer)
+ * Related Classes: Subject, Observer,NurseryMediator
+ */
 #ifndef STAFFOBSERVER_H
 #define STAFFOBSERVER_H
 
