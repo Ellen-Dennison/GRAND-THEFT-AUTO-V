@@ -15,7 +15,7 @@ public:
     /**
      * @brief Constructs a new DeadState object
      */
-    DeadState();
+    DeadState() {};
 
     /**
      * @brief Handles growth logic for the dead state
