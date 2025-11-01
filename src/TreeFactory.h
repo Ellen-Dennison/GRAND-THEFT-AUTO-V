@@ -1,3 +1,7 @@
+/**
+ * @file PlantItem.h
+ * @brief leaf participant of the composite pattern
+ */
 #ifndef TREEFACTORY_H
 #define TREEFACTORY_H
 

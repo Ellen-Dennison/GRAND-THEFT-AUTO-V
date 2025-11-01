@@ -1,3 +1,7 @@
+/**
+ * @file PlantItem.h
+ * @brief leaf participant of the composite pattern
+ */
 #ifndef SUCCULENTFACTORY_H
 #define SUCCULENTFACTORY_H
 

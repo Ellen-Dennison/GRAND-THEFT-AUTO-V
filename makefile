@@ -1,10 +1,16 @@
 # Compiler and flags
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall -Wextra -g
+.SHELLFLAGS = -ec
+
 
 # Target executable
 TARGET = nursery
 TEST = test_runner
+
+#Doxygen
+DOXYFILE = Doxyfile
+DOCSDIR = docs
 
 # Source folder
 SRC_DIR = src
@@ -109,6 +115,24 @@ run: $(TARGET)
 test: $(TEST)
 	@echo "Running unit tests..."
 	./$(TEST)
+
+# Create Doxygen config file (only once)
+doxygen-init:
+	@doxygen -g $(DOXYFILE)
+	@echo "\033[1;32m✓ Doxygen configuration file created at $(DOXYFILE)\033[0m"
+
+# Generate Doxygen documentation
+docs:
+	@mkdir -p $(DOCSDIR)/doxygen
+	@doxygen $(DOXYFILE)
+	@echo "\033[1;32m✓ Documentation generated in $(DOCSDIR)/doxygen/html\033[0m"
+
+# Clean Doxygen documentation
+clean-docs:
+	@rm -rf $(DOCSDIR)/doxygen
+	
+
+.PHONY: docs clean-docs doxygen-init
 
 
 # Clean up generated files

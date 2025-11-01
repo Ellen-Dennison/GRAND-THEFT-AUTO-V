@@ -1,3 +1,7 @@
+/**
+ * @file PlantItem.h
+ * @brief leaf participant of the composite pattern
+ */
 #ifndef GIFTWRAPPINGDECORATOR_H
 #define GIFTWRAPPINGDECORATOR_H
 

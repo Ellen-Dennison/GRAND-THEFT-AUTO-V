@@ -233,8 +233,7 @@ void NurseryMediator::checkForWiltingPlants() {
 }
 
 // 🛍️ Process customer orders
-PlantOrder* NurseryMediator::processCustomerOrder(const std::string& cusName, std::string plantType,
-                                                  bool wantsPot, bool wantsWrapping) {
+PlantOrder* NurseryMediator::processCustomerOrder(const std::string cusName, std::string& plantType, bool wantsPot, bool wantsWrapping) {
     std::cout << "\n🛍️ Processing order for " << cusName << ": " << plantType << std::endl;
 
     for (auto it = salesFloor.begin(); it != salesFloor.end(); ++it) {

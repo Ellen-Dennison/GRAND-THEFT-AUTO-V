@@ -8,6 +8,7 @@
 #include "WateringStrategy.h"
 #include "PlantState.h"
 #include "PlantMemento.h"
+class PlantState;//!not solution probably
 
 class Plant{
 protected:
