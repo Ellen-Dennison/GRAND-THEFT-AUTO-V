@@ -13,7 +13,7 @@
 #include <iostream>
 
 Plant::Plant(std::string n, std::string t, double p):
-    name(n), type(t), price(p), age(0), healthLevel(100), neglectCounter(0){
+    name(n), type(t), price(p), age(0), healthLevel(100), neglectCounter(0), caredForThisWeek(false) {
 
         currState = new SeedlingState();
         currState->setPlant(this);
@@ -30,6 +30,7 @@ Plant::Plant(const Plant& other)
       age(other.age), 
       healthLevel(other.healthLevel), 
       neglectCounter(other.neglectCounter),
+      caredForThisWeek(false),
       sunlightNeeds(other.sunlightNeeds),
       fertilizerNeeds(other.fertilizerNeeds),
       optimalSeason(other.optimalSeason) {
@@ -37,19 +38,19 @@ Plant::Plant(const Plant& other)
     // Deep copy state to create new state object
     std::string stateName = other.currState->getStateName();
     if (stateName == "Seedling") {
-        currState = new SeedlingState;
+        currState = new SeedlingState();
     } else if (stateName == "Growing") {
-        currState = new GrowingState;
+        currState = new GrowingState();
     } else if (stateName == "Mature") {
-        currState = new MatureState;
+        currState = new MatureState();
     } else if (stateName == "Flowering") {
-        currState = new FloweringState;
+        currState = new FloweringState();
     } else if (stateName == "Wilting") {
-        currState = new WiltingState;
+        currState = new WiltingState();
     } else if (stateName == "Dead") {
-        currState = new DeadState;
+        currState = new DeadState();
     } else {
-        currState = new SeedlingState;  // default
+        currState = new SeedlingState();  // default
     }
     currState->setPlant(this);
     
@@ -58,11 +59,11 @@ Plant::Plant(const Plant& other)
         // Check which strategy it is and create a new one
         std::string schedule = other.wateringStrategy->getWateringSchedule();
         if (schedule.find("Daily") != std::string::npos) {
-            wateringStrategy = new DailyWateringStrategy;
+            wateringStrategy = new DailyWateringStrategy();
         } else if (schedule.find("Weekly") != std::string::npos && schedule.find("Bi") == std::string::npos) {
-            wateringStrategy = new WeeklyWateringStrategy;
+            wateringStrategy = new WeeklyWateringStrategy();
         } else if (schedule.find("Bi-weekly") != std::string::npos) {
-            wateringStrategy = new BiWeeklyWateringStrategy;
+            wateringStrategy = new BiWeeklyWateringStrategy();
         } else {
             wateringStrategy = nullptr;
         }
@@ -92,20 +93,28 @@ void Plant::setWateringStrategy(WateringStrategy* strategy){
 void Plant::grow(){
     age++;
     
-    incrementNeglect();//if plant isnt being cared for
+    //Only increment neglect if plant was not cared for this week
+    if (!caredForThisWeek) {
+        incrementNeglect();
+    } else {
+        resetNeglect();  //Reset if cared for
+    }
+    
+    // Reset flag for next week
+    caredForThisWeek = false;
     
     //If neglect low enoug to put plant in poor condition
     if (neglectCounter >= 4 && currState->getStateName() != "Dead" && currState->getStateName() != "Wilting") {
         std::cout << "WARNING: " << name << " neglected for " << neglectCounter << " weeks." << std::endl;
         std::cout << name << " is now entering Wilting state" << std::endl;
-        setState(new WiltingState);
+        setState(new WiltingState());
     }
     
     //If condition too poor that it goes into wilting state
     if (currState->getStateName() != "Wilting" && currState->getStateName() != "Dead") {
         if (healthLevel < 30) {
             std::cout << "WARNING: " << name << " is wilting due to poor health." << std::endl;
-            setState(new WiltingState);
+            setState(new WiltingState());
         }
     }
     
@@ -115,7 +124,7 @@ void Plant::grow(){
 void Plant::water(){
     if(wateringStrategy){    
         wateringStrategy->water(this);
-        resetNeglect();
+        caredForThisWeek = true;
     }
 }
 
@@ -126,13 +135,13 @@ void Plant::provideSunlight() {
     else std::cout << "full shade protection";
     std::cout << " - Health +3" << std::endl;
     adjustHealth(3);
-    resetNeglect();
+    caredForThisWeek = true;
 }
 
 void Plant::fertilize() {
     std::cout << "Fertilizing plant - Health +8" << std::endl;
     adjustHealth(8);
-    resetNeglect();
+    caredForThisWeek = true;
 }
 
 void Plant::adjustHealth(int amount) {
