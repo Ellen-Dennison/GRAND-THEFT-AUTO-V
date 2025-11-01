@@ -3,11 +3,11 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include "Enums.h"
 #include "WateringStrategy.h"
 #include "PlantState.h"
 #include "PlantMemento.h"
-class PlantState;
 
 class Plant{
 protected:
@@ -17,6 +17,7 @@ protected:
     int age;
     int healthLevel;
     int neglectCounter;
+    bool caredForThisWeek;
     PlantState* currState;
     WateringStrategy* wateringStrategy;
     SunlightRequirement sunlightNeeds;
@@ -26,6 +27,7 @@ protected:
 public:
     Plant(std::string n, std::string t, double p);
     Plant(const Plant& other);  // Copy constructor
+    //Plant& operator=(const Plant& other);  // Copy assignment operator
     virtual ~Plant();
     virtual Plant* clone() const = 0;
     void setState(PlantState* state);
