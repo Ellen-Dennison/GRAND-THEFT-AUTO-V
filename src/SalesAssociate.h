@@ -11,9 +11,6 @@ class SalesAssociate : public StaffWorkFlow {
     private:
         NurseryMediator* mediator;  // Reference to mediator, NOT salesFloor
         
-    public:
-        SalesAssociate(std::string name, NurseryMediator* med);
-        
     protected:
         void performMainTask() override;
         
@@ -21,6 +18,7 @@ class SalesAssociate : public StaffWorkFlow {
         std::string getType() override;
         void displayRoles() override;
         void assistCustomer(Customer* customer);
+        SalesAssociate(std::string name, NurseryMediator* med);
 };
 
 #endif
