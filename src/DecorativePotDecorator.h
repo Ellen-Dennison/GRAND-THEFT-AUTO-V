@@ -1,6 +1,6 @@
 /**
  * @file DecorativePotDecorator.h
- * @brief One of the Concreatedecorators
+ * @brief One of the ConcreateDecorators
  */
 #ifndef DECORATIVEPOTDECORATOR_H
 #define DECORATIVEPOTDECORATOR_H

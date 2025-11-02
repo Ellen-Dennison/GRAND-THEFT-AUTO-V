@@ -1,6 +1,6 @@
 /**
  * @file GiftWrappingDecorator.h
- * @brief One of the Concretedecorators
+ * @brief One of the ConcreteDecorators
  */
 #ifndef GIFTWRAPPINGDECORATOR_H
 #define GIFTWRAPPINGDECORATOR_H
