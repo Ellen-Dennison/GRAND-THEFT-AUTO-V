@@ -5,9 +5,14 @@ LandscaperRole::LandscaperRole(StaffWorkFlow* staff)
              : StaffWorkFlowDecorator(staff){}
 
 
-void LandscaperRole::performMainTask(){
-    std::cout<<"Performs ongoing tasks to keep landscapes healthy and attractive\n";
-    StaffWorkFlowDecorator::performMainTask();
+void LandscaperRole::performMorningTasks(){
+    std::cout<<"Performs ongoing morning tasks to keep landscapes healthy and attractive\n";
+    StaffWorkFlowDecorator::performMorningTasks();
+}
+
+void LandscaperRole::performAfternoonTasks(){
+    std::cout<<"Performs ongoing afternoon tasks to keep landscapes healthy and attractive\n";
+    StaffWorkFlowDecorator::performAfternoonTasks();
 }
 
 std::string LandscaperRole::getType() {
