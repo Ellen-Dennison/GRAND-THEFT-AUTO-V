@@ -4,7 +4,8 @@
 
 class LandscaperRole : public StaffWorkFlowDecorator{
     protected:
-                void performMainTask();
+                void performMorningTasks();
+                void performAfternoonTasks();
     public:
             LandscaperRole(StaffWorkFlow* staff);
             std::string getType() override;
