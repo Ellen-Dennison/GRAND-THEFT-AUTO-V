@@ -1,5 +1,8 @@
 #include "FloweringState.h"
 
+FloweringState::FloweringState()
+{}
+
 void FloweringState::grow() 
 {
     //can't grow further. stays

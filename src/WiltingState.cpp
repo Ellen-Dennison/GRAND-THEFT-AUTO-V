@@ -1,6 +1,12 @@
 #include "WiltingState.h"
 #include "DeadState.h"
 
+
+WiltingState::WiltingState()
+{}
+
+
+
 void WiltingState::grow() 
 {
     plant->adjustHealth(-5);

@@ -2,6 +2,8 @@
 #include "MatureState.h"
 #include "Plant.h"
 
+GrowingState::GrowingState()
+{}
 
 void GrowingState::grow() {
     if(plant->getAge() > 7 && plant->getHealth() > 60){

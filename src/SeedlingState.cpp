@@ -3,6 +3,10 @@
 #include "Plant.h"
 
 
+SeedlingState::SeedlingState()
+{}
+
+
 void SeedlingState::grow() {
     if(plant->getAge() > 3){
         std::string plantName = plant->getName();
