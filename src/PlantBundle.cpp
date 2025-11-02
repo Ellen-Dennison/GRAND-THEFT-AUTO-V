@@ -44,12 +44,13 @@ PlantBundle::~PlantBundle()
 void PlantBundle::add( PlantComponent* item ) 
 { items.push_back(item); }
 
-void PlantBundle::remove(PlantComponent* item) 
-{
-   for (auto i = 0u; i < items.size(); i++) 
-   {
-    if( items[i] == item)
-    { items.erase(items.begin() + i); }
+void PlantBundle::remove(PlantComponent* item){
+   for (auto i = 0u; i < items.size(); i++) {
+    if( items[i] == item){        
+      delete items[i];
+      items.erase(items.begin() + i); 
+      break;
+      }
    }
 }
 
