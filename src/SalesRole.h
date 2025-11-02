@@ -5,10 +5,11 @@
 class SalesRole : public StaffWorkFlowDecorator
 {
     protected:
-                void performMainTask();
+                void performMorningTasks();
+                void performAfternoonTasks();
     public:
                 SalesRole(StaffWorkFlow* staff);
-                std::string getType();
-                void displayRoles();
+                std::string getType() override;
+                void displayRoles() override;
 };
 #endif
