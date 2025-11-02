@@ -4,16 +4,21 @@ StaffWorkFlowDecorator::StaffWorkFlowDecorator(StaffWorkFlow* staff) {
   wrappedStaff = staff;
 }
 
-void StaffWorkFlowDecorator::performMainTask() {
+void StaffWorkFlowDecorator::performMorningTasks() {
   if (wrappedStaff)
-    wrappedStaff->performMainTask();
+    wrappedStaff->performMorningTasks();
+}
+
+void StaffWorkFlowDecorator::performAfternoonTasks() {
+  if (wrappedStaff)
+    wrappedStaff->performAfternoonTasks();
 }
 
 StaffWorkFlowDecorator::~StaffWorkFlowDecorator(){
 	delete wrappedStaff;
 }
 
-std::string StaffWorkFlowDecorator::getName(){
+std::string StaffWorkFlowDecorator::getName() const{
     return wrappedStaff->getName();
 }
 
