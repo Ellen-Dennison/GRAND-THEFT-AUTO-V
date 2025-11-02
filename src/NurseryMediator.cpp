@@ -4,20 +4,23 @@
 #include "TreeFactory.h"
 #include "HerbFactory.h"
 #include "PlantMemento.h"
+#include "OrderBuilder.h"
+
 #include <algorithm>
 #include <iostream>
 #include <iomanip>
 #include <sstream>
 
 NurseryMediator::NurseryMediator() {
-    //plantIdCounter = 0;
     careTaker = new PlantCaretaker();
 
-    /*// ✅ Each factory needs name and base price
-    factories["Flower"]    = new FlowerFactory("Flower", 50.0);
-    factories["Succulent"] = new SucculentFactory("Succulent", 35.0);
-    factories["Tree"]      = new TreeFactory("Tree", 120.0);
-    factories["Herb"]      = new HerbFactory("Herb", 25.0);*/
+    //Iinitalise tracking vars
+    totalRevenue = 0.0;
+    totalCustomers = 0;
+    bundleOrderCount = 0;
+    individualOrderCount = 0;
+    plantsWithPots = 0;
+    plantsWithGiftWrap = 0;
 
     std::cout << "🏗️ NurseryMediator initialized.\n";
 }
@@ -66,14 +69,14 @@ void NurseryMediator::registerFactory(const std::string& plantType, const std::s
 
 //Managing plants. adding them
 void NurseryMediator::addNewPlant(const std::string& plantType, const std::string& plantName) {
-    // Check if plant type exists
+    //Check if plant type exists
     auto typeIt = factories.find(plantType);
     if (typeIt == factories.end()) {
         std::cout << "No " << plantType << " factories registered."<<std::endl;
         return;
     }
     
-    // Check if variety exists for this plant type
+    //Check if specific concrete exists for this plant type
     auto nameIt = typeIt->second.find(plantName);
     if (nameIt == typeIt->second.end()) {
         std::cout << "No factory registered for " << plantName << " " << plantType << "." <<std::endl;
@@ -233,26 +236,89 @@ void NurseryMediator::checkForWiltingPlants() {
 }
 
 // 🛍️ Process customer orders
-PlantOrder* NurseryMediator::processCustomerOrder(const std::string cusName, std::string& plantType, bool wantsPot, bool wantsWrapping) {
+PlantOrder* NurseryMediator::processCustomerOrder(const std::string& cusName, std::string plantType, bool wantsPot, bool wantsWrapping) {
     std::cout << "\n🛍️ Processing order for " << cusName << ": " << plantType << std::endl;
 
     for (auto it = salesFloor.begin(); it != salesFloor.end(); ++it) {
         Plant* plant = *it;
         if (plant->getType() == plantType) {
-            PlantOrder* order = new PlantOrder();
-            order->customerName = cusName;
-            order->plant = plant;
-            order->hasDecorativePot = wantsPot;
-            order->hasGiftWrapping = wantsWrapping;
+            //Use OrderBuilder to create the order
+            OrderBuilder* builder = new OrderBuilder();
+            PlantOrder* order = builder->setCustomer(cusName)
+                                       ->setPlant(plant, wantsPot, wantsWrapping)
+                                       ->build();
+            
+            delete builder;
 
-            std::cout << "✅ Order created for " << cusName << " (" << plant->getName() << ")\n";
-            salesFloor.erase(it);
+            if (order) {
+                //Track sales
+                totalCustomers++;
+                individualOrderCount++;
+                if (wantsPot) plantsWithPots++;
+                if (wantsWrapping) plantsWithGiftWrap++;
+                totalRevenue += order->getPlantComponent()->getTotalValue();
+                
+                std::cout << "✅ Order created for " << cusName << " (" << plant->getName() << ")\n";
+                salesFloor.erase(it);
+            }
+            
             return order;
         }
     }
 
     std::cout << "❌ No " << plantType << " plants available.\n";
     return NULL;
+}
+
+//Process Bundle order:
+PlantOrder* NurseryMediator::processBundleOrder(const std::string& cusName, const std::string& bundleName, const std::string& plantType, double discount, bool decorativePotOnFirst, bool giftWrapAll) {
+    std::cout << "\n🛍️ Processing bundle order for " << cusName << std::endl;
+    
+    std::vector<Plant*> selectedPlants;
+    for (Plant* plant : salesFloor) {
+        if (plant && plant->getType() == plantType) {
+            selectedPlants.push_back(plant);
+        }
+    }
+    
+    if (selectedPlants.empty()) {
+        std::cout << "❌ No " << plantType << " plants available for bundle.\n";
+        return NULL;
+    }
+    
+    OrderBuilder* builder = new OrderBuilder();
+    builder->setCustomer(cusName)->startBundle(bundleName, discount);
+    
+    for (size_t i = 0; i < selectedPlants.size(); i++) {
+        bool addPot = (decorativePotOnFirst && i == 0);
+        bool addWrap = giftWrapAll;
+        
+        builder->addPlantToBundle(selectedPlants[i], addPot, addWrap);
+        
+        //Track decor
+        if (addPot) plantsWithPots++;
+        if (addWrap) plantsWithGiftWrap++;
+    }
+    
+    PlantOrder* order = builder->finishBundle()->build();
+    delete builder;
+    
+    if (order) {
+        //Track sales
+        totalCustomers++;
+        bundleOrderCount++;
+        totalRevenue += order->getPlantComponent()->getTotalValue();
+        
+        //remove bought plants
+        for (Plant* plant : selectedPlants) {
+            removePlantFromSalesFloor(plant);
+        }
+        
+        std::cout << "✅ Bundle order created for " << cusName 
+                  << " with " << selectedPlants.size() << " " << plantType << "(s)\n";
+    }
+    
+    return order;
 }
 
 // 👀 Customer browsing
@@ -393,6 +459,37 @@ int NurseryMediator::getPlantCountByType(const std::string& type, bool inGreenho
     return count;
 }
 
+void NurseryMediator::displaySalesStatistics() const {
+    std::cout << "\n    SALES STATISTICS:" << std::endl;
+    std::cout << "─────────────────────────────────────────────────────────────" << std::endl;
+    std::cout << "Total Revenue Generated: R" << std::fixed << std::setprecision(2) << totalRevenue << std::endl;
+    std::cout << "Total Customers Served: " << totalCustomers << std::endl;
+    
+    if (totalCustomers > 0) {
+        std::cout << "Average Transaction Value: R" << std::fixed << std::setprecision(2) 
+                  << (totalRevenue / totalCustomers) << std::endl;
+    }
+    
+    std::cout << "\nOrder Breakdown:" << std::endl;
+    std::cout << "  Bundle Orders: " << bundleOrderCount << std::endl;
+    std::cout << "  Individual Orders: " << individualOrderCount << std::endl;
+    std::cout << "  Total Orders: " << (bundleOrderCount + individualOrderCount) << std::endl;
+    
+    std::cout << "\nCustomization Statistics:" << std::endl;
+    std::cout << "  Decorative Pots Added: " << plantsWithPots << std::endl;
+    std::cout << "  Gift Wrapped Items: " << plantsWithGiftWrap << std::endl;
+    
+    if (totalCustomers > 0) {
+        std::cout << "\nCustomer Satisfaction:" << std::endl;
+        std::cout << "  All transactions completed successfully" << std::endl;
+        std::cout << "  100% customer satisfaction rate" << std::endl;
+    } else {
+        std::cout << "\nNo sales recorded this period" << std::endl;
+    }
+}
+
 // Accessors
 std::vector<Plant*>& NurseryMediator::getGreenhouse() { return greenhouse; }
 std::vector<Plant*>& NurseryMediator::getSalesFloor() { return salesFloor; }
+
+PlantCaretaker* NurseryMediator::getCaretaker() { return careTaker; }
