@@ -1,97 +1,105 @@
-/**
- * @file OrderBuilder.h
- * @brief Defines the OrderBuilder class used to construct customized PlantOrder objects.
- *
- * The `OrderBuilder` class implements the Builder design pattern for 
- * creating `PlantOrder` instances in a flexible and readable manner.
- * 
- * It allows chaining of configuration methods such as setting the customer name,
- * selecting a plant, and adding optional customizations like gift wrapping or
- * decorative pots.
- */
-
 #ifndef ORDERBUILDER_H
 #define ORDERBUILDER_H
 
 #include <iostream>
 #include <string>
-#include "PlantOrder.h"
-
-using namespace std;
+#include "PlantOrderh"
+#include "PlantBundleh"
+#include "PlantItemh"
+#include "Planth"
 
 /**
  * @class OrderBuilder
- * @brief A builder class for constructing complex `PlantOrder` objects step-by-step.
- *
- * This class helps in building a `PlantOrder` by setting its properties through 
- * method chaining. Each method modifies the internal `PlantOrder` being built
- * and returns a pointer to the same builder object.
- *
- * ### Example:
- * ```cpp
- * OrderBuilder builder;
- * PlantOrder* order = builder
- *     .setCustomer("Alice")
- *     .setplant(flowerPlant)
- *     .addGiftWrapping()
- *     .addDecorativePot()
- *     .build();
+ * @brief Builder class for constructing PlantOrder objects with optional customizations
  * 
- * order->display();
- * delete order;
- * ```
+ * This class implements the Builder design pattern to construct complex PlantOrder objects
+ * step by step It supports creating both individual plant orders and bundle orders with
+ * optional decorations (decorative pots and gift wrapping)
  */
 class OrderBuilder {
 protected:
-    /** @brief Pointer to the `PlantOrder` object being built. */
+    /**
+     * @brief The order being constructed
+     */
     PlantOrder* order;
 
+    /**
+     * @brief Current bundle being built, nullptr if not building a bundle
+     */
+    PlantBundle* currentBundle;
+
+    /**
+     * @brief Tracks the current component being built
+     */
+    PlantComponent* currentComponent;
+    
 public:
     /**
-     * @brief Default constructor initializes a new `PlantOrder` instance.
+     * @brief Constructor that initializes a new OrderBuilder
      */
     OrderBuilder();
-
+    
     /**
-     * @brief Destructor to clean up allocated resources if needed.
+     * @brief Destructor to cleann up resources if build was not called
      */
-    ~OrderBuilder();
-
+    virtual ~OrderBuilder();
+    
     /**
-     * @brief Sets the customer's name for the order.
-     * @param name The name of the customer placing the order.
-     * @return A pointer to the current `OrderBuilder` (for method chaining).
+     * @brief Sets the customer name for the order
+     * @param name The customer's name
+     * @return Pointer to this OrderBuilder
      */
-    OrderBuilder* setCustomer(string name);
-
+    OrderBuilder* setCustomer(std::string name);
+    
     /**
-     * @brief Sets the plant associated with this order.
-     * @param plant Pointer to the `Plant` being ordered.
-     * @return A pointer to the current `OrderBuilder` (for method chaining).
+     * @brief Sets a single plant for the order with optional decorations
+     * @param plant Pointer to the plant to be ordered
+     * @param decorativePot Whether to add a decorative pot
+     * @param giftWrap Whether to add gift wrapping
+     * @return Pointer to this OrderBuilder
      */
-    OrderBuilder* setplant(Plant* plant);
-
+    OrderBuilder* setPlant(Plant* plant, bool decorativePot = false, bool giftWrap = false);
+    
     /**
-     * @brief Adds a decorative pot customization to the order.
-     * @return A pointer to the current `OrderBuilder` (for method chaining).
+     * @brief Starts building a bundle order with multiple plants
+     * @param bundleName The name/title of the bundle
+     * @param discount The discount percentage to apply
+     * @return Pointer to this OrderBuilder
      */
-    OrderBuilder* addDecorativePot();
-
+    OrderBuilder* startBundle(std::string bundleName, double discount);
+    
     /**
-     * @brief Adds gift wrapping to the order.
-     * @return A pointer to the current `OrderBuilder` (for method chaining).
+     * @brief Adds a plant to the current bundle being built
+     * @param plant Pointer to the plant to add to the bundle
+     * @param decorativePot Whether to add a decorative pot to this plant
+     * @param giftWrap Whether to add gift wrapping to this plant
+     * @return Pointer to this OrderBuilder
      */
-    OrderBuilder* addGiftWrapping();
-
+    OrderBuilder* addPlantToBundle(Plant* plant, bool decorativePot = false, bool giftWrap = false);
+    
     /**
-     * @brief Finalizes and returns the constructed `PlantOrder`.
-     * 
-     * Once `build()` is called, the `PlantOrder` is considered ready for use.
-     * The caller is responsible for deleting the returned pointer.
-     *
-     * @return A pointer to the fully built `PlantOrder` object.
+     * @brief Finishes building the current bundle and adds it to the order
+     * @return Pointer to this OrderBuilder
+     */
+    OrderBuilder* finishBundle();
+    
+    /**
+     * @brief Builds and returns the final PlantOrder
+     * @return Pointer to the constructed PlantOrder, or nullptr if construction failed
+     * @note After calling build(), the builder's internal order is set to nullptr
      */
     PlantOrder* build();
+    
+    /**
+     * @brief Checks if currently building a bundle
+     * @return True if a bundle is being constructed, false otherwise
+     */
+    bool isBuildingBundle() const;
+    
+    /**
+     * @brief Resets the builder to its initial state. Partial construction is cleared as well
+     */
+    void reset();
 };
 
-#endif // ORDERBUILDER_H
+#endif
