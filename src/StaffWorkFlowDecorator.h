@@ -9,8 +9,9 @@ class StaffWorkFlowDecorator : public StaffWorkFlow{
     public:
               StaffWorkFlowDecorator(StaffWorkFlow *staff);
               ~StaffWorkFlowDecorator();
-              virtual void performMainTask();
-              std::string getName() override;
+              virtual void performMorningTasks();
+              virtual void performAfternoonTasks();
+              virtual std::string getName() const override;
               void displayRoles() override;
               std::string getType() override;
 
