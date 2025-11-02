@@ -1,4 +1,4 @@
-#ifndef DELIVERYOLE_H
+#ifndef DELIVERYROLE_H
 #define DELIVERYROLE_H
 #include "StaffWorkFlowDecorator.h"
 
