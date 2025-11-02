@@ -4,7 +4,8 @@
 
 class ManagerRole : public StaffWorkFlowDecorator{
     protected:
-                void performMainTask();
+                void performMorningTasks();
+                void performAfternoonTasks();
     public:
                 ManagerRole(StaffWorkFlow* staff);
                 std::string getType() override;
