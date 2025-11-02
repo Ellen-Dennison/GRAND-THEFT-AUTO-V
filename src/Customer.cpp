@@ -1,24 +1,24 @@
 #include "Customer.h"
 
 
-Customer::Customer(string n, double b)
+Customer::Customer(std::string n, double b)
     : name(n), budget(b) {}
 
-string Customer::getName() const { return name; }
+std::string Customer::getName() const { return name; }
 double Customer::getBudget() const { return budget; }
 
 
-void Customer::browseSalesFloor(vector<Plant*>& salesFloor) {
-    cout << "\n👀 " << name << " is browsing the sales floor..." << endl;
+void Customer::browseSalesFloor(std::vector<Plant*>& salesFloor) {
+    std::cout << "\n👀 " << name << " is browsing the sales floor..." << std::endl;
 
     if (salesFloor.empty()) {
-        cout << "There are currently no plants available for sale.\n";
+        std::cout << "There are currently no plants available for sale.\n";
         return;
     }
 
     for (auto* plant : salesFloor) {
-        cout << "🪴 " << plant->getName() << " (" << plant->getType()
-             << ") - Price: R" << plant->getPrice() << endl;
+        std::cout << "🪴 " << plant->getName() << " (" << plant->getType()
+             << ") - Price: R" << plant->getPrice() << std::endl;
     }
 }
 
@@ -31,29 +31,30 @@ bool Customer::canAfford(double price) const {
 
 
 void Customer::askForRecommendation() {
-    cout << name << ": Can you recommend a plant for me?" << endl;
+    std::cout << name << ": Can you recommend a plant for me?" << std::endl;
 }
 
 
-void Customer::expressInterest(string plantName) {
-    cout  << name << ":  " <<"I'd like to know more about the plant " <<plantName<< endl;
+void Customer::expressInterest(std::string plantName) {
+    std::cout  << name << ":  " <<"I'd like to know more about the plant " <<plantName<< std::endl;
 }
 
 
-void Customer::requestCustomisation(string customType) {
-    cout << name << ": I'd like to add " << customType
-         << " to my plant purchase, please." << endl;
+void Customer::requestCustomisation(std::string customType) {
+    std::cout << name << ": I'd like to add " << customType
+         << " to my plant purchase, please." << std::endl;
 }
 
 
 void Customer::makePurchase(double amount) {
-    cout << "\n💰 " << name << " is attempting to make a purchase of R" << amount << "..." << endl;
+    
+    std::cout << "💰 " << name << " is attempting to make a purchase of R" << amount << "..." << std::endl;
 
     if (amount > budget) {
-        cout << "\n❌ " << name << " cannot afford this purchase. (Budget: R" << budget << ")\n";
+        std::cout << "❌ " << name << " cannot afford this purchase. (Budget: R" << budget << ")\n";
         return;
     }
 
     budget -= amount;
-    cout << "\n✅ Purchase successful! Remaining budget: R" << budget << endl;
+    std::cout << "✅ Purchase successful! Remaining budget: R" << budget << std::endl;
 }
