@@ -8,6 +8,7 @@
 #include "WateringStrategy.h"
 #include "PlantState.h"
 #include "PlantMemento.h"
+class PlantState;
 
 /**
  * @brief Abstract class representing a general plant entitiy
