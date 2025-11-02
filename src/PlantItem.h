@@ -36,7 +36,7 @@ class PlantItem:public PlantComponent
         /** 
          * @brief The is the PlantItem destructor
          */
-      virtual ~PlantItem();
+      ~PlantItem();
 
         /** 
          * @brief This function will return the plants name when needed by the PlantBundle
@@ -47,19 +47,19 @@ class PlantItem:public PlantComponent
          /** 
          * @brief This function will display this portion of the customers order so one plant item
          */ 
-      virtual void display() const;
+      void display() const override;
 
          /** 
          * @brief This is the function will return the price of the private  plant member attribute 
          * @return returns the price of the plant object
          */
-      virtual double getTotalValue() const;
+      double getTotalValue() const override;
          
         /** 
          * @brief This function will be used to return the total amount of the items within the bundle 
          * @return an int of the value one
          */
-      virtual int getCount() const; 
+      int getCount() const override; 
 
 
 };
