@@ -2,11 +2,8 @@
 #include "FloweringState.h"
 #include "Plant.h"
 
-
-MatureState::MatureState()
-{}
-
-
+MatureState::MatureState() : PlantState() {
+}
 
 void MatureState::grow() {
     if(plant->getAge() > 12){
