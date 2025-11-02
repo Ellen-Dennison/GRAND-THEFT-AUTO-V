@@ -15,7 +15,7 @@ public:
     /**
      * @brief Constructs a new MatureState object.
      */
-    MatureState() {};
+    MatureState();
 
     /**
      * @brief Handles growth logic for the mature state.
