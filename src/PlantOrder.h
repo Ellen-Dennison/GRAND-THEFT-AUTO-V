@@ -1,67 +1,71 @@
-/**
- * @file PlantOrder.h
- * @brief Defines the PlantOrder class representing a customer's plant purchase order.
- *
- * The `PlantOrder` class encapsulates all the details of a customer's order,
- * including the selected plant, optional customizations (gift wrapping, decorative pot),
- * and the customer’s name. 
- * 
- * This class is primarily used by the `NurseryMediator` and `OrderBuilder`
- * to create, manage, and display order information in the nursery management system.
- */
-
 #ifndef PLANTORDER_H
 #define PLANTORDER_H
 
 #include <string>
-#include "Plant.h"
-
-using namespace std;
+#include "PlantComponent.h"
 
 /**
  * @class PlantOrder
- * @brief Represents a customer's plant purchase order.
- *
- * The `PlantOrder` class stores details about a specific plant order,
- * such as which plant is being purchased, who the customer is, 
- * and any additional options the customer selected (e.g., decorative pot or gift wrapping).
- *
- * ### Example:
- * ```cpp
- * PlantOrder order;
- * order.customerName = "Alice Green";
- * order.plant = new Flower("Rose", "Flower", 45.0);
- * order.hasGiftWrapping = true;
- * order.hasDecorativePot = false;
+ * @brief Represents a customer's plant order containing customer information and plant components.
  * 
- * order.display();
- * ```
+ * The PlantOrder class manages a single order for a customer, which can contain
+ * individual plant items, bundles, or decorated versions of plants. It handles
+ * the association between a customer and their selected plant components.
  */
 class PlantOrder {
-public:
-    /** @brief Pointer to the plant being purchased. */
-    Plant* plant;
-
-    /** @brief Indicates whether the customer requested gift wrapping. */
-    bool hasGiftWrapping;
-
-    /** @brief The name of the customer placing the order. */
-    string customerName;
-
-    /** @brief Indicates whether the customer requested a decorative pot. */
-    bool hasDecorativePot;
+private:
+    /**
+     * @brief Name of customer placing order
+     */
+    std::string customerName;
 
     /**
-     * @brief Default constructor initializing an empty plant order.
+     * @brief Pointer to plant component
+     * @note can be PlantItem, PlantBundle, or decorated versions
+     */
+    PlantComponent* plantComponent;
+
+public:
+    /**
+     * @brief Default constructor for PlantOrder
+     * Initializes a new plant order with empty customer name and null plant component
      */
     PlantOrder();
-
+    
     /**
-     * @brief Displays the details of the order to the console.
-     *
-     * Prints out the customer's name, plant type, and optional features.
+     * @brief Destructor for PlantOrder
+     */
+    ~PlantOrder();
+    
+    /**
+     * @brief Sets the customer name for this order
+     * @param name The name of the customer
+     */
+    void setCustomerName(const std::string& name);
+    
+    /**
+     * @brief Sets the plant component for this order
+     * Takes ownership of the provided plant component pointer
+     * @param component Pointer to a PlantComponent
+     */
+    void setPlantComponent(PlantComponent* component);
+    
+    /**
+     * @brief Gets the customer name
+     * @return The name of the customer who placed this order
+     */
+    std::string getCustomerName() const;
+    
+    /**
+     * @brief Gets the plant component associated with this order
+     * @return Pointer to the PlantComponent in this order
+     */
+    PlantComponent* getPlantComponent() const;
+    
+    /**
+     * @brief Displays the complete order information
      */
     void display();
 };
 
-#endif // PLANTORDER_H
+#endif
