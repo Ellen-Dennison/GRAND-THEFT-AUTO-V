@@ -1,7 +1,7 @@
 #include "StaffWorkFlow.h"
 #include <iostream>
 
-std::string StaffWorkFlow::getName(){
+std::string StaffWorkFlow::getName() const {
     return staffName;
 }
 
