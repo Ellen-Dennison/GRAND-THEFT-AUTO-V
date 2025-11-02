@@ -50,7 +50,7 @@ public:
      * @brief Retrieves the customer's name.
      * @return The customer's name as a string.
      */
-    string getName() const;
+    std::string getName() const;
 
     /**
      * @brief Retrieves the customer's available budget.
