@@ -1,21 +1,16 @@
 #include "DeadState.h"
 
+DeadState::DeadState() : PlantState() {
+}
 
-DeadState::DeadState()
-{}
-
-
-void DeadState::grow() 
-{
+void DeadState::grow() {
     //Dead can't grow
 }
 
-std::string DeadState::getStateName() const
-{
+std::string DeadState::getStateName() const{
     return "Dead";
 }
 
-bool DeadState::canBeSold() const
-{
+bool DeadState::canBeSold() const{
     return false;
 }
