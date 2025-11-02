@@ -42,10 +42,10 @@
 class NurseryMediator {
 private:
     /** @brief Collection of plants currently in the greenhouse (growing stage). */
-    vector<Plant*> greenhouse;
+    std::vector<Plant*> greenhouse;
 
     /** @brief Collection of plants available on the sales floor. */
-    vector<Plant*> salesFloor;
+    std::vector<Plant*> salesFloor;
 
     /**
      * @brief Registry of plant factories organized by plant type and variety.
@@ -60,21 +60,39 @@ private:
     PlantCaretaker* careTaker;
 
     /** @brief Counter used to assign unique IDs to plants. */
-    int plantIdCounter;
+    //int plantIdCounter; !This is used nowhere
+
+    //FOR SALES TRACKING. this is for our 3 month summary
 
     /**
-     * @brief Helper method to remove Plant from greenhouse
-     * could be used once Plant is ready to be harvested
-     * @param plant Pointer points to plant to be removed
+     * @brief holds total revenue collected over a quater
      */
-    bool removePlantFromGreenhouse(Plant* plant);
+    double totalRevenue;
 
     /**
-     * @brief Helper methods to remove Plant from salesFloor
-     * could be used once Plant is sold or is revived and reverts to the growing state
-     * @param plant Pointer points to plant to be removed
+     * @brief holds total customers served over a quater
      */
-    bool removePlantFromSalesFloor(Plant* plant);
+    int totalCustomers;
+
+    /**
+     * @brief holds total bundles sold over a quater
+     */
+    int bundleOrderCount;
+
+    /**
+     * @brief holds total singular plants sold over a quater
+     */
+    int individualOrderCount;
+
+    /**
+     * @brief holds total plants with decorative pots sold over a quater
+     */
+    int plantsWithPots;
+
+    /**
+     * @brief holds total plants with gift wrapping sold over a quater
+     */
+    int plantsWithGiftWrap;  
 
 public:
     /**
@@ -108,7 +126,7 @@ public:
      * @param plantName The specific plant
      * @param qty Number of plants to create
      */
-    void addMultiplePlants(const std::string& plantType, const std::string& varietyName, int qty);
+    void addMultiplePlants(const std::string& plantType, const std::string& plantName, int qty);
 
     /**
      * @brief Performs care routines on all greenhouse plants (watering, sunlight, fertilizing).
@@ -137,8 +155,7 @@ public:
     void checkForWiltingPlants();
 
     /**
-     * @brief Processes a customer order by assigning a plant from the sales floor.
-     * 
+     * @brief Processes a customer order using the orderBuilder
      * @param cusName The name of the customer placing the order.
      * @param plantType The type of plant requested.
      * @param wantsPot Whether the customer wants a decorative pot.
@@ -146,6 +163,18 @@ public:
      * @return A pointer to a newly created PlantOrder if successful, nullptr otherwise.
      */
     PlantOrder* processCustomerOrder(std::string cusName, std::string& plantType, bool wantsPot, bool wantsWrapping);
+
+    /**
+     * @brief Processes a bundle order for multiple plants of the same type using the OrderBuilder
+     * @param cusName The name of the customer placing the order.
+     * @param bundleName The name/title of the bundle (Flower or Bouquet or premium etc.)
+     * @param plantType The type of plants to include in the bundle
+     * @param discount The discount percentage to apply to the bundle
+     * @param decorativePotOnFirst Whether to add a decorative pot to the whole bundle or to all plants in the bundle
+     * @param giftWrapAll Whether to apply gift wrapping to all plants in the bundle
+     * @return A pointer to a newly created PlantOrder if successful, nullptr otherwise
+     */
+    PlantOrder* processBundleOrder(const std::string& cusName, const std::string& bundleName, const std::string& plantType, double discount, bool decorativePotOnFirst, bool giftWrapAll);
 
     /**
      * @brief Simulates a customer browsing the sales floor.
@@ -191,16 +220,78 @@ public:
     int getPlantCountByType(const std::string& type, bool inGreenhouse = true) const;
 
     /**
+     * @brief Helper method to remove Plant from greenhouse
+     * could be used once Plant is ready to be harvested
+     * @param plant Pointer points to plant to be removed
+     */
+    bool removePlantFromGreenhouse(Plant* plant);
+
+    /**
+     * @brief Helper methods to remove Plant from salesFloor
+     * could be used once Plant is sold or is revived and reverts to the growing state
+     * @param plant Pointer points to plant to be removed
+     */
+    bool removePlantFromSalesFloor(Plant* plant);
+
+    /**
      * @brief Returns a reference to the greenhouse plant collection.
      * @return Reference to the vector of greenhouse plants.
      */
-    vector<Plant*>& getGreenhouse();
+    std::vector<Plant*>& getGreenhouse();
 
     /**
      * @brief Returns a reference to the sales floor plant collection.
      * @return Reference to the vector of sales floor plants.
      */
-    vector<Plant*>& getSalesFloor();
+    std::vector<Plant*>& getSalesFloor();
+
+    /**
+     * @brief Gets a pointer to the plant caretaker
+     * @return Pointer to the nursery's PlantCaretaker
+     */
+    PlantCaretaker* getCaretaker();
+
+    //FOR SALES TRACIKING:
+    /**
+     * @brief Gets total revenue generated from all sales.
+     * @return The total revenue in 
+     */
+    double getTotalRevenue() const { return totalRevenue; }
+    
+    /**
+     * @brief Gets total number of customers served
+     * @return The count of customers who completed purchases
+     */
+    int getTotalCustomers() const { return totalCustomers; }
+    
+    /**
+     * @brief Gets number of bundle orders processed
+     * @return The count of bundle orders
+     */
+    int getBundleOrderCount() const { return bundleOrderCount; }
+    
+    /**
+     * @brief Gets number of individual plant orders processed
+     * @return The count of individual plant orders
+     */
+    int getIndividualOrderCount() const { return individualOrderCount; }
+    
+    /**
+     * @brief Gets number of plants sold with decorative pots
+     * @return The count of plants that included decorative pots
+     */
+    int getPlantsWithPots() const { return plantsWithPots; }
+    
+    /**
+     * @brief Gets number of plants sold with gift wrapping
+     * @return The count of plants that included gift wrapping
+     */
+    int getPlantsWithGiftWrap() const { return plantsWithGiftWrap; }
+    
+    /**
+     * @brief Display sales statistics for the reporting period
+     */
+    void displaySalesStatistics() const;
 };
 
 #endif // NURSERY_MEDIATOR_H
