@@ -23,25 +23,43 @@ protected:
 
 public:
       /**
-      * @brief This PlantDecorator constructor and it initializes the members of the object
+      * @brief This is the PlantDecorator constructor and it initializes the members of the class
       * @param p The plant object that will be wrapped by the derived plantdecorator classes to add extra functionality
       */
     PlantDecorator(Plant* p);
       
      /**
-     * @brief Returns a pointer to the singleton instance of City.
-     * @return A pointer to the City instance.
+     * @brief The PlantDecorator destructor
      */
     virtual ~PlantDecorator();
 
+     /**
+     * @brief  Gets the name of the plant
+     * @return String with the plant name
+     */
     virtual std::string getName()const override;
-
+      
+     /**
+     * @brief Gets the type of plant
+     * @return String with the plant type
+     */
     virtual std::string getType() const override;
-
+     
+     /**
+     * @brief Gets the price of the plant
+     * @return Double with plant price
+     */
     virtual double getPrice() const override;
-
+     
+     /**
+     * @brief Displays the plant information 
+     */
     void display()const override;
-
+      
+     /**
+     * @brief Create a deep copy of the private member plant object  
+     * @return Pointer to the cloned plant
+     */
     Plant* clone() const override = 0;
   
 };
