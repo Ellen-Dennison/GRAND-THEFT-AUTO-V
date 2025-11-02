@@ -152,7 +152,7 @@ Something about the plant life that calls to a person.
 </br>
 
 ## ⚒️ Our workflow
-[![C/C++ CI](https://github.com/Ellen-Dennison/GRAND-THEFT-AUTO-V/actions/workflows/main.yml/badge.svg)](https://github.com/Ellen-Dennison/GRAND-THEFT-AUTO-V/actions/workflows/main.yml)
+[![C/C++ CL/CD](https://github.com/Ellen-Dennison/GRAND-THEFT-AUTO-V/actions/workflows/main.yml/badge.svg)](https://github.com/Ellen-Dennison/GRAND-THEFT-AUTO-V/actions/workflows/main.yml)
 
 
 
