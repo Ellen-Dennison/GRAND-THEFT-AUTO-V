@@ -4,9 +4,14 @@
 SalesRole::SalesRole(StaffWorkFlow* staff)
     : StaffWorkFlowDecorator(staff) {}
 
-void SalesRole::performMainTask() {
+void SalesRole::performMorningTasks() {
     std::cout << "Assists customers on the sales floor\n";
-    StaffWorkFlowDecorator::performMainTask();
+    StaffWorkFlowDecorator::performMorningTasks();
+}
+
+void SalesRole::performAfternoonTasks() {
+    std::cout << "Assists customers on the sales floor\n";
+    StaffWorkFlowDecorator::performAfternoonTasks();
 }
 
 std::string SalesRole::getType() {
