@@ -14,8 +14,8 @@ Something about the plant life that calls to a person.
 ## 👩🏾‍💻 How to run our project
 
 <div>make run</div>
-<div>make run</div>
-<div>make run</div>
+<div>make test</div>
+<div>make docs</div>
 
 ## 👥 Team Members
 
@@ -149,6 +149,10 @@ Something about the plant life that calls to a person.
 <a href="https://docs.google.com/document/d/1eTlIpR7Nj3Ug5PbFX11YB4J5lktUktFVabwlhYKQjbQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Link to the report</a>
 </br>
 <a href="" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Link to the uml diagrams</a>
+[![C/C++ CI](https://github.com/Ellen-Dennison/GRAND-THEFT-AUTO-V/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/Ellen-Dennison/GRAND-THEFT-AUTO-V/actions/workflows/c-cpp.yml)
+
+
+
 
 © 2025 GTAV — University of Pretoria COS 214 Project
 
