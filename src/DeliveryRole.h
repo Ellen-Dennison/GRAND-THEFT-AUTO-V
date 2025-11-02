@@ -5,7 +5,8 @@
 
 class DeliveryRole : public StaffWorkFlowDecorator{
     protected:
-                void performMainTask();
+                void performMorningTasks();
+                void performAfternoonTasks();
     public:
                 DeliveryRole(StaffWorkFlow* staff);
                 std::string getType() override;
