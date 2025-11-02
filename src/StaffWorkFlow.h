@@ -1,6 +1,8 @@
 #ifndef STAFFWORKFLOW_H
 #define STAFFWORKFLOW_H
-#include<string>
+#include <string>
+
+#include "Customer.h"
 
 class StaffWorkFlow{//abstract class
     protected:
@@ -10,12 +12,14 @@ class StaffWorkFlow{//abstract class
                 void takeBreak();
                 
     public:
-                virtual std::string getName();
+                virtual std::string getName() const;
                 virtual std::string getType() = 0;
                 virtual void displayRoles() = 0;
-                void executeWorkDay();
-                virtual void performMainTask() = 0;//!Can't be accessed by function
+                virtual void executeWorkDay();
+                virtual void performMorningTasks() = 0;
+                virtual void performAfternoonTasks() = 0;
                 virtual ~StaffWorkFlow();
+                virtual void assistCustomer(Customer* customer);
 
 };
 #endif
