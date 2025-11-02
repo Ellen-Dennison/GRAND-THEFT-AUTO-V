@@ -132,7 +132,7 @@ clean-docs:
 	@rm -rf $(DOCSDIR)/doxygen
 	
 
-.PHONY: docs clean-docs doxygen-init
+
 
 
 # Clean up generated files
@@ -143,4 +143,7 @@ clean:
 
 # Phony targets (not actual files)
 .PHONY: all run clean
+.PHONY: docs clean-docs doxygen-init
+.PHONY: all test docs clean-docs
+
 
