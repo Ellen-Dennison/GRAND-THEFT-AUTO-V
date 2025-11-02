@@ -5,9 +5,14 @@ DeliveryRole::DeliveryRole(StaffWorkFlow* staff)
              : StaffWorkFlowDecorator(staff){}
 
 
-void DeliveryRole::performMainTask(){
-    std::cout<<"Delivers plants to customers\n";
-    StaffWorkFlowDecorator::performMainTask();
+void DeliveryRole::performMorningTasks(){
+    std::cout<<"Delivering plants to customers...\n";
+    StaffWorkFlowDecorator::performMorningTasks();
+}
+
+void DeliveryRole::performAfternoonTasks(){
+    std::cout<<"Delivering plants to customers...\n";
+    StaffWorkFlowDecorator::performAfternoonTasks();
 }
 
 std::string DeliveryRole::getType() {
