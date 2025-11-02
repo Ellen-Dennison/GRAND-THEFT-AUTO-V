@@ -67,7 +67,8 @@ SOURCES = $(addprefix $(SRC_DIR)/, \
           RevivePlantCommand.cpp\
           Command.cpp\
           PlantBundle.cpp\
-          PlantItem.cpp)
+          PlantItem.cpp\
+          OrderBuilder.cpp)
 
 TEST_SOURCES = $(wildcard $(TST_DIR)/*.cpp)
 TESTABLE_SOURCES = $(filter-out $(SRC_DIR)/main.cpp, $(SOURCES))
