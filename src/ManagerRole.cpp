@@ -5,9 +5,14 @@ ManagerRole::ManagerRole(StaffWorkFlow* staff)
              : StaffWorkFlowDecorator(staff){}
 
 
-void ManagerRole::performMainTask(){
-    std::cout<<"Manages the other workers\n";
-    StaffWorkFlowDecorator::performMainTask();
+void ManagerRole::performMorningTasks(){
+    std::cout<<"Managing the other workers...\n";
+    StaffWorkFlowDecorator::performMorningTasks();
+}
+
+void ManagerRole::performAfternoonTasks(){
+    std::cout<<"Managing the other workers...\n";
+    StaffWorkFlowDecorator::performAfternoonTasks();
 }
 
 std::string ManagerRole::getType() {
