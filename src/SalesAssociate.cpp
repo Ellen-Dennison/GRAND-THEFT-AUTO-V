@@ -6,48 +6,74 @@
 
 SalesAssociate::SalesAssociate(std::string name, NurseryMediator* med) {
     staffName = name;
-    mediator = med;  // Store mediator reference
+    mediator = med;
 }
 
-void SalesAssociate::performMainTask() {
-    std::cout << staffName << " working on the sales floor\n";
+void SalesAssociate::executeWorkDay() {
+    clockIn();
+    std::cout << "\n ---Morning Shift---\n";
+    performMorningTasks();
+    takeBreak();
+    std::cout << "\n ---Afternoon Shift---\n";
+    performAfternoonTasks();
+    std::cout << "  " << staffName << " remaining on duty for customer service\n";
+}
+
+void SalesAssociate::performMorningTasks() {
+    std::cout << staffName << " is preparing for customer service\n";
     
-    //- Ask mediator for sales floor access
     std::vector<Plant*> salesFloor = mediator->getSalesFloor();
     
+    std::cout << "  Morning: Reviewing inventory for customers\n";
+    
     if (salesFloor.empty()) {
-        std::cout << "  No plants on sales floor\n";
-        std::cout << "  Requesting stock from greenhouse...\n";
-        mediator->harvestMaturePlants();
+        std::cout << "  No plants available for sale\n";
+        std::cout << "  Waiting for stock...\n";
         return;
     }
     
-    // Check inventory
     std::cout << "  Available plants: " << salesFloor.size() << "\n";
     
-    // Display available plants
-    std::cout << "  Plants ready for sale:\n";
+    // Organize by plant type for easy customer assistance
+    std::map<std::string, int> plantsByType;
     for (Plant* plant : salesFloor) {
-        std::cout << "    - " << plant->getName() 
-                  << " (" << plant->getType() << ")"
-                  << " - R" << plant->getPrice()
-                  << " [Health: " << plant->getHealth() << "%]\n";
+        plantsByType[plant->getType()]++;
     }
     
-    // Check for plants needing care on sales floor
+    std::cout << "  Today's inventory by category:\n";
+    for (const auto& pair : plantsByType) {
+        std::cout << "    - " << pair.second << " " << pair.first << "(s)\n";
+    }
+}
+
+void SalesAssociate::performAfternoonTasks() {
+    std::cout << staffName << " ready for afternoon customer service\n";
+    
+    std::vector<Plant*> salesFloor = mediator->getSalesFloor();
+    
+    if (salesFloor.empty()) {
+        std::cout << "  No plants available for customers\n";
+        return;
+    }
+    
+    std::cout << "  Afternoon: Available for customer assistance\n";
+    std::cout << "  Plants in stock: " << salesFloor.size() << "\n";
+    
+    // Review featured plants
+    std::cout << "  Featured plants:\n";
+    int featuredCount = 0;
     for (Plant* plant : salesFloor) {
-        if (plant->getHealth() < 70) {
-            std::cout << "Watering " << plant->getName() 
-                      << " on display\n";
-            plant->water();
+        if (plant->getHealth() >= 90) {
+            std::cout << plant->getName() 
+                      << " (" << plant->getType() << ")"
+                      << " - R" << plant->getPrice()
+                      << " [Premium Health: " << plant->getHealth() << "%]\n";
+            featuredCount++;
         }
     }
     
-    // Check for low stock
-    if (salesFloor.size() < 5) {
-        std::cout << "LOW STOCK ALERT!\n";
-        std::cout << "  Requesting more plants from greenhouse...\n";
-        mediator->harvestMaturePlants();
+    if (featuredCount == 0) {
+        std::cout << "    All plants are in good condition and ready for sale\n";
     }
 }
 
@@ -58,26 +84,35 @@ void SalesAssociate::assistCustomer(Customer* customer) {
     std::vector<Plant*> salesFloor = mediator->getSalesFloor();
     
     //std::string preference = customer->getPreferredPlantType();//!function not implemented
-    std::string preference = "empty";
+    //std::string preference = "empty";
     double budget = customer->getBudget();
     
-    std::cout << "  Customer looking for: " << preference 
-              << " (Budget: R" << budget << ")\n";
+    std::cout << "'" << customer->getName() << ", what brings you in today?'\n";
+    std::cout << "'We have a wonderful selection within your budget of R" << budget << "'\n";
     
-    // Show matching plants
-    bool foundMatch = false;
+    //Show affordable plants by category
+    std::map<std::string, int> affordableByType;
+    
     for (Plant* plant : salesFloor) {
-        if (plant->getType() == preference && 
-            customer->canAfford(plant->getPrice())) {
-            std::cout << "  ✓ Recommending: " << plant->getName() 
-                      << " - R" << plant->getPrice() << "\n";
-            foundMatch = true;
+        if (customer->canAfford(plant->getPrice())) {
+            affordableByType[plant->getType()]++;
         }
     }
     
-    if (!foundMatch) {
-        std::cout << "  No matching plants available in budget\n";
+    if (!affordableByType.empty()) {
+        std::cout << "  \nAvailable in your budget:\n";
+        for (const auto& pair : affordableByType) {
+            std::cout << pair.second << " " << pair.first 
+                      << "(s) available\n\n";
+        }
+    } else {
+        std::cout << "  Unfortunately, our current selection exceeds your budget.\n";
     }
+}
+
+
+void SalesAssociate::endShift() {
+    clockOut();
 }
 
 std::string SalesAssociate::getType() {
@@ -86,9 +121,13 @@ std::string SalesAssociate::getType() {
 
 void SalesAssociate::displayRoles() {
     std::cout << staffName << " - " << getType() << "\n";
-    std::cout << "  Responsibilities:\n";
-    std::cout << "  - Assist customers\n";
-    std::cout << "  - Manage sales floor inventory\n";
-    std::cout << "  - Process purchases\n";
-    std::cout << "  - Maintain plant displays\n";
+    std::cout << "  Morning Responsibilities:\n";
+    std::cout << "    - Review inventory\n";
+    std::cout << "    - Prepare for customer interactions\n";
+    std::cout << "    - Organize product knowledge\n";
+    std::cout << "  Afternoon Responsibilities:\n";
+    std::cout << "    - Assist customers with purchases\n";
+    std::cout << "    - Provide plant recommendations\n";
+    std::cout << "    - Answer customer questions\n";
+    std::cout << "    - Process sales transactions\n";
 }
