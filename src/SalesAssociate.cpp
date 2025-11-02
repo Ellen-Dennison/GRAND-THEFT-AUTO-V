@@ -64,7 +64,7 @@ void SalesAssociate::performAfternoonTasks() {
     int featuredCount = 0;
     for (Plant* plant : salesFloor) {
         if (plant->getHealth() >= 90) {
-            std::cout << plant->getName() 
+            std::cout<< plant->getName() 
                       << " (" << plant->getType() << ")"
                       << " - R" << plant->getPrice()
                       << " [Premium Health: " << plant->getHealth() << "%]\n";
