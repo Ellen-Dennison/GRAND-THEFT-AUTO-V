@@ -16,7 +16,7 @@ public:
     /**
      * @brief Constructs a new WiltingState object
      */
-    WiltingState() {};
+    WiltingState();
 
     /**
      * @brief Handles growth logic for the wilting state
