@@ -21,9 +21,11 @@ void StaffWorkFlow::takeBreak() {
 
 void StaffWorkFlow::executeWorkDay() {
     clockIn();
-    performMainTask();  // Morning work
+    std::cout<<"\n ---Morning Shift---";
+    performMorningTasks();  // Morning work
     takeBreak();
-    performMainTask();  // Afternoon work
+    std::cout<<"\n ---Afternoon Shift---";
+    performAfternoonTasks();  // Afternoon work
     clockOut();
 }
 
