@@ -162,7 +162,7 @@ public:
      * @param wantsWrapping Whether the customer wants gift wrapping.
      * @return A pointer to a newly created PlantOrder if successful, nullptr otherwise.
      */
-    PlantOrder* processCustomerOrder(std::string cusName, std::string& plantType, bool wantsPot, bool wantsWrapping);
+    PlantOrder* processCustomerOrder(std::string cusName, std::string plantType, bool wantsPot, bool wantsWrapping);
 
     /**
      * @brief Processes a bundle order for multiple plants of the same type using the OrderBuilder
