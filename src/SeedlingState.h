@@ -15,7 +15,7 @@ public:
     /**
      * @brief Constructs a new SeedlingState object
      */
-    SeedlingState() {};
+    SeedlingState();
 
     /**
      * @brief Handles growth logic for the seedling state
