@@ -16,8 +16,6 @@
 #include <vector>
 #include "Plant.h"
 
-using namespace std;
-
 /**
  * @class Customer
  * @brief Represents a nursery customer who can browse, interact, and purchase plants.
@@ -35,7 +33,7 @@ using namespace std;
 class Customer {
 private:
     /** @brief The customer's name. */
-    string name;
+    std::string name;
 
     /** @brief The customer's current available budget. */
     double budget;
@@ -46,7 +44,7 @@ public:
      * @param n The customer's name.
      * @param b The customer's initial budget.
      */
-    Customer(string n, double b);
+    Customer(std::string n, double b);
 
     /**
      * @brief Retrieves the customer's name.
@@ -67,7 +65,7 @@ public:
      *
      * @param salesFloor A reference to a vector of Plant pointers representing available plants.
      */
-    void browseSalesFloor(vector<Plant*>& salesFloor);
+    void browseSalesFloor(std::vector<Plant*>& salesFloor);
 
     /**
      * @brief Determines if the customer can afford a plant based on its price.
@@ -87,13 +85,13 @@ public:
      * @brief Expresses interest in a specific plant.
      * @param plantName The name of the plant the customer is interested in.
      */
-    void expressInterest(string plantName);
+    void expressInterest(std::string plantName);
 
     /**
      * @brief Requests a customization option for a plant (e.g., pot or wrapping).
      * @param customType A string describing the type of customization.
      */
-    void requestCustomisation(string customType);
+    void requestCustomisation(std::string customType);
 
     /**
      * @brief Simulates the customer making a purchase.
