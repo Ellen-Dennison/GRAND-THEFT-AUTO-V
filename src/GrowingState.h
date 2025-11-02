@@ -15,7 +15,7 @@ public:
     /**
      * @brief Constructs a new GrowingState object
      */
-    GrowingState() {};
+    GrowingState();
 
     /**
      * @brief Handles growth logic for the growing state
