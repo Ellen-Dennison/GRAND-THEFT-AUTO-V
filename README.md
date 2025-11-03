@@ -1,5 +1,6 @@
 <p align="center">
-  <img src="https://www.exitlag.com/blog/wp-content/uploads/2024/12/gta-v-16x9-1.jpg" alt="Grand-Theft-Auto-V" width="300">
+  <!-- <img src="https://www.exitlag.com/blog/wp-content/uploads/2024/12/gta-v-16x9-1.jpg" alt="Grand-Theft-Auto-V" width="300"> -->
+  <img src="data\GTAV-logo.png" alt="Grand-Theft-Auto-V" width="300">
 </p>
 
 <div align="left">
@@ -152,7 +153,7 @@ Something about the plant life that calls to a person.
 </br>
 
 ## ⚒️ Our workflow
-----
+
 [![C/C++ CI/CD](https://github.com/Ellen-Dennison/GRAND-THEFT-AUTO-V/actions/workflows/main.yml/badge.svg)](https://github.com/Ellen-Dennison/GRAND-THEFT-AUTO-V/actions/workflows/main.yml)
 
 
