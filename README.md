@@ -14,9 +14,44 @@ Something about the plant life that calls to a person.
 
 ## 👩🏾‍💻 How to run our project
 
-<div>make run</div>
-<div>make test</div>
-<div>make docs</div>
+
+### Compiling and Running the Project
+
+To compile and run the project, use the following command:
+
+```bash
+make run
+```
+
+### Running Unit Tests
+
+To run the unit tests, use the following command:
+
+```bash
+make test
+
+### Generating the doxygen files
+
+To generating the doxygen files, use the following command:
+
+```bash
+make docs
+
+### Cleaning the Build
+
+To clean the build artifacts, you can run:
+
+```bash
+make clean
+```
+and
+
+```bash
+make docs
+``` 
+
+This will remove all compiled files and any doxygen created files.
+
 
 ## 👥 Team Members
 
