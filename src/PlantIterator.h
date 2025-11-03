@@ -15,7 +15,7 @@
 #include "Iterator.h"
 #include "Plant.h"
 
-using namespace std;
+
 
 /**
  * @class PlantIterator
