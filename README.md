@@ -14,7 +14,6 @@ Something about the plant life that calls to a person.
 
 ## 👩🏾‍💻 How to run our project
 
-
 ### Compiling and Running the Project
 
 To compile and run the project, use the following command:
@@ -33,7 +32,7 @@ make test
 
 ### Generating the doxygen files
 
-To generating the doxygen files, use the following command:
+To generate the doxygen files, use the following command:
 
 ```bash
 make docs
@@ -41,7 +40,7 @@ make docs
 
 ### Cleaning the Build
 
-To clean the build artifacts, you can run:
+To clean the build artefacts, you can run:
 
 ```bash
 make clean
@@ -52,7 +51,16 @@ and
 make clean-docs
 ``` 
 
-This will remove all compiled files and any doxygen created files.
+This will remove all compiled files and any Doxygen-created files.
+
+## 🗂️ Read our report here
+<a href="https://docs.google.com/document/d/1eTlIpR7Nj3Ug5PbFX11YB4J5lktUktFVabwlhYKQjbQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Link to the report</a>
+</br>
+
+## 👩🏾‍⚖️ Branch Rulesets
+
+ **`main`**:
+   - Block force pushes
 
 
 ## 👥 Team Members
@@ -177,26 +185,15 @@ This will remove all compiled files and any doxygen created files.
         </p>
     </td>
   </tr>
-  
 
   
 </table>
 </br>
-
-## 🗂️ Read our report here
-<a href="https://docs.google.com/document/d/1eTlIpR7Nj3Ug5PbFX11YB4J5lktUktFVabwlhYKQjbQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Link to the report</a>
-</br>
-
 
 ## ⚒️ Our workflow
 
 [![C/C++ CI/CD](https://github.com/Ellen-Dennison/GRAND-THEFT-AUTO-V/actions/workflows/main.yml/badge.svg)](https://github.com/Ellen-Dennison/GRAND-THEFT-AUTO-V/actions/workflows/main.yml)
 
 
-## 👩🏾‍⚖️ Branch Rulesets
-
-1. **`main`**:
-   - Block force pushes
-
-© 2025 GTAV — University of Pretoria COS 214 Project
+<em>© 2025 GTAV — University of Pretoria COS 214 Project</em>
 
