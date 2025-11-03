@@ -193,7 +193,12 @@ This will remove all compiled files and any doxygen created files.
 [![C/C++ CI/CD](https://github.com/Ellen-Dennison/GRAND-THEFT-AUTO-V/actions/workflows/main.yml/badge.svg)](https://github.com/Ellen-Dennison/GRAND-THEFT-AUTO-V/actions/workflows/main.yml)
 
 
+## **Branch Rulesets**:
 
+1. **`main`**:
+   - No direct pushes allowed; all changes must go through pull requests.
+   - Requires at least 1 approvals before merging.
+   - Commits must be signed and verified.
 
 © 2025 GTAV — University of Pretoria COS 214 Project
 
