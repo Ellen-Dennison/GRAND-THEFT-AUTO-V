@@ -11,43 +11,54 @@ TForm2 *Form2;
 
 //---------------------------------------------------------------
 __fastcall TForm2::TForm2(TComponent* Owner)
-	: TForm(Owner)
+    : TForm(Owner), nursery(nullptr), notifSystem(nullptr), manager(nullptr),
+      kobeObs(nullptr), nalediObs(nullptr), carieObs(nullptr)
 {
-	NurseryMediator* nursery = new NurseryMediator();
+    nursery = new NurseryMediator();
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm2::HireStaffClick(TObject *Sender)
 {
 	String taskText = StaffEdit->Text;
 
-	// Check if user typed "Kobe Bryant - Greenhouse Worker"
 	if (taskText == "Kobe Bryant - Greenhouse Worker") {
-		// Create the actual Kobe Bryant staff object
 		StaffWorkFlow* kobe = new GreenhouseWorker("Kobe Bryant", nursery);
+		StaffList->Items->Add(taskText + " - HIRED!");
 
-		// Add confirmation to the list
-		StaffList->Items->Add(taskText+ "- HIRED!");
-
-		// Optional: Store the object if you need it later
-		// this->Kobe = kobe;
+		// Send notification
+		if (notifSystem != nullptr){
+			notifSystem->notify("Kobe Bryant hired as Greenhouse Worker!");
+			AddNotification("Staff hired: Kobe Bryant - Greenhouse Worker");
+		}
 	}
 	else if (taskText == "Naledi - Sales Associate") {
-		// Create Naledi object
 		StaffWorkFlow* naledi = new SalesAssociate("Naledi", nursery);
-		StaffList->Items->Add(taskText+ "- HIRED!");
+		StaffList->Items->Add(taskText + " - HIRED!");
+
+		if (notifSystem != nullptr) {
+			notifSystem->notify("Naledi hired as Sales Associate!");
+			AddNotification("Staff hired: Naledi - Sales Associate");
+		}
 	}
 	else if (taskText == "Trevor - Greenhouse Worker") {
-		// Create Trevor object
 		StaffWorkFlow* trevor = new GreenhouseWorker("Trevor", nursery);
-		StaffList->Items->Add(taskText+ "- HIRED!");
+		StaffList->Items->Add(taskText + " - HIRED!");
+
+		if (notifSystem != nullptr) {
+			notifSystem->notify("Trevor hired as Greenhouse Worker!");
+			AddNotification("Staff hired: Trevor - Greenhouse Worker");
+		}
 	}
-	else if (taskText == "Carie - Greenhouse Worker") {
-		// Create Carie object
+    else if (taskText == "Carie - Greenhouse Worker") {
 		StaffWorkFlow* carie = new GreenhouseWorker("Carie", nursery);
-		StaffList->Items->Add(taskText+ "- HIRED!");
+        StaffList->Items->Add(taskText + " - HIRED!");
+
+        if (notifSystem != nullptr) {
+			notifSystem->notify("Carie hired as Greenhouse Worker!");
+			AddNotification("Staff hired: Carie - Greenhouse Worker");
+		}
 	}
 	else if (taskText != ""){
-		// Just add the text as a normal item
 		StaffList->Items->Add(taskText);
 	}
 
@@ -304,5 +315,34 @@ void __fastcall TForm2::FactoryListItemClick(TCustomListBox * const Sender, TLis
         FactoryDetailsMemo->Lines->Add("Selected: " + itemText);
         FactoryDetailsMemo->Lines->Add("(No factory details available)");
     }
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm2::NotificationsClick(TObject *Sender)
+{
+    // Setup observer system
+    notifSystem = new Subject();
+    manager = new ManagerObserver("Sarah");
+    kobeObs = new StaffObserver("Kobe", "GreenhouseWorker");
+    nalediObs = new StaffObserver("Naledi", "SalesAssociate");
+    carieObs = new StaffObserver("Carie", "SalesFloorWorker");
+
+    notifSystem->attach(manager);
+    notifSystem->attach(kobeObs);
+    notifSystem->attach(nalediObs);
+    notifSystem->attach(carieObs);
+
+    // Add to notification list
+    NotificationList->Items->Clear();
+    NotificationList->Items->Add("=== NOTIFICATION SYSTEM ACTIVE ===");
+	NotificationList->Items->Add("Manager: Sarah");
+	NotificationList->Items->Add("Staff: Kobe (GreenhouseWorker)");
+	NotificationList->Items->Add("Staff: Naledi (SalesAssociate)");
+	NotificationList->Items->Add("Staff: Carie (SalesFloorWorker)");
+    NotificationList->Items->Add("");
+    NotificationList->Items->Add("System ready for notifications!");
+
+    // Send welcome notification
+    notifSystem->notify("Nursery is now open for business!");
+	NotificationList->Items->Add("Notification: Nursery is now open for business!");
 }
 //---------------------------------------------------------------------------
