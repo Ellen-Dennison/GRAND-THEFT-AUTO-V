@@ -193,7 +193,7 @@ This will remove all compiled files and any doxygen created files.
 [![C/C++ CI/CD](https://github.com/Ellen-Dennison/GRAND-THEFT-AUTO-V/actions/workflows/main.yml/badge.svg)](https://github.com/Ellen-Dennison/GRAND-THEFT-AUTO-V/actions/workflows/main.yml)
 
 
-## **Branch Rulesets**:
+## 👩🏾‍⚖️ Branch Rulesets
 
 1. **`main`**:
    - Block force pushes
