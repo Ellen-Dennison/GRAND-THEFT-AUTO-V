@@ -49,7 +49,7 @@ make clean
 and
 
 ```bash
-make docs
+make clean-docs
 ``` 
 
 This will remove all compiled files and any doxygen created files.
@@ -186,8 +186,7 @@ This will remove all compiled files and any doxygen created files.
 ## 🗂️ Read our report here
 <a href="https://docs.google.com/document/d/1eTlIpR7Nj3Ug5PbFX11YB4J5lktUktFVabwlhYKQjbQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Link to the report</a>
 </br>
-<a href="" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Link to the uml diagrams</a>
-</br>
+
 
 ## ⚒️ Our workflow
 
