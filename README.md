@@ -29,6 +29,7 @@ To run the unit tests, use the following command:
 
 ```bash
 make test
+```
 
 ### Generating the doxygen files
 
@@ -36,6 +37,7 @@ To generating the doxygen files, use the following command:
 
 ```bash
 make docs
+```
 
 ### Cleaning the Build
 
