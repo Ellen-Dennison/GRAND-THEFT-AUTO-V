@@ -9,7 +9,7 @@ double Customer::getBudget() const { return budget; }
 
 
 void Customer::browseSalesFloor(std::vector<Plant*>& salesFloor) {
-    std::cout << "\n👀 " << name << " is browsing the sales floor..." << std::endl;
+    std::cout << name << " is browsing the sales floor..." << std::endl;
 
     if (salesFloor.empty()) {
         std::cout << "There are currently no plants available for sale.\n";
@@ -17,7 +17,7 @@ void Customer::browseSalesFloor(std::vector<Plant*>& salesFloor) {
     }
 
     for (auto* plant : salesFloor) {
-        std::cout << "🪴 " << plant->getName() << " (" << plant->getType()
+        std::cout  << plant->getName() << " (" << plant->getType()
              << ") - Price: R" << plant->getPrice() << std::endl;
     }
 }
@@ -48,10 +48,10 @@ void Customer::requestCustomisation(std::string customType) {
 
 void Customer::makePurchase(double amount) {
     
-    std::cout << "💰 " << name << " is attempting to make a purchase of R" << amount << "..." << std::endl;
+    std::cout << name << " is attempting to make a purchase of R" << amount << "..." << std::endl;
 
     if (amount > budget) {
-        std::cout << "❌ " << name << " cannot afford this purchase. (Budget: R" << budget << ")\n";
+        std::cout << name << " cannot afford this purchase. (Budget: R" << budget << ")\n";
         return;
     }
 
