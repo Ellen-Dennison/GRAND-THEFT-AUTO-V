@@ -14,6 +14,12 @@ Something about the plant life that calls to a person.
 
 ## 👩🏾‍💻 How to run our project
 
+### Clone It
+
+```bash
+https://github.com/Ellen-Dennison/GRAND-THEFT-AUTO-V.git
+```
+
 ### Compiling and Running the Project
 
 To compile and run the project, use the following command:
