@@ -20,35 +20,35 @@ void __fastcall TForm2::HireStaffClick(TObject *Sender)
 {
 	String taskText = StaffEdit->Text;
 
-    // Check if user typed "Kobe Bryant - Greenhouse Worker"
-    if (taskText == "Kobe Bryant - Greenhouse Worker") {
-        // Create the actual Kobe Bryant staff object
-        StaffWorkFlow* kobe = new GreenhouseWorker("Kobe Bryant", nursery);
+	// Check if user typed "Kobe Bryant - Greenhouse Worker"
+	if (taskText == "Kobe Bryant - Greenhouse Worker") {
+		// Create the actual Kobe Bryant staff object
+		StaffWorkFlow* kobe = new GreenhouseWorker("Kobe Bryant", nursery);
 
 		// Add confirmation to the list
 		StaffList->Items->Add(taskText+ "- HIRED!");
 
-        // Optional: Store the object if you need it later
-        // this->Kobe = kobe;
-    }
-    else if (taskText == "Naledi - Sales Associate") {
-        // Create Naledi object
-        StaffWorkFlow* naledi = new SalesAssociate("Naledi", nursery);
+		// Optional: Store the object if you need it later
+		// this->Kobe = kobe;
+	}
+	else if (taskText == "Naledi - Sales Associate") {
+		// Create Naledi object
+		StaffWorkFlow* naledi = new SalesAssociate("Naledi", nursery);
 		StaffList->Items->Add(taskText+ "- HIRED!");
 	}
-    else if (taskText == "Trevor - Greenhouse Worker") {
-        // Create Trevor object
-        StaffWorkFlow* trevor = new GreenhouseWorker("Trevor", nursery);
+	else if (taskText == "Trevor - Greenhouse Worker") {
+		// Create Trevor object
+		StaffWorkFlow* trevor = new GreenhouseWorker("Trevor", nursery);
 		StaffList->Items->Add(taskText+ "- HIRED!");
 	}
-    else if (taskText == "Carie - Greenhouse Worker") {
-        // Create Carie object
+	else if (taskText == "Carie - Greenhouse Worker") {
+		// Create Carie object
 		StaffWorkFlow* carie = new GreenhouseWorker("Carie", nursery);
 		StaffList->Items->Add(taskText+ "- HIRED!");
 	}
 	else if (taskText != ""){
-        // Just add the text as a normal item
-        StaffList->Items->Add(taskText);
+		// Just add the text as a normal item
+		StaffList->Items->Add(taskText);
 	}
 
 	StaffEdit->Text = "";
@@ -79,7 +79,7 @@ void __fastcall TForm2::StaffListItemClick(TCustomListBox * const Sender, TListB
         RolesMemo->Lines->Add("• Monitor overall health");
     }
     else if (itemText.Pos("Naledi") > 0) {
-        RolesMemo->Lines->Add("=== Naledi - Sales Associate ===");
+		RolesMemo->Lines->Add("=== Naledi - Sales Associate ===");
         RolesMemo->Lines->Add("");
         RolesMemo->Lines->Add("Morning Responsibilities:");
         RolesMemo->Lines->Add("• Open sales floor");
@@ -120,5 +120,43 @@ void __fastcall TForm2::StaffListItemClick(TCustomListBox * const Sender, TListB
         RolesMemo->Lines->Add("Selected: " + itemText);
         RolesMemo->Lines->Add("(No role information available)");
     }
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm2::RegisterFactoryClick(TObject *Sender)
+{
+	String taskText = FactoryEdit->Text;
+
+	// Check if user typed "Kobe Bryant - Greenhouse Worker"
+	if (taskText == "Kobe Bryant - Greenhouse Worker") {
+		// Create the actual Kobe Bryant staff object
+		StaffWorkFlow* kobe = new GreenhouseWorker("Kobe Bryant", nursery);
+
+		// Add confirmation to the list
+		StaffList->Items->Add(taskText+ "- HIRED!");
+
+		// Optional: Store the object if you need it later
+		// this->Kobe = kobe;
+	}
+	else if (taskText == "Naledi - Sales Associate") {
+		// Create Naledi object
+		StaffWorkFlow* naledi = new SalesAssociate("Naledi", nursery);
+		StaffList->Items->Add(taskText+ "- HIRED!");
+	}
+	else if (taskText == "Trevor - Greenhouse Worker") {
+		// Create Trevor object
+		StaffWorkFlow* trevor = new GreenhouseWorker("Trevor", nursery);
+		StaffList->Items->Add(taskText+ "- HIRED!");
+	}
+	else if (taskText == "Carie - Greenhouse Worker") {
+		// Create Carie object
+		StaffWorkFlow* carie = new GreenhouseWorker("Carie", nursery);
+		StaffList->Items->Add(taskText+ "- HIRED!");
+	}
+	else if (taskText != ""){
+		// Just add the text as a normal item
+		StaffList->Items->Add(taskText);
+	}
+
+	StaffEdit->Text = "";
 }
 //---------------------------------------------------------------------------
