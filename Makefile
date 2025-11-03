@@ -124,9 +124,9 @@ doxygen-init:
 
 # Generate Doxygen documentation
 docs:
-	@mkdir -p $(DOCSDIR)/doxygen
+	@mkdir -p $(DOCSDIR)
 	@doxygen $(DOXYFILE)
-	@echo "\033[1;32m✓ Documentation generated in $(DOCSDIR)/doxygen/html\033[0m"
+	@echo "\033[1;32m✓ Documentation generated in $(DOCSDIR)/html\033[0m"
 
 # Clean Doxygen documentation
 clean-docs:
