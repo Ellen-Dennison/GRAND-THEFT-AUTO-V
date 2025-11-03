@@ -196,9 +196,8 @@ This will remove all compiled files and any doxygen created files.
 ## **Branch Rulesets**:
 
 1. **`main`**:
-   - No direct pushes allowed; all changes must go through pull requests.
-   - Requires at least 1 approvals before merging.
    - Commits must be signed and verified.
+   - Block force pushes
 
 © 2025 GTAV — University of Pretoria COS 214 Project
 
