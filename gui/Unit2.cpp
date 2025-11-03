@@ -4,6 +4,7 @@
 #pragma hdrstop
 
 #include "Unit2.h"
+#include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
@@ -28,7 +29,6 @@ void __fastcall TForm2::HireStaffClick(TObject *Sender)
 		// Send notification
 		if (notifSystem != nullptr){
 			notifSystem->notify("Kobe Bryant hired as Greenhouse Worker!");
-			AddNotification("Staff hired: Kobe Bryant - Greenhouse Worker");
 		}
 	}
 	else if (taskText == "Naledi - Sales Associate") {
@@ -37,7 +37,6 @@ void __fastcall TForm2::HireStaffClick(TObject *Sender)
 
 		if (notifSystem != nullptr) {
 			notifSystem->notify("Naledi hired as Sales Associate!");
-			AddNotification("Staff hired: Naledi - Sales Associate");
 		}
 	}
 	else if (taskText == "Trevor - Greenhouse Worker") {
@@ -46,16 +45,15 @@ void __fastcall TForm2::HireStaffClick(TObject *Sender)
 
 		if (notifSystem != nullptr) {
 			notifSystem->notify("Trevor hired as Greenhouse Worker!");
-			AddNotification("Staff hired: Trevor - Greenhouse Worker");
+
 		}
 	}
     else if (taskText == "Carie - Greenhouse Worker") {
 		StaffWorkFlow* carie = new GreenhouseWorker("Carie", nursery);
-        StaffList->Items->Add(taskText + " - HIRED!");
+		StaffList->Items->Add(taskText + " - HIRED!");
 
         if (notifSystem != nullptr) {
 			notifSystem->notify("Carie hired as Greenhouse Worker!");
-			AddNotification("Staff hired: Carie - Greenhouse Worker");
 		}
 	}
 	else if (taskText != ""){
@@ -344,5 +342,11 @@ void __fastcall TForm2::NotificationsClick(TObject *Sender)
     // Send welcome notification
     notifSystem->notify("Nursery is now open for business!");
 	NotificationList->Items->Add("Notification: Nursery is now open for business!");
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm2::BackClick(TObject *Sender)
+{
+	Form1->Show();
+	this->Hide();
 }
 //---------------------------------------------------------------------------
