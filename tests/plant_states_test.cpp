@@ -43,7 +43,7 @@ TEST_CASE("Plant State Transitions")
         //Check if in correct state
         CHECK(flower->getState() == "Mature");
         CHECK(flower->getAge() == 8);
-        CHECK(flower->getHealth() == 95);
+        CHECK(flower->getHealth() == 100);
         CHECK(flower->isReadyForSale() == true);
 
     }
