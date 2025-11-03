@@ -3,6 +3,7 @@
 #include <string>
 #include <algorithm>
 #include <iomanip>
+#include <fstream>
 
 #include "Plant.h"
 #include "Flower.h"
@@ -42,12 +43,29 @@
 #include "SalesFloorWorker.h"
 #include "WiltingState.h"
 
+void displayWeekArt(int weekNumber) {
+    std::string filename = "../data/Weeks Ascii Art/Week " + std::to_string(weekNumber) + ".txt";
+    std::ifstream file(filename);
+    
+    if (file.is_open()) {
+        std::string line;
+        while (std::getline(file, line)) {
+            std::cout << line << std::endl;
+        }
+        file.close();
+        std::cout << std::endl;
+    } else {
+        std::cerr << "Error: Could not open " << filename << std::endl;
+    }
+}
+
 void testNurserySimulation() {    
-    std::cout << "WELCOME TO GRAND THEFT NURSERY\n" << std::endl;
+    //std::cout << "WELCOME TO GRAND THEFT NURSERY\n" << std::endl;
     std::cout << "Simulating 3 months in the life of our nursery...\n" << std::endl;
     
     //Week 0: Setup
-    std::cout<<"===WEEK 0: NURSERY SETUP & STAFF HIRING==="<<std::endl;
+    displayWeekArt(0);
+    std::cout<<"===NURSERY SETUP & STAFF HIRING==="<<std::endl;
     
     NurseryMediator* nursery = new NurseryMediator();
     
@@ -96,8 +114,8 @@ void testNurserySimulation() {
 
     notifSystem->notify("Nursery is now open for business!");
     
-    //Week 1: plantations:
-    std::cout<<"===WEEK 1: PLANTING SEASON BEGINS==="<<std::endl;
+    displayWeekArt(1);
+    std::cout<<"===PLANTING SEASON BEGINS==="<<std::endl;
     
     // Add diverse inventory
     std::cout << "\nReceiving New Seed Shipment....\n" << std::endl;
@@ -132,7 +150,8 @@ void testNurserySimulation() {
     std::cout<<"Plant States Saved!"<<std::endl;
 
     //Week 2-4: Plant Growth Phase
-    std::cout<<"===WEEKS 2-4:PLANT GROWTH & CARE PHASE==="<<std::endl;
+    displayWeekArt(2);
+    std::cout<<"===PLANT GROWTH & CARE PHASE==="<<std::endl;
     
     //PlantCaretaker* caretaker = new PlantCaretaker();
     std::vector<Plant*> greenhousePlants = nursery->getGreenhouse();
@@ -173,7 +192,8 @@ void testNurserySimulation() {
     nursery->displayInventory();
     
     //Week 5: Kobe's promotion
-    std::cout<<"===WEEK 5: STAFF PROMOTION & ROLE EXPANSION==="<<std::endl;
+    displayWeekArt(5);
+    std::cout<<"===STAFF PROMOTION & ROLE EXPANSION==="<<std::endl;
     
     std::cout << "!!!SPECIAL ANNOUNCEMENT!!!\n" << std::endl;
     std::cout << "Kobe has shown exceptional dedication to Grand Theft Nursery!" << std::endl;
@@ -195,7 +215,8 @@ void testNurserySimulation() {
     delete advanceCmd;
     
     //Week 6-8: Continue growinng plants and get them ready for sale
-    std::cout<<"===WEEKS 6-8: PREPARING PLANTS FOR SALE==="<<std::endl;
+    displayWeekArt(6);
+    std::cout<<"===PREPARING PLANTS FOR SALE==="<<std::endl;
 
     //add new plants so they can be neglected:
     nursery->addNewPlant("Herb", "Basil");       
@@ -231,7 +252,8 @@ void testNurserySimulation() {
     */
 
     // Week 9: Sales Day
-    std::cout << "\n===!!!WEEK 9: GRAND OPENING - IT'S SALES DAY!!!=== " << std::endl;
+    displayWeekArt(9);
+    std::cout << "\n===!!!GRAND OPENING - IT'S SALES DAY!!!=== " << std::endl;
     
     // Carie prepares the sales floor
     std::cout << "\nCarie preparing the sales floor for opening day..." << std::endl;
@@ -277,7 +299,7 @@ void testNurserySimulation() {
     
     if (JackJacksOrder) {
         // Display order
-        std::cout << "\n== 🔚 Finalising your order ==\n" << std::endl;
+        std::cout << "\n== Finalising your order ==\n" << std::endl;
         JackJacksOrder->display();
         
         // Make purchase
@@ -294,7 +316,6 @@ void testNurserySimulation() {
             std::cout << " Insufficient funds. Purchase cancelled." << std::endl;
         }
         
-        // Cleanup
         delete JackJacksOrder;
     } else {
         std::cout << " Unable to create bundle - insufficient inventory.\n" << std::endl;
@@ -317,7 +338,7 @@ void testNurserySimulation() {
     std::cout << "Tai Lung: 'Yes please!'\n" << std::endl;
     TaiLung->requestCustomisation("gift wrapping");
     
-    std::cout << "\n== 🏗️ Building your order ==\n" << std::endl;
+    std::cout << "\n== Building your order ==\n" << std::endl;
     
     // USE MEDIATOR to process single order! Mediator uses Builder internally
     PlantOrder* TaiLungsOrder = nursery->processCustomerOrder(
@@ -366,7 +387,8 @@ void testNurserySimulation() {
     nursery->displayInventory();
 
     // === WEEK 10: THE SABOTAGE ===
-    std::cout << "\n===WEEK 10: CORPORATE SABOTAGE===" << std::endl;
+    displayWeekArt(10);
+    std::cout << "\n===CORPORATE SABOTAGE===" << std::endl;
     std::cout << "\n CRIMINAL INVESTIGATION IN PROGRESS 🕵️" << std::endl;
     std::cout << "A rival nursery, 'Petals & Thorns', couldn't handle our success!" << std::endl;
     std::cout << "They sent a corporate spy who tampered with our fertilizer!" << std::endl;
@@ -386,7 +408,7 @@ void testNurserySimulation() {
     int affectedCount = 0;
     for (Plant* plant : greenhousePlants) {
         if (plant && plant->getState() != "Dead") {
-            std::cout << "☠️ " << plant->getName() 
+            std::cout << " " << plant->getName() 
                     << " showing signs of chemical poisoning!" << std::endl;
             
             //Herbicide causes severe damage
@@ -445,9 +467,10 @@ void testNurserySimulation() {
     nursery->displayInventory();
     
     // === WEEK 11: EMERGENCY REVIVAL OPERATIONS ===
-    std::cout << "\n===WEEK 11: OPERATION PLANT REVIVAL===" << std::endl;
+    displayWeekArt(11);
+    std::cout << "\n===OPERATION PLANT REVIVAL===" << std::endl;
     std::cout << "\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl;
-    std::cout << "          🚨 EMERGENCY RECOVERY PROTOCOLS ACTIVATED 🚨" << std::endl;
+    std::cout << "          EMERGENCY RECOVERY PROTOCOLS ACTIVATED " << std::endl;
     std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n" << std::endl;
 
     std::cout << "The team hasn't slept since discovering the sabotage..." << std::endl;
@@ -486,13 +509,13 @@ void testNurserySimulation() {
                     << std::setw(12) << (std::to_string(health) + "%");
             
             if (state == "Dead") {
-                std::cout << "💀 DECEASED" << std::endl;
+                std::cout << " DECEASED" << std::endl;
                 deadPlants.push_back(plant);
             } else if (state == "Wilting") {
-                std::cout << "⚠️ CRITICAL - REVIVAL NEEDED NOW" << std::endl;
+                std::cout << " CRITICAL - REVIVAL NEEDED NOW" << std::endl;
                 wiltingPlants.push_back(plant);
             } else if (health < 50) {
-                std::cout << "⚠️ POOR CONDITION" << std::endl;
+                std::cout << " POOR CONDITION" << std::endl;
                 criticalPlants.push_back(plant);
             } else {
                 std::cout << "✓ STABLE" << std::endl;
@@ -629,7 +652,7 @@ void testNurserySimulation() {
 
     std::cout << "Manager Sarah: 'Everyone, take shifts. Monitor them around the clock.'" << std::endl;
     std::cout << "Kobe: 'I'll take first watch.'" << std::endl;
-    std::cout << "⏰ One week of intensive 24/7 monitoring begins...\n" << std::endl;
+    std::cout << " One week of intensive 24/7 monitoring begins...\n" << std::endl;
 
     // Advance time
     Command* monitoringWeek = new AdvanceTimeCommand(greenhousePlants, 1);
@@ -703,7 +726,7 @@ void testNurserySimulation() {
     std::cout << "\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl;
 
     if (survivalRate >= 80) {
-        std::cout << "\n🎉 MIRACULOUS RECOVERY! 🎉" << std::endl;
+        std::cout << "\n MIRACULOUS RECOVERY! " << std::endl;
         std::cout << "Manager Sarah: 'You all saved this nursery! The Memento Protocol WORKS!'" << std::endl;
         std::cout << "Kobe: 'Saving those healthy states was the best decision we ever made!'" << std::endl;
         std::cout << "Trevor: 'We turned a disaster into a triumph!'" << std::endl;
@@ -712,13 +735,13 @@ void testNurserySimulation() {
         notifSystem->notify("VICTORY: " + std::to_string((int)survivalRate) + 
                         "% survival rate! Memento Protocol proves its worth!");
     } else if (survivalRate >= 60) {
-        std::cout << "\n✅ HARD-FOUGHT VICTORY!" << std::endl;
+        std::cout << "\n HARD-FOUGHT VICTORY!" << std::endl;
         std::cout << "Manager Sarah: 'We took casualties, but we saved the heart of our nursery!'" << std::endl;
         std::cout << "Kobe: 'Every plant we saved is a win against those saboteurs!'" << std::endl;
         std::cout << "Team: 'We'll rebuild stronger than ever!'" << std::endl;
         notifSystem->notify("Crisis survived! " + std::to_string((int)survivalRate) + "% survival rate achieved through teamwork!");
     } else {
-        std::cout << "\n💪 WE SURVIVED!" << std::endl;
+        std::cout << "\n WE SURVIVED!" << std::endl;
         std::cout << "Manager Sarah: 'The damage was catastrophic, but we didn't give up!'" << std::endl;
         std::cout << "Kobe: 'We lost many, but those that survived will be our foundation!'" << std::endl;
         std::cout << "Team: 'We'll honor the lost by making this nursery better than ever!'" << std::endl;
@@ -742,7 +765,8 @@ void testNurserySimulation() {
     std::cout << "\nKobe: 'Crisis management: Complete. Now let's get back to business!'" << std::endl;
     
     //Week 12
-    std::cout << "\n===WEEK 12: EXPANSION & QUARTERLY PERFORMANCE REVIEW===" << std::endl;
+    displayWeekArt(12);
+    std::cout << "\n===EXPANSION & QUARTERLY PERFORMANCE REVIEW===" << std::endl;
 
     std::cout << "\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl;
     std::cout << "            SPECIAL ANNOUNCEMENT - PROMOTIONS! " << std::endl;
@@ -789,7 +813,7 @@ void testNurserySimulation() {
     nursery->displayRegisteredFactories();
 
     // Add some new stock for expansion
-    std::cout << "\n📦 Receiving Verified, Certified New Stock:\n" << std::endl;
+    std::cout << "\n Receiving Verified, Certified New Stock:\n" << std::endl;
     std::cout << "Kobe: 'Every shipment inspected personally. No more surprises!'\n" << std::endl;
     std::cout<<"Kobe plants the new stock..."<<std::endl;
 
@@ -860,15 +884,15 @@ void testNurserySimulation() {
 
     std::cout << "\n KEY ACHIEVEMENTS:" << std::endl;
     std::cout << "─────────────────────────────────────────────────────────────" << std::endl;
-    std::cout << "✅ Successfully grew plants from seeds to maturity" << std::endl;
-    std::cout << "✅ Opened sales floor and served customers" << std::endl;
-    std::cout << "✅ Completed bundle and individual plant sales" << std::endl;
-    std::cout << "✅ SURVIVED CORPORATE SABOTAGE ATTACK" << std::endl;
-    std::cout << "✅ Successfully revived poisoned plants using Memento Protocol" << std::endl;
-    std::cout << "✅ Brought saboteurs to justice, criminal charges filed" << std::endl;
-    std::cout << "✅ Promoted exceptional staff members" << std::endl;
-    std::cout << "✅ Expanded inventory" << std::endl;
-    std::cout << "✅ Gained community support and loyalty" << std::endl;
+    std::cout << " Successfully grew plants from seeds to maturity" << std::endl;
+    std::cout << " Opened sales floor and served customers" << std::endl;
+    std::cout << " Completed bundle and individual plant sales" << std::endl;
+    std::cout << " SURVIVED CORPORATE SABOTAGE ATTACK" << std::endl;
+    std::cout << " Successfully revived poisoned plants using Memento Protocol" << std::endl;
+    std::cout << " Brought saboteurs to justice, criminal charges filed" << std::endl;
+    std::cout << " Promoted exceptional staff members" << std::endl;
+    std::cout << " Expanded inventory" << std::endl;
+    std::cout << " Gained community support and loyalty" << std::endl;
 
     std::cout << "\nSPECIAL RECOGNITION:" << std::endl;
     std::cout << "─────────────────────────────────────────────────────────────" << std::endl;
@@ -899,6 +923,8 @@ void testNurserySimulation() {
     std::cout << "║              GREEN THUMBS, GREENER PROFITS!                ║" << std::endl;
     std::cout << "╚════════════════════════════════════════════════════════════╝" << std::endl;
 
+    //manager->displayStatistics();
+
     // Cleanup
     delete Kobe;
     delete Naledi;
@@ -915,7 +941,7 @@ void testNurserySimulation() {
 int main() {
     std::cout << "\n";
     std::cout << "╔════════════════════════════════════════════════════════════╗" << std::endl;
-    std::cout << "║             PLANT NURSERY MANAGEMENT SYSTEM                ║" << std::endl;
+    std::cout << "║              WELCOME TO GRAND THEFT NURSERY                ║" << std::endl;
     std::cout << "╚════════════════════════════════════════════════════════════╝" << std::endl;
     
     try {
