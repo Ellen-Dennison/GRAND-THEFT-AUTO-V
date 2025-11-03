@@ -52,7 +52,7 @@ Something about the plant life that calls to a person.
      <td style="vertical-align:top; padding:5px;">
        <div style="width:300px; height:300px; overflow:hidden; border-radius:50%; display:block;">
         <img
-          src="pics/pic2.jpg"
+          src="data/pics/pic2.jpg"
           alt="Team member-2"
           style="width:70%; height:100%;"
         />
@@ -75,7 +75,7 @@ Something about the plant life that calls to a person.
      <td style="vertical-align:top; padding:5px;">
        <div style="width:300px; height:300px; overflow:hidden; border-radius:50%; display:block;">
         <img
-          src="pics/pic3.jpg"
+          src="data/pics/pic3.jpg"
           alt="Team member-3"
           style="width:70%; height:100%;"
         />
@@ -98,7 +98,7 @@ Something about the plant life that calls to a person.
      <td style="vertical-align:top; padding:5px;">
        <div style="width:300px; height:300px; overflow:hidden; border-radius:50%; display:block;">
         <img
-          src="pics/pic4.jpg"
+          src="data/pics/pic4.jpg"
           alt="Team member-4"
           style="width:70%; height:100%;"
         />
@@ -121,7 +121,7 @@ Something about the plant life that calls to a person.
      <td style="vertical-align:top; padding:5px;">
        <div style="width:300px; height:300px; overflow:hidden; border-radius:50%; display:block;">
         <img
-          src="pics/pic5.jpg"
+          src="data/pics/pic5.jpg"
           alt="Team member-5"
           style="width:70%; height:100%;"
         />
