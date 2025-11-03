@@ -44,13 +44,13 @@ __published:	// IDE-managed Components
 	TLabel *Week0title;
 	TLabel *Label1;
 	TButton *Button1;
-	TListBox *ListBox1;
-	TEdit *Edit1;
-	TEdit *Edit2;
-	TListBox *ListBox2;
+	TListBox *StaffList;
+	TEdit *StaffEdit;
+	TEdit *FactoryEdit;
+	TListBox *FactoryList;
 	TButton *RegisterFactory;
-	TButton *Button2;
-	TButton *Button3;
+	TButton *Week1;
+	TButton *Back;
 private:
 	NurseryMediator* nursery;
     Subject* notifSystem;
