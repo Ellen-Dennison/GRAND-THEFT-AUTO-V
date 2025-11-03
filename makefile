@@ -134,8 +134,6 @@ clean-docs:
 	
 
 
-
-
 # Clean up generated files
 clean:
 	@echo "Cleaning up..."
@@ -148,3 +146,6 @@ clean:
 .PHONY: all test docs clean-docs
 
 
+#Memory checking 
+valgrind:
+	valgrind --leak-check=yes --track-origins=yes ./nursery
