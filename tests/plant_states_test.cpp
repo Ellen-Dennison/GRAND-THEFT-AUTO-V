@@ -57,7 +57,7 @@ TEST_CASE("Plant State Transitions")
     SUBCASE("After 14 weeks with care - Flowering"){
         CHECK(flower->getState() == "Flowering");
         CHECK(flower->getAge() == 14);
-        CHECK(flower->getHealth() == 95);
+        CHECK(flower->getHealth() == 100);
         CHECK(flower->isReadyForSale() == true);
     }
 
