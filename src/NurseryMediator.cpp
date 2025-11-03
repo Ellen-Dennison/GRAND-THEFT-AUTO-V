@@ -45,7 +45,7 @@ NurseryMediator::~NurseryMediator() {
     greenhouse.clear();
     salesFloor.clear();
 
-    std::cout << "🏁 NurseryMediator destroyed.\n";
+    std::cout << " NurseryMediator destroyed.\n";
 }
 
 //if we were to grow the Nursery and add more Plant types. This adds factories according to our custom instead of already set ones
@@ -128,7 +128,7 @@ bool NurseryMediator::removePlantFromSalesFloor(Plant* plant) {
 
 // 💧 Care for plants
 void NurseryMediator::careForGreenhouse() {
-    std::cout << "\n💧 Caring for greenhouse plants...\n";
+    std::cout << "\n Caring for greenhouse plants...\n";
     for (auto* plant : greenhouse) {
         plant->water();
         plant->provideSunlight();
@@ -139,7 +139,7 @@ void NurseryMediator::careForGreenhouse() {
 
 // ⏳ Advance time
 void NurseryMediator::advanceTime(int weeks) {
-    std::cout << "\n⏳ Advancing time by " << weeks << " weeks...\n";
+    std::cout << "\n Advancing time by " << weeks << " weeks...\n";
     for (auto* plant : greenhouse)
         for (int i = 0; i < weeks; ++i)
             plant->grow();
@@ -150,11 +150,11 @@ void NurseryMediator::advanceTime(int weeks) {
 // 🌾 Move mature plants to sales floor
 void NurseryMediator::harvestMaturePlants() {
     if (greenhouse.empty()) {
-        std::cout << "\n🌾 Greenhouse is empty - nothing to harvest.\n";
+        std::cout << "\n Greenhouse is empty - nothing to harvest.\n";
         return;
     }
     
-    std::cout << "\n🌾 Checking for plants ready to harvest...\n";
+    std::cout << "\n Checking for plants ready to harvest...\n";
     
     auto it = greenhouse.begin();
     int harvestedCount = 0;
@@ -162,7 +162,7 @@ void NurseryMediator::harvestMaturePlants() {
     while (it != greenhouse.end()) {
         Plant* plant = *it;
         if (plant->isReadyForSale()) {
-            std::cout << "🪴 " << plant->getName() << " (" << plant->getState() 
+            std::cout  << plant->getName() << " (" << plant->getState() 
                  << ", Health: " << plant->getHealth() << "%) moved to sales floor.\n";
             salesFloor.push_back(plant);
             it = greenhouse.erase(it);
@@ -173,9 +173,9 @@ void NurseryMediator::harvestMaturePlants() {
     }
     
     if (harvestedCount == 0) {
-        std::cout << "⏳ No plants ready for harvest yet.\n";
+        std::cout << " No plants ready for harvest yet.\n";
     } else {
-        std::cout << "✅ Harvested " << harvestedCount << " plant" 
+        std::cout << " Harvested " << harvestedCount << " plant" 
              << (harvestedCount > 1 ? "s" : "") << ".\n";
     }
 
@@ -185,26 +185,26 @@ void NurseryMediator::harvestMaturePlants() {
 // 💾 Save healthy states (Memento)
 void NurseryMediator::saveHealthyStates() {
     if (greenhouse.empty()) {
-        std::cout << "💾 No plants in greenhouse to save.\n";
+        std::cout << " No plants in greenhouse to save.\n";
         return;
     }
     
-    std::cout << "\n💾 Saving healthy plant states...\n";
+    std::cout << "\n Saving healthy plant states...\n";
     int savedCount = 0;
     
     for (auto* plant : greenhouse) {
         if (plant->getHealth() > 70) {
             careTaker->saveMemento(plant->getName(), plant->createMemento());
-            std::cout << "📸 Saved state for " << plant->getName() 
+            std::cout << " Saved state for " << plant->getName() 
                  << " (Health: " << plant->getHealth() << "%)\n";
             ++savedCount;
         }
     }
     
     if (savedCount == 0) {
-        std::cout << "⚠️ No plants healthy enough (>70%) to save.\n";
+        std::cout << " No plants healthy enough (>70%) to save.\n";
     } else {
-        std::cout << "✅ Saved " << savedCount << " plant state" 
+        std::cout << " Saved " << savedCount << " plant state" 
              << (savedCount > 1 ? "s" : "") << ".\n";
     }
 }
@@ -212,32 +212,32 @@ void NurseryMediator::saveHealthyStates() {
 // 🧪 Check for wilting plants
 void NurseryMediator::checkForWiltingPlants() {
     if (greenhouse.empty()) {
-        std::cout << "\n🧪 Greenhouse is empty.\n";
+        std::cout << "\n Greenhouse is empty.\n";
         return;
     }
     
-    std::cout << "\n🧪 Checking for wilting plants...\n";
+    std::cout << "\n Checking for wilting plants...\n";
     int wiltingCount = 0;
     
     for (auto* plant : greenhouse) {
         if (plant->getHealth() < 40) {
-            std::cout << "⚠️ " << plant->getName() << " is in poor condition! Health = "
+            std::cout  << plant->getName() << " is in poor condition! Health = "
                  << plant->getHealth() << "%, State: " << plant->getState() << std::endl;
             ++wiltingCount;
         }
     }
     
     if (wiltingCount == 0) {
-        std::cout << "✅ All plants are healthy!\n";
+        std::cout << " All plants are healthy!\n";
     } else {
-        std::cout << "⚠️ Found " << wiltingCount << " plant" 
+        std::cout << " Found " << wiltingCount << " plant" 
              << (wiltingCount > 1 ? "s" : "") << " in poor condition.\n";
     }
 }
 
 // 🛍️ Process customer orders
 PlantOrder* NurseryMediator::processCustomerOrder(const std::string cusName, std::string plantType, bool wantsPot, bool wantsWrapping) {
-    std::cout << "\n🛍️ Processing order for " << cusName << ": " << plantType << std::endl;
+    std::cout << "\n Processing order for " << cusName << ": " << plantType << std::endl;
 
     for (auto it = salesFloor.begin(); it != salesFloor.end(); ++it) {
         Plant* plant = *it;
@@ -258,7 +258,7 @@ PlantOrder* NurseryMediator::processCustomerOrder(const std::string cusName, std
                 if (wantsWrapping) plantsWithGiftWrap++;
                 totalRevenue += order->getPlantComponent()->getTotalValue();
                 
-                std::cout << "✅ Order created for " << cusName << " (" << plant->getName() << ")\n";
+                std::cout << " Order created for " << cusName << " (" << plant->getName() << ")\n";
                 salesFloor.erase(it);
             }
             
@@ -266,13 +266,13 @@ PlantOrder* NurseryMediator::processCustomerOrder(const std::string cusName, std
         }
     }
 
-    std::cout << "❌ No " << plantType << " plants available.\n";
+    std::cout << " No " << plantType << " plants available.\n";
     return NULL;
 }
 
 //Process Bundle order:
 PlantOrder* NurseryMediator::processBundleOrder(const std::string& cusName, const std::string& bundleName, const std::string& plantType, double discount, bool decorativePotOnFirst, bool giftWrapAll) {
-    std::cout << "\n🛍️ Processing bundle order for " << cusName << std::endl;
+    std::cout << "\n Processing bundle order for " << cusName << std::endl;
     
     std::vector<Plant*> selectedPlants;
     for (Plant* plant : salesFloor) {
@@ -314,7 +314,7 @@ PlantOrder* NurseryMediator::processBundleOrder(const std::string& cusName, cons
             removePlantFromSalesFloor(plant);
         }
         
-        std::cout << "✅ Bundle order created for " << cusName 
+        std::cout << " Bundle order created for " << cusName 
                   << " with " << selectedPlants.size() << " " << plantType << "(s)\n";
     }
     
@@ -329,7 +329,7 @@ void NurseryMediator::customerBrowsingInteraction(Customer* customer) {
         return;
     }
 
-    std::cout << "\n👀 " << customer->getName() << " is browsing the sales floor...\n";
+    std::cout  << customer->getName() << " is browsing the sales floor...\n";
     customer->browseSalesFloor(salesFloor);
 }
 
