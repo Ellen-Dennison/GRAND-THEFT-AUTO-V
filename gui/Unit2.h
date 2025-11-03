@@ -37,13 +37,16 @@
 #include "Customer.h"
 #include "SalesFloorWorker.h"
 #include "WiltingState.h"
+#include <FMX.Memo.hpp>
+#include <FMX.Memo.Types.hpp>
+#include <FMX.ScrollBox.hpp>
 //---------------------------------------------------------------------------
 class TForm2 : public TForm
 {
 __published:	// IDE-managed Components
 	TLabel *Week0title;
 	TLabel *Label1;
-	TButton *Button1;
+	TButton *HireStaff;
 	TListBox *StaffList;
 	TEdit *StaffEdit;
 	TEdit *FactoryEdit;
@@ -51,13 +54,30 @@ __published:	// IDE-managed Components
 	TButton *RegisterFactory;
 	TButton *Week1;
 	TButton *Back;
+	TMemo *RolesMemo;
+	TMemo *FactoryDetailsMemo;
+	TButton *Notifications;
+	TListBox *NotificationList;
+
+	void __fastcall HireStaffClick(TObject *Sender);
+	void __fastcall StaffListItemClick(TCustomListBox * const Sender, TListBoxItem * const Item);
+	void __fastcall RegisterFactoryClick(TObject *Sender);
+	void __fastcall FactoryListItemClick(TCustomListBox * const Sender, TListBoxItem * const Item);
+	void __fastcall NotificationsClick(TObject *Sender);
+
+
 private:
 	NurseryMediator* nursery;
-    Subject* notifSystem;
-    StaffWorkFlow* Kobe;
+	Subject* notifSystem;
+	StaffWorkFlow* Kobe;
     StaffWorkFlow* Naledi;
     StaffWorkFlow* Trevor;
-	StaffWorkFlow* Carie;	// User declarations
+	StaffWorkFlow* Carie;
+	Subject* notifSystem;           // Add this
+	ManagerObserver* manager;       // Add this
+	StaffObserver* kobeObs;         // Add this
+	StaffObserver* nalediObs;       // Add this
+	StaffObserver* carieObs;	// User declarations
 public:		// User declarations
 	__fastcall TForm2(TComponent* Owner);
 };
