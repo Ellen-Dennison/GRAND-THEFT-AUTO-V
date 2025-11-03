@@ -5,6 +5,7 @@
 
 #include "Unit2.h"
 #include "Unit1.h"
+#include "Unit3.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
@@ -347,6 +348,12 @@ void __fastcall TForm2::NotificationsClick(TObject *Sender)
 void __fastcall TForm2::BackClick(TObject *Sender)
 {
 	Form1->Show();
+	this->Hide();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm2::Week1Click(TObject *Sender)
+{
+	Form3->Show();
 	this->Hide();
 }
 //---------------------------------------------------------------------------
