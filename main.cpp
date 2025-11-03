@@ -44,7 +44,7 @@
 #include "WiltingState.h"
 
 void displayWeekArt(int weekNumber) {
-    std::string filename = "../data/Weeks Ascii Art/Week " + std::to_string(weekNumber) + ".txt";
+    std::string filename = "data/Weeks Ascii Art/Week" + std::to_string(weekNumber) + ".txt";
     std::ifstream file(filename);
     
     if (file.is_open()) {
