@@ -1,0 +1,160 @@
+object Form6: TForm6
+  Left = 0
+  Top = 0
+  ActiveControl = Back
+  Caption = 'Form6'
+  ClientHeight = 608
+  ClientWidth = 936
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Label1: TLabel
+    StyledSettings = [Family]
+    Position.X = 232.000000000000000000
+    Size.Width = 377.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.FontColor = claDarkgreen
+    TextSettings.HorzAlign = Center
+    Text = 'Week 6-8: Preparing plants for sale'
+    TabOrder = 0
+  end
+  object Back: TButton
+    Position.X = 8.000000000000000000
+    Position.Y = 568.000000000000000000
+    TabOrder = 1
+    Text = 'Back'
+    OnClick = BackClick
+  end
+  object Week9: TButton
+    Position.X = 848.000000000000000000
+    Position.Y = 568.000000000000000000
+    TabOrder = 2
+    Text = 'Week9'
+    OnClick = Week9Click
+  end
+  object Label2: TLabel
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 88.000000000000000000
+    Position.Y = 49.000000000000000000
+    Size.Width = 225.000000000000000000
+    Size.Height = 24.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 14.000000000000000000
+    Text = 'Current Status: Mature Plants Ready'
+    TabOrder = 3
+  end
+  object Label3: TLabel
+    Position.X = 608.000000000000000000
+    Position.Y = 56.000000000000000000
+    Text = 'Sales Floor: Open'
+    TabOrder = 4
+  end
+  object Label4: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 368.000000000000000000
+    Position.Y = 79.000000000000000000
+    Size.Width = 136.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.Font.StyleExt = {00060000000000000004000000}
+    Text = 'NAVIGATION'
+    TabOrder = 5
+  end
+  object Week6: TButton
+    Position.X = 64.000000000000000000
+    Position.Y = 104.000000000000000000
+    TabOrder = 6
+    Text = 'Week6'
+    OnClick = Week6Click
+  end
+  object Week7: TButton
+    Position.X = 233.000000000000000000
+    Position.Y = 104.000000000000000000
+    TabOrder = 7
+    Text = 'Week7'
+    OnClick = Week7Click
+  end
+  object Week8: TButton
+    Position.X = 400.000000000000000000
+    Position.Y = 104.000000000000000000
+    TabOrder = 8
+    Text = 'Week8'
+    OnClick = Week8Click
+    object Button5: TButton
+      Position.X = 8.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 25.000000000000000000
+      Size.Height = 1.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      Text = 'Button5'
+    end
+  end
+  object Summary: TButton
+    Position.X = 568.000000000000000000
+    Position.Y = 104.000000000000000000
+    TabOrder = 9
+    Text = 'Summary'
+    OnClick = SummaryClick
+  end
+  object Notify: TButton
+    Position.X = 752.000000000000000000
+    Position.Y = 104.000000000000000000
+    TabOrder = 10
+    Text = 'Notify'
+    OnClick = NotifyClick
+  end
+  object ActivityLog: TLabel
+    Position.X = 384.000000000000000000
+    Position.Y = 134.000000000000000000
+    Text = 'ActivityLog'
+    TabOrder = 11
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Position.X = 64.000000000000000000
+    Position.Y = 168.000000000000000000
+    Size.Width = 705.000000000000000000
+    Size.Height = 129.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 12
+    Viewport.Width = 701.000000000000000000
+    Viewport.Height = 125.000000000000000000
+  end
+  object Memo2: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Position.X = 64.000000000000000000
+    Position.Y = 344.000000000000000000
+    Size.Width = 305.000000000000000000
+    Size.Height = 177.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 13
+    Viewport.Width = 301.000000000000000000
+    Viewport.Height = 173.000000000000000000
+  end
+  object Memo3: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Position.X = 488.000000000000000000
+    Position.Y = 344.000000000000000000
+    Size.Width = 281.000000000000000000
+    Size.Height = 177.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 14
+    Viewport.Width = 277.000000000000000000
+    Viewport.Height = 173.000000000000000000
+  end
+  object InventoryStatus: TLabel
+    Position.X = 384.000000000000000000
+    Position.Y = 305.000000000000000000
+    Text = 'InventoryStatus'
+    TabOrder = 15
+  end
+end
