@@ -53,6 +53,7 @@ SOURCES = $(addprefix $(SRC_DIR)/, \
           StaffWorkFlow.cpp \
           StaffWorkFlowDecorator.cpp \
           GreenhouseWorker.cpp \
+          SalesFloorWorker.cpp \
           SalesAssociate.cpp \
           SalesRole.cpp \
           ManagerRole.cpp \
