@@ -15,7 +15,7 @@ Something about the plant life that calls to a person.
 
 ## 🌄 Overview
 
-When tasked with creating a nursery system in C++, a group of law-abiding citizens banded together to create a nursery system that can simulate the tedious task of being a nursery worker, the choice of freedom customers must have when crafting their orders , and the fickleness of plant life and the heavy attention they need.
+When tasked with creating a nursery system in C++, a group of law-abiding citizens banded together to create a nursery system that can simulate the tedious task of being a nursery worker, the choice of freedom customers must have when crafting their orders , and the fickleness of plant life and the heavy attention they need. This is GRAND THEFT NURSERY!
 </br></br>
 
 
