@@ -74,7 +74,7 @@ void testNurserySimulation() {
     StaffWorkFlow* Kobe = new GreenhouseWorker("Kobe", nursery);
     StaffWorkFlow* Naledi = new SalesAssociate("Naledi", nursery);
     StaffWorkFlow* Trevor = new GreenhouseWorker("Trevor", nursery);
-    StaffWorkFlow* Carie = new GreenhouseWorker("Carie", nursery);
+    StaffWorkFlow* Carie = new SalesFloorWorker("Carie", nursery);
     
     Kobe->displayRoles();
     std::cout << std::endl;
