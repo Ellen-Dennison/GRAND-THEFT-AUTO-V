@@ -11,6 +11,13 @@
 Something about the plant life that calls to a person.
 
 <img src="https://media.tenor.com/htFVFkpa_SQAAAAM/gta-v-grand-theft-auto.gif.gif" alt="Animated GIF" width="200">
+</br>
+
+## 🌄 Overview
+
+When tasked with creating a nursery system in C++, a group of law-abiding citizens banded together to create a nursery system that can simulate the tedious task of being a nursery worker, the choice of freedom customers must have when crafting their orders , and the fickleness of plant life and the heavy attention they need.
+</br></br>
+
 
 ## 👩🏾‍💻 How to run our project
 
@@ -19,6 +26,11 @@ Something about the plant life that calls to a person.
 ```bash
 https://github.com/Ellen-Dennison/GRAND-THEFT-AUTO-V.git
 ```
+### Prerequisites
+
+Ensure you have the following installed on your system:
+- A C++ compiler (`g++` or `clang++`)
+- `make` 
 
 ### Compiling and Running the Project
 
@@ -58,15 +70,11 @@ make clean-docs
 ``` 
 
 This will remove all compiled files and any Doxygen-created files.
+</br></br>
 
-## 🗂️ Read our report here
+## 📖 Read our report here
 <a href="https://docs.google.com/document/d/1eTlIpR7Nj3Ug5PbFX11YB4J5lktUktFVabwlhYKQjbQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Link to the report</a>
-</br>
-
-## 👩🏾‍⚖️ Branch Rulesets
-
- **`main`**:
-   - Block force pushes
+</br></br>
 
 
 ## 👥 Team Members
